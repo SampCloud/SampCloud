@@ -1,0 +1,19 @@
+<h2>Sign Up</h2>
+<form action="/signup" method="POST">
+  <label for="username">Username: </label>
+  <input type="text" name="username" id="username">
+  <label for="password">Password: </label>
+  <input type="password" name="password" id="password">
+  <label for="email">email: </label>
+  <input type="text" name="email" id="email">
+  <div>
+    <input type="radio" id="singer" value="singer" name="role">
+    <label for="singer">Singer</label>
+    <input type="radio" id="producer" value="producer" name="role">
+    <label for="producer">Music Producer</label>
+  </div>
+  <button type="submit">Sign Up</button>
+</form>
+{{#if message}}
+<p style="color: red">{{message}}</p>
+{{/if}}
