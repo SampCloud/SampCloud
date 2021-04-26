@@ -8,10 +8,15 @@
     --secondary-background: #FFFFFF;
     --primary-button: #FC7401;
     --secondary-button: #ECECED;
-    --h1-color: #181818;
-    --h2-color: #000000;
-    --h3-color: #000000;
-    --p-color: #181818;
+    --h1-color: #989998;
+    --h2-color: #675f5b;
+    --h2-background: #271d19;
+    --h3-color: #675f5b;
+    --h3-background: #271d19;
+    --h4-color: ;
+    --p1-color: #181818;
+    --p2-color: ;
+    --p3-color: #000000;
     --nav-color: #383434;
 }
 
@@ -20,10 +25,16 @@
     --secondary-background: #201E21;
     --primary-button: #FC7401;
     --secondary-button: #FFFFFF;
-    --h1-color: #989998;
-    --h2-color: #676767;
-    --h3-color: #000000;
-    --p-color: #989998;
+    --h1-color: #989998; /* done */
+    --h2-color: #675f5b;
+    --h2-background: #271d19;
+    --h3-color: #675f5b;
+    --h3-background: #271d19;
+    --h4-color: ;
+    
+    --p1-color: #ECECED;
+    --p2-color: ;
+    --p3-color: #FFFFFF;
     --nav-color: #100E11;
 }
 
@@ -45,6 +56,23 @@ body {
 /* Headings & Text --------------------------------------------- */
 
 h1 {
+    padding: 0 0 0 20px;
+    color: var(--h1-color);
+    font-family: "Helvetica";
+    font-weight: 200;
+    font-size: 24px;
+}
+
+h2 {
+    margin: 0;
+    padding: 10px 0 0 20px;
+    color: var(--h2-color);
+    font-family: "Helvetica";
+    font-weight: 300;
+    font-size: 12px;
+}
+
+.h1-profile {
     margin: 0px;
     padding: 10px;
     position: absolute;
@@ -56,7 +84,7 @@ h1 {
     font-size: 24px;
 }
 
-h2 {
+.h2-profile {
     margin: 0px;
     padding: 5px;
     position: absolute;
@@ -68,46 +96,10 @@ h2 {
     font-size: 16px;
 }
 
-.h1 {
-    margin: 0;
-    padding: 0 0 0 20px;
-    color: #181818;
-    font-family: "Helvetica";
-    font-weight: 200;
-    font-size: 24px;
-}
-
-.h2 {
-    margin: 0;
-    padding: 10px 0 0 20px;
-    color: grey;
-    font-family: "Helvetica";
-    font-weight: 300;
-    font-size: 12px;
-}
-
-.h1-dark {
-    margin: 0;
-    padding: 0 0 0 20px;
-    color: #989998;
-    font-family: "Helvetica";
-    font-weight: 200;
-    font-size: 24px;
-}
-
-.h2-dark {
-    margin: 0;
-    padding: 10px 0 0 20px;
-    color: #676767;
-    font-family: "Helvetica";
-    font-weight: 300;
-    font-size: 12px;
-}
-
-.p-light {
-    margin: 0;
-    padding: 20px;
-    color: white;
+p {
+    margin: 20px 0;
+    padding: 0;
+    color: var(--p1-color);
     font-family: "Helvetica";
     font-size: 12px;
 }
@@ -117,7 +109,7 @@ h2 {
     padding: 0;
     position: absolute;
     bottom: 2%;
-    color: white;
+    color: var(--p3-color);
     font-family: "Helvetica";
     font-size: 10px;
 }
@@ -169,6 +161,17 @@ input[type="text"] {
     padding: 16px;
     width: 100%;
     background-color: var(--primary-background);
+    color: var(--p1-color);
+    border: none;
+    border-radius: 2px;
+}
+
+input[type="password"] {
+    margin: 3px;
+    padding: 16px;
+    width: 100%;
+    background-color: var(--primary-background);
+    color: var(--p1-color);
     border: none;
     border-radius: 2px;
 }
