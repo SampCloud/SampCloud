@@ -24,13 +24,12 @@
 <p><a href="{{soundUrl}}">My SoundCloud</a></p>
 {{/if}}
 <a href="/singerProfile/edit">Edit Profile</a>
-<h1>Tracks</h1>
+<h1> Tracks</h1>
 <a href="/singerProfile/addTrack">Add a Track</a>
 <div>
   {{#each tracks}}
   <div>
     <h3>{{title}}</h3>
-    <img src="{{cover}}" alt="cover from {{title}}">
     <h4>{{genre}}</h4>
     <p>{{description}}</p>
     <audio src="{{file}}"></audio>
@@ -38,10 +37,6 @@
   {{/each}}
 </div>
 
-
-<h2>Tags</h2>
-
-<a href="">Add a Tag</a>
 
 
 

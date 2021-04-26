@@ -25,6 +25,7 @@ router.post('/singerProfile/edit', uploader.single('avatar'), (req, res, next) =
     soundUrl: soundUrl
   }, { new: true })
     .then(userUp => {
+      req.session.user = userUp;
       console.log(userUp)
       res.redirect('/singerProfile',)
     })
@@ -49,6 +50,7 @@ router.post('/producerProfile/edit', uploader.single('avatar'), (req, res, next)
     soundUrl: soundUrl
   }, { new: true })
     .then(userUp => {
+      req.session.user = userUp;
       console.log(userUp)
       res.redirect('/producerProfile',)
     })
