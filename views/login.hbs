@@ -1,38 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Sample Artist</title>
-        <link rel="shortcut icon" type="image/jpg" href="/media/images/soundcloud-icon02.png"/>
-        <link rel="stylesheet" href="/css/style.css">
-        <script src="/js/theme.js" defer></script>
-    </head>
-    <body class="orange-border">
-        <div class=login-container>
-            <div class="login">
-                <div class="login-content">
-                    <form action="/login" method="POST">
-                        <label for="username" placeholder="username:">
-                        <input type="text" id="username" name="username">
-                        <label for="password" placeholder="password:">
-                        <input type="password" id="password" name="password">
-                        <button class="secondary-button">Login</button><br>
-                    </form>
-                    
-                    {{#if message}}
-                        <p style="color: red">{{message}}</p>
-                    {{/if}}
+{{!-- BODY BEGINS // Body tag included to add orange top border via CSS box-shadow property --}}
+<body class="orange-border">
 
-                </div>
+    {{!-- LOGIN PAGE CONTAINER BEGINS --}}
+    <div class=login-page-container>
+
+        {{!-- LOGIN BEGINS --}}
+        <div class="login">
+            <div class="login-content">
+
+                {{!-- FORM BEGINS --}}
+                <form action="/login" method="POST">
+                    <label for="username"></label>
+                    <input type="text" id="username" name="username" placeholder="username">
+                    <label for="password"></label>
+                    <input type="password" id="password" name="password" placeholder="password">
+                    <button type="submit" class="secondary-button-wide" style="background-color: #9c9997; color: #FFFFFF; margin-top: 20px">Login</button>
+                </form>
+                {{!-- END OF FORM BEGINS --}}
+
+                {{#if message}}
+                    <p style="color: red">{{message}}</p>
+                {{/if}}
             </div>
-            <p>Get the app.</p>
-            <div class="app-container">
-                <a href="#"><img src="/images/apple-app-store.png"></a>
-                <a href="#"><img src="/images/google-play-store.png"></a>
-            </div>
-            <div class="copyright">Copyright © 2021 SampleArtist.io in Partnership with Ironhack Berlin</div>
         </div>
-    </body>
-</html>
+        {{!-- END OF LOGIN --}}
+
+        {{!-- * Remaining Page Content * --}}
+        <p>Get the app.</p>
+        <div class="app-container">
+            <a href="#"><img src="/images/apple-app-store.png"></a>
+            <a href="#"><img src="/images/google-play-store.png"></a>
+        </div>
+        <div class="copyright">Copyright © 2021 SampleArtist.io in Partnership with Ironhack Berlin</div>
+        <button style="margin: 0; position: absolute; top: 10px; right: 10px;" id="toggle-theme">Toggle Theme</button>
+    </div>
+    {{!-- END OF LOGIN PAGE CONTAINER --}}
+
+</body>
+{{!-- END OF BODY --}}

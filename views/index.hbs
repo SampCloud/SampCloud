@@ -1,33 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Sample Artist</title>
-        <link rel="shortcut icon" type="image/jpg" href="/media/images/soundcloud-icon02.png"/>
-        <link rel="stylesheet" href="/css/style.css">
-        <script src="/js/theme.js" defer></script>
-    </head>
-    <body class="orange-border">
-        <div class=login-container>
-            <div class="login">
-                <div class="login-content">
-                    <p>"Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. 
-                    The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of 
-                    Cicero's De Finibus Bonorum et Malorum for use in a type specimen book.</p>
-                    <a href="/signup"><button class="primary-button">Create an account</button></a>
-                    <a href="/login"><button class="secondary-button">Login</button><br></a>
-                    <button style="margin: 20px" id="toggle-theme">Toggle Theme</button>
-                </div>
-            </div>
+{{!-- BODY BEGINS // Body tag included to add orange top border via CSS box-shadow property --}}
+<body class="orange-border">
+    
+    {{!-- LOGIN PAGE CONTAINER BEGINS --}}
+    <div class=login-page-container>
 
-            <p>Get the app.</p>
-            <div class="app-container">
-                <a href="#"><img src="/images/apple-app-store.png"></a>
-                <a href="#"><img src="/images/google-play-store.png"></a>
+        {{!-- LOGIN BEGINS --}}
+        <div class="login">
+            <div class="login-content">
+                <span class="login-text">
+                "Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. 
+                The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of 
+                Cicero's De Finibus Bonorum et Malorum for use in a type specimen book.
+                </span>
+                <a href="/signup"><button class="primary-button-wide">Create an account</button></a>
+                <a href="/login"><button class="secondary-button-wide">Login</button><br></a>
             </div>
-            <div class="copyright">Copyright © 2021 SampleArtist.io in Partnership with Ironhack Berlin</div>
         </div>
-    </body>
-</html>
+        {{!-- END OF LOGIN --}}
+
+        {{!-- * Remaining Page Content * --}}
+        <p>Get the app.</p>
+        <div class="app-container">
+            <a href="#"><img src="/images/apple-app-store.png"></a>
+            <a href="#"><img src="/images/google-play-store.png"></a>
+        </div>
+        <div class="copyright">Copyright © 2021 SampleArtist.io in Partnership with Ironhack Berlin</div>
+        <button style="margin: 0; position: absolute; top: 10px; right: 10px;" id="toggle-theme">Toggle Theme</button>
+    </div>
+    {{!-- END OF LOGIN PAGE CONTAINER --}}
+
+</body>
+{{!-- END OF BODY --}}
