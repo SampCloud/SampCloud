@@ -14,6 +14,7 @@ router.post('/singerProfile/addTrack', uploaderAudio.single('audio'), (req, res,
   const filePath = req.file.path;
   const fileName = req.file.originalname;
   const publicId = req.file.filename;
+  const buffer = req.file.buffer;
   console.log(req.file);
   Track.create({
     title: title,
@@ -22,6 +23,7 @@ router.post('/singerProfile/addTrack', uploaderAudio.single('audio'), (req, res,
     filePath: filePath,
     fileName: fileName,
     publicId: publicId,
+    buffer: buffer,
     owner: req.session.user._id
   })
     .then(track => {
@@ -31,5 +33,7 @@ router.post('/singerProfile/addTrack', uploaderAudio.single('audio'), (req, res,
       next(err);
     })
 });
+
+
 
 module.exports = router
