@@ -3,68 +3,47 @@
 <nav>
   <div class="nav-content">
     <a href="/browse"><img src="/images/orange-logo.png" style="height: 100%"></a>
-
   </div>
 </nav>
 {{!-- END OF NAV --}}
 
 <div class="main-block">
     {{!-- HEADER BEGINS --}}
-    <div class="header">
 
+
+    <div class="header">
+        {{!-- REFORMAT FOR SAMPLE PAGE
         <div class="header-photo-area">
         {{#if imgPath}}
             <img src="{{imgPath}}" style="margin-top: 44px; padding: 0; width: 200px; height: 200px; border-radius: 50%;">
         {{else}}
             <div class="header-photo-circle"></div>
         {{/if}}
-        </div>
-
-        <div class="header-labels">
-        {{#if artisticName}}
-            <div class="h1-profile">{{artisticName}}</div>
-        {{else}}
-            <div class="h1-profile">{{username}}</div>
-        {{/if}}
-        
-        <div class="h2-profile">Location</div>
-        </div>
-
-
+        </div> --}}
     </div>
     {{!-- END OF HEADER --}}
 
-    {{!-- MAIN PROFILE BLOCK BEGINS --}}
+    {{!-- MAIN SAMPLE BLOCK BEGINS --}}
     <div class="main-profile-block">
 
-        {{!-- PROFILE CONTENT BEGINS --}}
+        {{!-- SAMPLE CONTENT BEGINS --}}
         <div class="profile-content">
 
-            {{!-- PROFILE NAV BEGINS --}}
-            <div class="profile-nav">
-                <div class="profile-nav-links">
-                    <ul>
-                        <li><a href="#">All</a></li>
-                        <li><a href="#">Popular tracks</a></li>
-                        <li><a href="#">Tracks</a></li>
-                        <li><a href="#">Album</a></li>
-                        <li><a href="#">Playlists</a></li>
-                        <li><a href="#">Reposts</a></li>
-                        <li><a href="#">Samples</a></li>
-                    </ul>
-                </div>
-                <a href="singerProfile/edit"><button class="profile-button">Edit</button></a>
+            {{!-- SAMPLE NAV BEGINS --}}
+            <div class="sample-nav">
+              <button>Like</button> 
+              <button>Share</button>
+              <button>Save</button>
             </div>
-            {{!-- END OF PROFILE NAV --}}
+            {{!-- END OF SAMPLE NAV --}}
 
-            {{!-- PROFILE BODY BEGINS --}}
+            {{!-- SAMPLE BODY BEGINS --}}
             <div class="profile-body">
-                {{!-- PROFILE MEDIA BEGINS --}}
+                {{!-- SAMPLE MEDIA BEGINS --}}
                 <div class="profile-media">
                     
                 </div>
-                {{!-- END OF PROFILE MEDIA --}}
-
+                {{!-- END OF SAMPLE MEDIA --}}
 
                 {{!-- SIDE FOOTER BEGINS --}}
                 <div class="footer" style="padding-top: 20px">
@@ -88,13 +67,13 @@
                 {{!-- END OF SIDE FOOTER --}}
 
             </div>
-            {{!-- END OF PROFILE BODY --}}
+            {{!-- END OF SAMPLE BODY --}}
 
         </div>
-        {{!-- END OF PROFILE CONTENT --}}
+        {{!-- END OF SAMPLE CONTENT --}}
 
     </div>
-    {{!-- END OF MAIN PROFILE BLOCK --}}
+    {{!-- END OF MAIN SAMPLE BLOCK --}}
 
     <button style="margin: 0; position: absolute; top: 10px; right: 10px;" id="toggle-theme">Toggle Theme</button>
 

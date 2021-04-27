@@ -18,10 +18,6 @@ const userSchema = new Schema({
     type: String,
     enum: ['singer', 'producer']
   },
-  tracks: [{
-    type: Schema.Types.ObjectId,
-    ref: 'Track'
-  }],
 });
 
 const User = model("User", userSchema);

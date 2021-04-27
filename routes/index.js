@@ -1,6 +1,7 @@
 const { loginCheck, isSinger, isProducer } = require("./middlewares");
 const User = require('../models/User');
 const { uploader, cloudinary } = require("../config/cloudinary");
+const Track = require('../models/Track');
 
 const router = require("express").Router();
 
@@ -61,7 +62,13 @@ router.post('/producerProfile/edit', uploader.single('avatar'), (req, res, next)
 
 router.get('/singerProfile', loginCheck(), isSinger(), (req, res) => {
   const currentUser = req.session.user;
-  res.render('users/singer/singerProfile', { singerDetails: currentUser })
+  Track.find({ owner: currentUser._id })
+    .then(tracks => {
+      console.log('Tracks', tracks)
+      res.render('users/singer/singerProfile', { singerDetails: currentUser, tracks })
+    })
+
+
 });
 
 router.get('/producerProfile', loginCheck(), isProducer(), (req, res) => {

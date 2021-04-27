@@ -1,0 +1,51 @@
+<h1>Producer</h1>
+{{#with producerDetails}}
+
+{{#if imgPath}}
+<img src="{{imgPath}}" style="height: 100px; border-radius: 50%; margin-left: 20px">
+{{else}}
+<h1>Welcome to your profile {{username}} !</h1>
+<img src="https://www.pngkey.com/png/full/20-209353_file-soundcloud-soundcloud.png"
+  style="height: 100px; border-radius: 50%; margin-left: 20px" alt=" no picture">
+<p>Please edit your Profile. Add a profile picture, a short description as well as tracks and tags so producers can find
+  you!
+</p>
+{{/if}}
+{{#if artisticName}}
+<h2>{{artisticName}}</h2>
+{{/if}}
+{{#if description}}
+<h1>About</h1>
+<p>{{description}}</p>
+{{/if}}
+<h3>Contact Me At:</h3>
+<p>{{email}}</p>
+{{#if soundUrl}}
+<p><a href="{{soundUrl}}">My SoundCloud</a></p>
+{{/if}}
+<a href="/producerProfile/edit">Edit Profile</a>
+<h1>Tracks</h1>
+<a href="/add">Add a Track</a>
+<div>
+  {{#each tracks}}
+  <div>
+    <h3>{{title}}</h3>
+    <img src="{{cover}}" alt="cover from {{title}}">
+    <h4>{{genre}}</h4>
+    <p>{{description}}</p>
+    <audio src="{{file}}"></audio>
+  </div>
+  {{/each}}
+</div>
+
+
+<h2>Tags</h2>
+
+<a href="">Add a Tag</a>
+
+
+
+<a href="/logout">Log Out</a>
+{{/with}}
+
+<a href="">Look for singers</a>

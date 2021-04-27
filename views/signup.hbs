@@ -1,19 +1,57 @@
-<h2>Sign Up</h2>
-<form action="/signup" method="POST">
-  <label for="username">Username: </label>
-  <input type="text" name="username" id="username">
-  <label for="password">Password: </label>
-  <input type="password" name="password" id="password">
-  <label for="email">email: </label>
-  <input type="text" name="email" id="email">
-  <div>
-    <input type="radio" id="singer" value="singer" name="role">
-    <label for="singer">Singer</label>
-    <input type="radio" id="producer" value="producer" name="role">
-    <label for="producer">Music Producer</label>
-  </div>
-  <button type="submit">Sign Up</button>
-</form>
-{{#if message}}
-<p style="color: red">{{message}}</p>
-{{/if}}
+{{!-- BODY BEGINS // Body tag included to add orange top border via CSS box-shadow property --}}
+<body class="orange-border">
+
+    {{!-- LOGIN PAGE CONTAINER BEGINS --}}
+    <div class=login-page-container>
+
+        {{!-- LOGIN BEGINS --}}
+        <div class="login">
+            <div class="login-content">
+                {{!-- FORM BEGINS --}}
+                <form action="/signup" method="POST">
+                    <label for="username"></label>
+                    <input type="text" id="username" name="username" placeholder="username">
+                    <label for="password"></label>
+                    <input type="password" id="password" name="password" placeholder="password">
+                    <label for="email"></label>
+                    <input type="text" id="email" name="email" placeholder="email"><br>
+                    
+                    {{!-- RADIO BUTTONS BEGIN --}}
+                    <div class="login-radio-container">
+                        <span class="login-radio">
+                            <input type="radio" id="singer" value="singer" name="role">
+                            <label for="singer" class="radio-label">Sample artist</label>
+                        </span>
+
+                        <span class="login-radio">
+                            <input type="radio" type="radio" id="producer" value="producer" name="role">
+                            <label for="producer" class="radio-label">Producer</label>
+                        </span>
+                    </div>
+                    {{!-- END RADIO BUTTONS --}}
+
+                    <button class="primary-button-wide">Create account</button><br>
+                    
+                    {{#if message}}
+                        <div class="invalid">{{message}}</div>
+                    {{/if}}
+                </form>
+                {{!-- END OF FORM --}}
+
+            </div>
+        </div>
+        {{!-- END OF LOGIN --}}
+
+        {{!-- * Remaining Page Content * --}}
+        <p>Get the app.</p>
+        <div class="app-container">
+            <a href="#"><img src="/images/apple-app-store.png"></a>
+            <a href="#"><img src="/images/google-play-store.png"></a>
+        </div>
+        <div class="copyright">Copyright © 2021 SampleArtist.io in Partnership with Ironhack Berlin</div>
+        <button style="margin: 0; position: absolute; top: 10px; right: 10px;" id="toggle-theme">Toggle Theme</button>
+    </div>
+    {{!-- END OF LOGIN PAGE CONTAINER --}}
+
+</body>
+{{!-- END OF BODY --}}
