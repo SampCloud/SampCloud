@@ -2,19 +2,19 @@
 <body class="orange-border">
 
     {{!-- LOGIN PAGE CONTAINER BEGINS --}}
-    <div class=login-page-container>
+    <div class="login-page-container">
 
-        {{!-- LOGIN BEGINS --}}
+        {{!-- LOGIN BEGINS // We reuse the login CSS for this --}}
         <div class="login">
             <div class="login-content">
                 {{!-- FORM BEGINS --}}
                 <form action="/signup" method="POST">
                     <label for="username"></label>
-                    <input type="text" id="username" name="username" placeholder="username">
+                    <input type="text" id="username" name="username" placeholder="username" autocomplete="off">
                     <label for="password"></label>
-                    <input type="password" id="password" name="password" placeholder="password">
+                    <input type="password" id="password" name="password" placeholder="password" autocomplete="off">
                     <label for="email"></label>
-                    <input type="text" id="email" name="email" placeholder="email"><br>
+                    <input type="text" id="email" name="email" placeholder="email" autocomplete="off">
                     
                     {{!-- RADIO BUTTONS BEGIN --}}
                     <div class="login-radio-container">
@@ -31,6 +31,8 @@
                     {{!-- END RADIO BUTTONS --}}
 
                     <button class="primary-button-wide">Create account</button><br>
+                    
+                    {{!-- <div>Already have an acccount?<a href="#"> Sign in.</a></div> --}}
                     
                     {{#if message}}
                         <div class="invalid">{{message}}</div>

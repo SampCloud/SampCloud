@@ -3,7 +3,23 @@
 {{!-- NAV BEGINS --}}
 <nav>
   <div class="nav-content">
-    <a href="/browse"><img src="/images/orange-logo.png" style="height: 100%"></a>
+
+    <div class="nav-logo"><a href="#"><img src="/images/orange-logo.png" style="height: 100%"></a></div>
+
+    <div class="nav-search">
+      <form action="/search" method="POST" >
+        <div class="wrapper">
+        <input type="text" id="search" name="q" autocomplete="off">
+        <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+        </div>
+      </form>
+    </div>
+
+    <div class="nav-links">
+        <button id="toggle-theme">Toggle Theme</button>
+        <a href="/logout"><button>Log Out</button></a>
+    </div>
+    
   </div>
 </nav>
 {{!-- END OF NAV --}}
@@ -14,7 +30,7 @@
 
         <div class="header-photo-area">
         {{#if imgPath}}
-            <img src="{{imgPath}}" style="margin-top: 44px; padding: 0; width: 200px; height: 200px; border-radius: 50%;">
+            <img src="{{imgPath}}" style="margin-top: 44px; margin-bottom: 22px; padding: 0; width: 200px; height: 200px; border-radius: 50%;">
         {{else}}
             <div class="header-photo-circle"></div>
         {{/if}}
@@ -52,14 +68,13 @@
                         <li><a href="#">Samples</a></li>
                     </ul>
                 </div>
-                <button id="button" class="button">Edit</button>
 
                 {{!-- EDIT PROFILE MODAL BEGINS --}}
+                <button id="button">Edit</button>
                 <div class="bg-modal">
                     <div class="modal-contents">
                         
                         <form action="/singerProfile/edit"  method="POST" enctype="multipart/form-data">
-                            
                             <div class="edit-your-profile">
                                 <div class="title">Edit your Profile</div>
                                 <div class="close">&times;</div>
@@ -67,26 +82,32 @@
 
                             <div class="edit-profile-contents">
                                 <div class="wrapper">
-                                    <label for="avatar">Upload Profile Picture:</label>
-                                    <input type="file" name="avatar" id="avatar" value="{{imgName}}">
-                                
+
+                                    <div class="photo">
+                                        {{#if imgPath}}
+                                            <img src="{{imgPath}}" style="margin: 20px 0; padding: 0; width: 200px; height: 200px; border-radius: 50%;">
+                                        {{else}}
+                                            <div class="edit-profile-photo"></div>
+                                        {{/if}}
+                                        <label for="avatar"></label>
+                                        <input type="file" name="avatar" id="avatar" value="{{imgName}}">
+                                    </div>
 
                                     <div class="user-info">
                                         <label for="artisticName">Display Name:</label>
-                                        <input type="text" name="artisticName" id="artisticName" value="{{artisticName}}">
+                                        <input type="text" name="artisticName" id="artisticName">
 
-                                        <label for="description">Description:</label>
-                                        <input type="text" name="description" id="description" value="{{description}}">
-                                        
+                                        <label for="description">Bio:</label>
+                                        <input type="text" name="description" id="description">
+
                                         <label for="soundUrl">SoundCloud:</label>
-                                        <input type="text" name="soundUrl" id="soundUrl" value="{{soundUrl}}">
+                                        <input type="text" name="soundUrl" id="soundUrl">
                                     </div>
                                 </div>
                             </div>
-
-
-                            <button class="primary-button-wide" type="submit">Edit</button>
+                            <div class="save-profile"><button type="submit">Save</button></div>
                         </form> 
+
                     </div>
                 </div>
                 {{!-- END OF EDIT PROFILE MODAL --}}
@@ -96,27 +117,60 @@
 
             {{!-- PROFILE BODY BEGINS --}}
             <div class="profile-body">
+
                 {{!-- PROFILE MEDIA BEGINS --}}
                 <div class="profile-media">
+
+                    {{!-- ADD IF STATEMENTS FOR THIS --}}
+                    <h1>No samples yet</h1>
+                    <button id="button2">Upload now</button>
+
+                    <div class="bg-modal">
+                        <div class="modal-contents">
+                            <form action="/singerProfile/addTrack" method="POST" enctype="multipart/form-data">
+                                <label for="title">Title:</label>
+                                <input type="text" name="title">
+
+                                <label for="genre">Genre:</label>
+                                <input type="text" name="genre">
+
+                                <label for="description">Description:</label>
+                                <input type="text" name="description">
+
+                                <label for="audio">File:</label>
+                                <input type="file" name="audio" id="audio">
+
+                                <button type="submit">Upload</button>
+                            </form>
+                        </div>
+                    </div>
+
                     {{#each tracks}}
-                    <div>
-                        <h3>{{title}}</h3>
+                        <div>
+                            <img src="{{imgPath}}" alt="">
+                            <h3>{{title}}</h3>
                             <p>{{description}}</p>
                             <figure>
-                            <audio controls src="{{file}}">
+                                <audio controls src="{{filePath}}">
                                 Your browser does not support the
                                 <code>audio</code> element.
-                            </audio>
+                                </audio>
                             </figure>
-                    </div>
+                            <a href="#">Edit</a>
+                            <a href="#">Delete</a>
+                        </div>
                     {{/each}}
+
                 </div>
                 {{!-- END OF PROFILE MEDIA --}}
 
                 {{!-- SIDE FOOTER BEGINS --}}
-                <div class="footer" style="padding-top: 20px">
-                    {{!-- <div class="search-spacer"></div> <!--fix to align with nav--> --}}
-                    {{!-- <div class="footer-app-container"></div> <!-- Create new divider for this purpose--> --}}
+                <div class="footer">
+                    <div class="profile-bio">
+                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis ut praesentium
+                        accusantium necessitatibus voluptate libero, sit deserunt nisi ipsa enim adipisci 
+                        architecto aliquam inpossimus consectetur!</p>
+                    </div>
                     <div class="footer-links">
                         <a href="#">Legal - </a>
                         <a href="#">Privacy - </a>
@@ -131,6 +185,7 @@
                     <div class="footer-language">
                         Language: English
                     </div>
+
                 </div>
                 {{!-- END OF SIDE FOOTER --}}
 
@@ -143,11 +198,9 @@
     </div>
     {{!-- END OF MAIN PROFILE BLOCK --}}
 
-    <button style="margin: 0; position: absolute; top: 10px; right: 10px;" id="toggle-theme">Toggle Theme</button>
+    {{!-- <button style="margin: 0; position: absolute; top: 10px; right: 10px;" id="toggle-theme">Toggle Theme</button> --}}
 
 </div>
-
-{{!-- END OF OVERLAY --}}
 {{/with}}
 
 
