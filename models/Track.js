@@ -12,6 +12,7 @@ const trackSchema = new Schema({
   filePath: String,
   fileName: String,
   fileId: String,
+  buffer: String,
   owner: {
     type: Schema.Types.ObjectId,
     ref: 'User'

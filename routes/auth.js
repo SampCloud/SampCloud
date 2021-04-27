@@ -28,8 +28,6 @@ router.post('/login', (req, res, next) => {
         } else {
           res.redirect('/producerProfile')
         }
-
-
       }
     })
 })

@@ -22,7 +22,7 @@ const audioStorage = new CloudinaryStorage({
   cloudinary: cloudinary,
   params: {
     folder: 'tracks-uploads',
-    resorce_type: 'video',
+    resource_type: 'video',
     allowed_formats: 'mp3'
   }
 });

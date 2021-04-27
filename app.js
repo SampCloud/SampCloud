@@ -104,8 +104,7 @@ app.use("/", auth);
 const tracks = require('./routes/tracks');
 app.use('/', tracks)
 
-const tags = require('./routes/tags');
-app.use('/', tags)
+
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);
