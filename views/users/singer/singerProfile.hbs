@@ -123,6 +123,7 @@
     {{/with}}
     {{#each tracks}}
     <div>
+      <img src="{{imgPath}}" alt="">
       <h3>{{title}}</h3>
       <p>{{description}}</p>
       <figure>
@@ -131,6 +132,8 @@
           <code>audio</code> element.
         </audio>
       </figure>
+      <a href="#">Edit</a>
+      <a href="#">Delete</a>
     </div>
     {{/each}}
   </div>
