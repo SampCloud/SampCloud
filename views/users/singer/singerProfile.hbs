@@ -1,102 +1,121 @@
 {{#with singerDetails}}
-{{!-- NAV BEGINS --}}
-<nav>
-  <div class="nav-content">
-    <a href="/browse"><img src="/images/orange-logo.png" style="height: 100%"></a>
-
-  </div>
-</nav>
-{{!-- END OF NAV --}}
-
-<div class="main-block">
+<div id="edit-modal-overlay">
+  {{!-- NAV BEGINS --}}
+  <nav>
+    <div class="nav-content">
+      <a href="/browse"><img src="/images/orange-logo.png" style="height: 100%"></a>
+    </div>
+  </nav>
+  {{!-- END OF NAV --}}
+  ​
+  <div class="main-block">
     {{!-- HEADER BEGINS --}}
     <div class="header">
-
-        <div class="header-photo-area">
+      ​
+      <div class="header-photo-area">
         {{#if imgPath}}
-            <img src="{{imgPath}}" style="margin-top: 44px; padding: 0; width: 200px; height: 200px; border-radius: 50%;">
+        <img src="{{imgPath}}" style="margin-top: 44px; padding: 0; width: 200px; height: 200px; border-radius: 50%;">
         {{else}}
-            <div class="header-photo-circle"></div>
+        <div class="header-photo-circle"></div>
         {{/if}}
-        </div>
-
-        <div class="header-labels">
+      </div>
+      ​
+      <div class="header-labels">
         {{#if artisticName}}
-            <div class="h1-profile">{{artisticName}}</div>
+        <div class="h1-profile">{{artisticName}}</div>
         {{else}}
-            <div class="h1-profile">{{username}}</div>
+        <div class="h1-profile">{{username}}</div>
         {{/if}}
-        
+
         <div class="h2-profile">Location</div>
-        </div>
-
-
+      </div>
+      ​
     </div>
     {{!-- END OF HEADER --}}
-
+    ​
     {{!-- MAIN PROFILE BLOCK BEGINS --}}
     <div class="main-profile-block">
-
-        {{!-- PROFILE CONTENT BEGINS --}}
-        <div class="profile-content">
-
-            {{!-- PROFILE NAV BEGINS --}}
-            <div class="profile-nav">
-                <div class="profile-nav-links">
-                    <ul>
-                        <li><a href="#">All</a></li>
-                        <li><a href="#">Popular tracks</a></li>
-                        <li><a href="#">Tracks</a></li>
-                        <li><a href="#">Album</a></li>
-                        <li><a href="#">Playlists</a></li>
-                        <li><a href="#">Reposts</a></li>
-                        <li><a href="#">Samples</a></li>
-                    </ul>
-                </div>
-                <a href="singerProfile/edit"><button class="profile-button">Edit</button></a>
+      ​
+      {{!-- PROFILE CONTENT BEGINS --}}
+      <div class="profile-content">
+        ​
+        {{!-- PROFILE NAV BEGINS --}}
+        <div class="profile-nav">
+          <div class="profile-nav-links">
+            <ul>
+              <li><a href="#">All</a></li>
+              <li><a href="#">Popular tracks</a></li>
+              <li><a href="#">Tracks</a></li>
+              <li><a href="#">Album</a></li>
+              <li><a href="#">Playlists</a></li>
+              <li><a href="#">Reposts</a></li>
+              <li><a href="#">Samples</a></li>
+            </ul>
+          </div>
+          <a href="singerProfile/edit"><button class="profile-button">Edit</button></a>
+          <div class="edit-profile-modal" id="edit-profile-modal">
+            <div class="edit-profile-modal-header">
+              <div class="edit-profile-modal-title">Edit Profile</div>
+              <button class="edit-profile-modal-close">&times;</button>
             </div>
-            {{!-- END OF PROFILE NAV --}}
-
-            {{!-- PROFILE BODY BEGINS --}}
-            <div class="profile-body">
-                {{!-- PROFILE MEDIA BEGINS --}}
-                <div class="profile-media">
-                    
-                </div>
-                {{!-- END OF PROFILE MEDIA --}}
-
-
-                {{!-- SIDE FOOTER BEGINS --}}
-                <div class="footer" style="padding-top: 20px">
-                    {{!-- <div class="search-spacer"></div> <!--fix to align with nav--> --}}
-                    {{!-- <div class="footer-app-container"></div> <!-- Create new divider for this purpose--> --}}
-                    <div class="footer-links">
-                        <a href="#">Legal - </a>
-                        <a href="#">Privacy - </a>
-                        <a href="#">Cookie Policy - </a>
-                        <a href="#">Cookie Manager - </a>
-                        <a href="#">Imprint - </a>
-                        <a href="#">Creator Resources - </a>
-                        <a href="#">Blog - </a>
-                        <a href="#">Charts - </a>
-                        <a href="#">Popular searches </a>
-                    </div>
-                    <div class="footer-language">
-                        Language: English
-                    </div>
-                </div>
-                {{!-- END OF SIDE FOOTER --}}
-
+            <div class="edit-modal-body">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi incidunt, quod qui similique enim tempore,
+              dolorem aspernatur,
+              aut libero esse earum! Voluptatibus dolore quos nihil maiores dicta incidunt corrupti adipisci itaque
+              nobis ullam, vel tempore,
+              error aliquid! Excepturi earum expedita vel error consequatur? Officiis illum rem veritatis consequuntur
+              dolore fuga temporibus
+              assumenda, tempora, dolores vel esse placeat odit nihil maiores facere! Quaerat, veniam. Aliquam quo
+              excepturi eum harum nam
+              laudantium omnis. Unde optio cumque nulla officia voluptas earum culpa repudiandae?
             </div>
-            {{!-- END OF PROFILE BODY --}}
-
+            ​
+          </div>
         </div>
-        {{!-- END OF PROFILE CONTENT --}}
+        {{!-- END OF PROFILE NAV --}}
+        ​
+        {{!-- PROFILE BODY BEGINS --}}
+        <div class="profile-body">
+          {{!-- PROFILE MEDIA BEGINS --}}
+          <div class="profile-media">
 
+          </div>
+          {{!-- END OF PROFILE MEDIA --}}
+          ​
+          {{!-- SIDE FOOTER BEGINS --}}
+          <div class="footer" style="padding-top: 20px">
+            {{!-- <div class="search-spacer"></div>
+            <!--fix to align with nav--> --}}
+            {{!-- <div class="footer-app-container"></div> <!-- Create new divider for this purpose--> --}}
+            <div class="footer-links">
+              <a href="#">Legal - </a>
+              <a href="#">Privacy - </a>
+              <a href="#">Cookie Policy - </a>
+              <a href="#">Cookie Manager - </a>
+              <a href="#">Imprint - </a>
+              <a href="#">Creator Resources - </a>
+              <a href="#">Blog - </a>
+              <a href="#">Charts - </a>
+              <a href="#">Popular searches </a>
+            </div>
+            <div class="footer-language">
+              Language: English
+            </div>
+          </div>
+          {{!-- END OF SIDE FOOTER --}}
+          ​
+        </div>
+        {{!-- END OF PROFILE BODY --}}
+        ​
+      </div>
+      {{!-- END OF PROFILE CONTENT --}}
+      ​
     </div>
     {{!-- END OF MAIN PROFILE BLOCK --}}
-
+    ​
     <button style="margin: 0; position: absolute; top: 10px; right: 10px;" id="toggle-theme">Toggle Theme</button>
-
+    ​
+  </div>
+  {{!-- END OF OVERALY --}}
 </div>
 {{/with}}
