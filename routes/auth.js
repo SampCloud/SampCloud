@@ -9,7 +9,7 @@ router.get('/signup', (req, res,) => {
 
 
 router.get('/login', (req, res) => {
-  res.render('login')
+  res.render('login');
 })
 
 router.post('/login', (req, res, next) => {
@@ -38,11 +38,11 @@ router.post('/signup', (req, res, next) => {
 
 
   if (password.length < 1) {
-    res.render('signup', { message: 'Your password has to be 7 chars min' });
+    res.render('signup', { message: 'Password must be minimum of 7 characters' });
     return
   }
   if (username === '') {
-    res.render('signup', { message: 'Your username cannot be empty' });
+    res.render('signup', { message: 'Username field cannot be empty' });
     return
   }
 
@@ -50,7 +50,7 @@ router.post('/signup', (req, res, next) => {
     .then(userFromDB => {
 
       if (userFromDB !== null) {
-        res.render('signup', { message: 'This username is already taken' });
+        res.render('signup', { message: 'Username is already taken' });
       } else {
         const salt = bcrypt.genSaltSync();
         const hash = bcrypt.hashSync(password, salt);
@@ -61,9 +61,9 @@ router.post('/signup', (req, res, next) => {
             req.login(createdUser, err => {
               if (err) {
                 next(err);
-                res.render('signup', { message: 'error' })
+                res.render('signup', { message: 'error' });
               } else {
-                res.redirect('/login');
+                res.redirect('/login')
               }
             })
           })
