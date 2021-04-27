@@ -1,3 +1,4 @@
+
 {{#with singerDetails}}
 {{!-- NAV BEGINS --}}
 <nav>
@@ -51,7 +52,45 @@
                         <li><a href="#">Samples</a></li>
                     </ul>
                 </div>
-                <a href="singerProfile/edit"><button class="profile-button">Edit</button></a>
+                <button id="button" class="button">Edit</button>
+
+                {{!-- EDIT PROFILE MODAL BEGINS --}}
+                <div class="bg-modal">
+                    <div class="modal-contents">
+                        
+                        <form action="/singerProfile/edit"  method="POST" enctype="multipart/form-data">
+                            
+                            <div class="edit-your-profile">
+                                <div class="title">Edit your Profile</div>
+                                <div class="close">&times;</div>
+                            </div>
+
+                            <div class="edit-profile-contents">
+                                <div class="wrapper">
+                                    <label for="avatar">Upload Profile Picture:</label>
+                                    <input type="file" name="avatar" id="avatar" value="{{imgName}}">
+                                
+
+                                    <div class="user-info">
+                                        <label for="artisticName">Display Name:</label>
+                                        <input type="text" name="artisticName" id="artisticName" value="{{artisticName}}">
+
+                                        <label for="description">Description:</label>
+                                        <input type="text" name="description" id="description" value="{{description}}">
+                                        
+                                        <label for="soundUrl">SoundCloud:</label>
+                                        <input type="text" name="soundUrl" id="soundUrl" value="{{soundUrl}}">
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <button class="primary-button-wide" type="submit">Edit</button>
+                        </form> 
+                    </div>
+                </div>
+                {{!-- END OF EDIT PROFILE MODAL --}}
+
             </div>
             {{!-- END OF PROFILE NAV --}}
 
@@ -59,7 +98,18 @@
             <div class="profile-body">
                 {{!-- PROFILE MEDIA BEGINS --}}
                 <div class="profile-media">
-                    
+                    {{#each tracks}}
+                    <div>
+                        <h3>{{title}}</h3>
+                            <p>{{description}}</p>
+                            <figure>
+                            <audio controls src="{{file}}">
+                                Your browser does not support the
+                                <code>audio</code> element.
+                            </audio>
+                            </figure>
+                    </div>
+                    {{/each}}
                 </div>
                 {{!-- END OF PROFILE MEDIA --}}
 
@@ -96,4 +146,8 @@
     <button style="margin: 0; position: absolute; top: 10px; right: 10px;" id="toggle-theme">Toggle Theme</button>
 
 </div>
+
+{{!-- END OF OVERLAY --}}
 {{/with}}
+
+

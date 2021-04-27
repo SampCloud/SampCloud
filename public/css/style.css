@@ -611,3 +611,82 @@ input[type="radio"] {
     width: 10%;
     border: 1px solid orange;
 }
+
+/* // MODAL STARTS HERE // */
+
+.bg-modal {
+	background-color: rgba(240, 240, 240, 0.9);
+	width: 100%;
+	height: 100%;
+	position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+	display: none;
+	justify-content: center;
+	align-items: center;
+}
+
+.modal-contents {
+    width: 50%;
+    min-height: 400px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -80%);
+	background-color: white;
+	padding: 40px;
+    border: 1px solid green;
+}
+
+input {
+	margin: 15px auto;
+	display: block;
+	width: 50%;
+	padding: 8px;
+	border: 1px solid gray;
+}
+
+.close {
+	font-size: 1.5rem;
+	color: var(--h1-color);
+	cursor: pointer;
+}
+
+.edit-your-profile {
+    margin: 0;
+    padding: 5px 0;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--divider-color);
+}
+
+.edit-your-profile .title {
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+}
+
+.edit-profile-contents {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    display: flex;
+}
+
+.edit-profile-contents .wrapper{
+    margin: 20px 0;
+    padding: 0;
+    width: 100%;
+    border: 1px solid blue;
+    display: flex;
+}
+
+.edit-profile-contents .user-info {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid red;
+}
