@@ -67,8 +67,6 @@ router.get('/singerProfile', loginCheck(), isSinger(), (req, res) => {
       console.log('Tracks', tracks)
       res.render('users/singer/singerProfile', { singerDetails: currentUser, tracks })
     })
-
-
 });
 
 router.get('/producerProfile', loginCheck(), isProducer(), (req, res) => {

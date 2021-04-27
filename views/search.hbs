@@ -1,0 +1,19 @@
+<h1>Search</h1>
+<form action="/search" method="POST">
+  <input type="text" id="search" name="q">
+  <button type="submit">Search</button>
+</form>
+
+
+{{#each tracklist}}
+<div>
+  <h3>{{title}}</h3>
+  <figure>
+    <audio controls src="{{filePath}}">
+      Your browser does not support the
+      <code>audio</code> element.
+    </audio>
+  </figure>
+</div>
+<a href="/">artist</a>
+{{/each}}

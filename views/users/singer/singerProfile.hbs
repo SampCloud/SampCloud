@@ -117,5 +117,23 @@
     ​
   </div>
   {{!-- END OF OVERALY --}}
+  <h1>Samples</h1>
+  <a href="/singerProfile/addTrack">Add a Track</a>
+  <div>
+    {{/with}}
+    {{#each tracks}}
+    <div>
+      <h3>{{title}}</h3>
+      <p>{{description}}</p>
+      <figure>
+        <audio controls src="{{filePath}}">
+          Your browser does not support the
+          <code>audio</code> element.
+        </audio>
+      </figure>
+    </div>
+    {{/each}}
+  </div>
 </div>
-{{/with}}
+<a href="/search">Search for Samples</a>
+<a href="/logout">log out</a>

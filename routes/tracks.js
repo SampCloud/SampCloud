@@ -6,6 +6,27 @@ const Track = require('../models/Track');
 const streamifier = require('streamifier');
 const fs = require('fs');
 
+router.get('/search', (req, res, next) => {
+  Track.find()
+    .then(tracks => {
+      res.render('search', { tracklist: tracks })
+    });
+})
+
+router.post('/search', (req, res, next) => {
+  console.log('query', req.body)
+  Track.find()
+    .then(tracks => {
+      const filteredTracks = tracks.filter(track => {
+        return track.title.toLowerCase().includes(req.body.q.toLowerCase())
+
+      })
+      res.render('search', { tracklist: filteredTracks })
+    })
+})
+
+
+
 
 
 router.get('/singerProfile/addTrack', (req, res, next) => {
@@ -16,55 +37,7 @@ router.get('/producerProfile/addTrack', (req, res, next) => {
   res.render('users/producer/addTrack');
 })
 
-/* router.post('/singerProfile/addTrack', uploaderAudio.single('audio'), (req, res, next) => {
-  const { title, genre, description } = req.body;
-  const filePath = req.file.path;
-  const fileName = req.file.originalname;
-  const publicId = req.file.filename;
-  //const uploadLocation = __dirname + '/uploads/' + req.file.originalname;
-  //const buffer = fs.writeFileSync(uploadLocation, Buffer.from(new Uint8Array(req.file.buffer)));
-  const buffer = req.file.buffer;
-  console.log(req.file);
-  Track.create({
-    title: title,
-    genre: genre,
-    description: description,
-    filePath: filePath,
-    fileName: fileName,
-    publicId: publicId,
-    buffer: buffer,
-    owner: req.session.user._id
-  })
-    .then(track => {
-      console.log(track)
-      res.redirect('/singerProfile');
-    })
-    .catch(err => {
-      next(err);
-    })
-}); */
 
-/* router.post('/singerProfile/addTrack', uploaderAudio.single('audio'), (req, res, next) => {
-  // upload.single('file') is the multer setup which reads the incoming "mulipart/form-data"
-  // parses it and adds it to the req.file with all the information and the Buffer (req.file.buffer).
-
-  // absolute path where to save the temporary file. Includes the file name and extension
-  // In order for the below writeFileSync operation to work properly, create additional directory named uploads
-  // in the routes directory, as '/routes/uploads'
-  let uploadLocation = __dirname + '/uploads/' + req.file.originalname;
-
-  // write the BLOB to the server as a file
-  fs.writeFileSync(uploadLocation, Buffer.from(new Uint8Array(req.file.buffer)))
-    .then(track => {
-      console.log(track)
-      res.redirect('/singerProfile');
-    })
-    .catch(err => {
-      next(err);
-    })
-
-
-}); */
 
 router.post('/singerProfile/addTrack', uploaderAudio.single('audio'), (req, res) => {
   console.log('Got file:', req.file.originalname);
@@ -80,13 +53,9 @@ router.post('/singerProfile/addTrack', uploaderAudio.single('audio'), (req, res)
       return;
     } else {
       const { title, genre, description } = req.body;
-
       const fileName = req.file.originalname;
       const publicId = req.file.filename;
       console.log("Cloudinary audio info: ", result.audio);
-
-      // If you want to see all the data that Cloudinary comes back with
-      // console.log(result);
 
       console.log('Cloudinary url', result.url);
       Track.create({
@@ -105,8 +74,6 @@ router.post('/singerProfile/addTrack', uploaderAudio.single('audio'), (req, res)
         .catch(err => {
           next(err);
         })
-      // Send back the working URL for the client to display.
-      //res.json({ cdn_url: result.url });
     }
 
 
