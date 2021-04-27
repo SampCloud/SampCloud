@@ -26,13 +26,21 @@
 <a href="/singerProfile/edit">Edit Profile</a>
 <h1> Tracks</h1>
 <a href="/singerProfile/addTrack">Add a Track</a>
+{{/with}}
+
 <div>
   {{#each tracks}}
   <div>
     <h3>{{title}}</h3>
     <h4>{{genre}}</h4>
     <p>{{description}}</p>
-    <audio src="{{file}}"></audio>
+    <figure>
+      <audio controls src="{{filePath}}">
+        Your browser does not support the
+        <code>audio</code> element.
+      </audio>
+    </figure>
+
   </div>
   {{/each}}
 </div>
@@ -41,6 +49,6 @@
 
 
 <a href="/logout">Log Out</a>
-{{/with}}
+
 
 <a href="">Look for producers</a>
