@@ -1,5 +1,4 @@
 
-{{#with singerDetails}}
 {{!-- NAV BEGINS --}}
 <nav>
   <div class="nav-content">
@@ -26,6 +25,7 @@
 
 <div class="main-block">
     {{!-- HEADER BEGINS --}}
+    {{#with singerDetails}}
     <div class="header">
 
         <div class="header-photo-area">
@@ -47,9 +47,11 @@
         </div>
 
     </div>
+    {{/with}}
     {{!-- END OF HEADER --}}
 
     {{!-- MAIN PROFILE BLOCK BEGINS --}}
+    
     <div class="main-profile-block">
 
         {{!-- PROFILE CONTENT BEGINS --}}
@@ -69,9 +71,10 @@
                     </ul>
                 </div>
 
-                {{!-- EDIT PROFILE MODAL BEGINS --}}
-                <button id="button">Edit</button>
-                <div class="bg-modal">
+                 {{!-- EDIT PROFILE MODAL BEGINS --}}
+                {{#with singerDetails}}
+                <button id="button" class="button" data-modal="editProfile">Edit</button>
+                <div id="editProfile" class="modal-bg">
                     <div class="modal-contents">
                         
                         <form action="/singerProfile/edit"  method="POST" enctype="multipart/form-data">
@@ -110,6 +113,7 @@
 
                     </div>
                 </div>
+                {{/with}}
                 {{!-- END OF EDIT PROFILE MODAL --}}
 
             </div>
@@ -123,11 +127,13 @@
 
                     {{!-- ADD IF STATEMENTS FOR THIS --}}
                     <h1>No samples yet</h1>
-                    <button id="button2">Upload now</button>
+                    <button id="upload" class="button" data-modal="uploadSample">Upload now</button>
 
-                    <div class="bg-modal">
+                    <div id="uploadSample" class="modal-bg">
                         <div class="modal-contents">
                             <form action="/singerProfile/addTrack" method="POST" enctype="multipart/form-data">
+
+                                <div class="close">&times;</div>
                                 <label for="title">Title:</label>
                                 <input type="text" name="title">
 
@@ -156,10 +162,12 @@
                                 <code>audio</code> element.
                                 </audio>
                             </figure>
-                            <a href="#">Edit</a>
+                            <a href="/editSample/{{_id}}">Edit</a>
                             <a href="#">Delete</a>
                         </div>
                     {{/each}}
+
+                
 
                 </div>
                 {{!-- END OF PROFILE MEDIA --}}
@@ -201,6 +209,5 @@
     {{!-- <button style="margin: 0; position: absolute; top: 10px; right: 10px;" id="toggle-theme">Toggle Theme</button> --}}
 
 </div>
-{{/with}}
 
 
