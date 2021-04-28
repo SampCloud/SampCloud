@@ -85,8 +85,4 @@ router.get('/singerProfile/edit', loginCheck(), (req, res, next) => {
 
 });
 
-
-
-
-
 module.exports = router;

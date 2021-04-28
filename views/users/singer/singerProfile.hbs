@@ -23,7 +23,6 @@
 {{!-- END OF NAV --}}
 
 <div class="main-block">
-
     {{!-- HEADER BEGINS --}}
     {{#with singerDetails}}
     <div class="header">
@@ -51,7 +50,6 @@
     {{!-- END OF HEADER --}}
     ​
     {{!-- MAIN PROFILE BLOCK BEGINS --}}
-    
     <div class="main-profile-block">
 
         {{!-- PROFILE CONTENT BEGINS --}}
@@ -67,13 +65,13 @@
                         <li><a href="#">Album</a></li>
                         <li><a href="#">Playlists</a></li>
                         <li><a href="#">Reposts</a></li>
-                        <li><a href="#">Samples</a></li>
+                        <li><a href="#" class="current">Samples</a></li>
                     </ul>
                 </div>
 
                  {{!-- EDIT PROFILE MODAL BEGINS --}}
                 {{#with singerDetails}}
-                <button id="button" class="button" data-modal="editProfile">Edit</button>
+                <button class="button" data-modal="editProfile">Edit</button>
                 <div id="editProfile" class="modal-bg">
                     <div class="modal-contents">
                         
@@ -108,6 +106,7 @@
                                     </div>
                                 </div>
                             </div>
+
                             <div class="save-profile"><button type="submit">Save</button></div>
                         </form> 
 
@@ -125,15 +124,17 @@
                 {{!-- PROFILE MEDIA BEGINS --}}
                 <div class="profile-media">
 
-                    {{!-- ADD IF STATEMENTS FOR THIS --}}
-                    <h1>No samples yet</h1>
-                    <button id="upload" class="button" data-modal="uploadSample">Upload now</button>
-
+                    {{!-- IF TRACKS HAVE BEEN UPLOADED, SHOW THEM --}}
+                    {{#if tracks}}
                     <div id="uploadSample" class="modal-bg">
                         <div class="modal-contents">
                             <form action="/singerProfile/addTrack" method="POST" enctype="multipart/form-data">
 
-                                <div class="close">&times;</div>
+                                 <div class="edit-your-profile">
+                                    <div class="title">Upload a Sample</div>
+                                    <div class="close">&times;</div>
+                                </div>
+
                                 <label for="title">Title:</label>
                                 <input type="text" name="title">
 
@@ -151,21 +152,67 @@
                         </div>
                     </div>
 
+                    <div class="profile-samples">
                     {{#each tracks}}
-                        <div>
-                            <img src="{{imgPath}}" alt="">
-                            <h3>{{title}}</h3>
-                            <p>{{description}}</p>
-                            <figure>
-                                <audio controls src="{{filePath}}">
-                                Your browser does not support the
-                                <code>audio</code> element.
-                                </audio>
-                            </figure>
-                            <a href="/editSample/{{_id}}">Edit</a>
-                            <a href="#">Delete</a>
-                        </div>
+                    
+                            {{!-- TRACK BEGINS --}}
+                            <div class="track">
+                                <img src="{{imgPath}}" alt="">
+                            
+                                <div class="info">
+                                <p>{{title}}</p>
+                                <p>{{description}}</p>
+                                <figure>
+                                    <audio controls src="{{filePath}}">
+                                    Your browser does not support the
+                                    <code>audio</code> element.
+                                </figure>
+                                <a href="/editSample/{{_id}}">Edit</a>
+                                <a href="#">Delete</a>
+                                </div>
+
+                                {{!-- TRACK EDIT MODAL BEGINS --}}
+                                <button class="button" data-modal="editTrack">Edit</button>
+                    
+                                <div id="editTrack" class="modal-bg">
+                                    <div class="modal-contents">
+                                        
+                                        <form action="/editSample/{{_id}}" method="POST" enctype="multipart/form-data">
+
+                                        <div class="edit-your-profile">
+                                            <div class="title">Edit Your Sample</div>
+                                            <div class="close">&times;</div>
+                                        </div>
+
+                                        <label for="cover">Cover:</label>
+                                        <input type="file" name="cover" id="cover">
+
+                                        <label for="artisticName">Title:</label>
+                                        <input type="text" name="title" id="title" value="{{title}}">
+
+                                        <label for="description">Description</label>
+                                        <input type="text" name="description" id="description" value="{{description}}">
+
+                                        <button type="submit">Edit</button>
+
+                                        </form>
+                                    
+                                    </div>
+                                </div>
+                                {{!-- END OF TRACK EDIT MODAL --}}
+                            </div>
+                            {{!-- END OF TRACK --}}
                     {{/each}}
+
+                    </div>
+                    {{else}}
+
+                    {{!-- IF NO TRACKS HAVE BEEN UPLOADEED, SUGGEST UPLOAD --}}
+                    <div class="empty-profile">
+                        <h1>No samples yet</h1>
+                        <button class="button" data-modal="uploadSample">Upload now</button>
+                    </div>
+                    {{/if}}
 
                 </div>
                 {{!-- END OF PROFILE MEDIA --}}
@@ -196,47 +243,11 @@
                 {{!-- END OF SIDE FOOTER --}}
 
             </div>
-            ​
-          </div>
-        </div>
-        {{!-- END OF PROFILE NAV --}}
-        ​
-        {{!-- PROFILE BODY BEGINS --}}
-        <div class="profile-body">
-          {{!-- PROFILE MEDIA BEGINS --}}
-          <div class="profile-media">
+            ​{{!-- END OF PROFILE BODY --}}
 
-          </div>
-          {{!-- END OF PROFILE MEDIA --}}
-          ​
-          {{!-- SIDE FOOTER BEGINS --}}
-          <div class="footer" style="padding-top: 20px">
-            {{!-- <div class="search-spacer"></div>
-            <!--fix to align with nav--> --}}
-            {{!-- <div class="footer-app-container"></div> <!-- Create new divider for this purpose--> --}}
-            <div class="footer-links">
-              <a href="#">Legal - </a>
-              <a href="#">Privacy - </a>
-              <a href="#">Cookie Policy - </a>
-              <a href="#">Cookie Manager - </a>
-              <a href="#">Imprint - </a>
-              <a href="#">Creator Resources - </a>
-              <a href="#">Blog - </a>
-              <a href="#">Charts - </a>
-              <a href="#">Popular searches </a>
-            </div>
-            <div class="footer-language">
-              Language: English
-            </div>
-          </div>
-          {{!-- END OF SIDE FOOTER --}}
-          ​
         </div>
-        {{!-- END OF PROFILE BODY --}}
-        ​
-      </div>
-      {{!-- END OF PROFILE CONTENT --}}
-      ​
+        {{!-- END OF PROFILE CONTENT --}}
+
     </div>
     {{!-- END OF MAIN PROFILE BLOCK --}}
 
