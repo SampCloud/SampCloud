@@ -2,7 +2,7 @@
 <body class="orange-border">
 
     {{!-- LOGIN PAGE CONTAINER BEGINS --}}
-    <div class=login-page-container>
+    <div class="login-page-container">
 
         {{!-- LOGIN BEGINS --}}
         <div class="login">
@@ -11,16 +11,19 @@
                 {{!-- FORM BEGINS --}}
                 <form action="/login" method="POST">
                     <label for="username"></label>
-                    <input type="text" id="username" name="username" placeholder="username">
+                    <input type="text" id="username" name="username" placeholder="username" autocomplete="off">
                     <label for="password"></label>
                     <input type="password" id="password" name="password" placeholder="password">
                     <button type="submit" class="secondary-button-wide" style="background-color: #9c9997; color: #FFFFFF; margin-top: 20px">Login</button>
                 </form>
                 {{!-- END OF FORM BEGINS --}}
 
+                {{!-- <div>Don't have an account?<a href="#"> Create one now.</a></div> --}}
+
                 {{#if message}}
                     <p style="color: red">{{message}}</p>
                 {{/if}}
+
             </div>
         </div>
         {{!-- END OF LOGIN --}}

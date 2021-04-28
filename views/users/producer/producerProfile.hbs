@@ -2,7 +2,23 @@
 {{!-- NAV BEGINS --}}
 <nav>
   <div class="nav-content">
-    <a href="/browse"><img src="/images/orange-logo.png" style="height: 100%"></a>
+
+    <div class="nav-logo"><a href="#"><img src="/images/orange-logo.png" style="height: 100%"></a></div>
+
+    <div class="nav-search">
+      <form action="/search" method="POST" >
+        <div class="wrapper">
+        <input type="text" id="search" name="q" autocomplete="off">
+        <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+        </div>
+      </form>
+    </div>
+
+    <div class="nav-links">
+        <button id="toggle-theme">Toggle Theme</button>
+        <a href="/logout"><button>Log Out</button></a>
+    </div>
+    
   </div>
 </nav>
 {{!-- END OF NAV --}}
@@ -50,7 +66,51 @@
             <li><a href="#">Samples</a></li>
           </ul>
         </div>
-        <a href="/producerProfile/edit"><button class="profile-button">Edit</button></a>
+          
+          {{!-- EDIT PROFILE MODAL BEGINS --}}
+          <button id="button">Edit</button></a>
+            <div class="modal-bg">
+              <div class="modal-contents">
+                        
+                <form action="/producerProfile/edit"  method="POST" enctype="multipart/form-data">
+                  <div class="edit-your-profile">
+                    <div class="title">Edit your Profile</div>
+                    <div class="close">&times;</div>
+                  </div>
+
+                  <div class="edit-profile-contents">
+                    <div class="wrapper">
+
+                      <div class="photo">
+                        {{#if imgPath}}
+                            <img src="{{imgPath}}" style="margin: 20px 0; padding: 0; max-width: 200px max-height: 200px; border-radius: 50%;">
+                        {{else}}
+                            <div class="edit-profile-photo"></div>
+                        {{/if}}
+                        <label for="avatar"></label>
+                        <input type="file" name="avatar" id="avatar" value="{{imgName}}">
+                      </div>
+
+                      <div class="user-info">
+                          <label for="artisticName">Display Name:</label>
+                          <input type="text" name="artisticName" id="artisticName">
+
+                          <label for="description">Bio:</label>
+                          <input type="text" name="description" id="description">
+
+                          <label for="soundUrl">SoundCloud:</label>
+                          <input type="text" name="soundUrl" id="soundUrl">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="save-profile"><button type="submit">Save</button></div>
+                </form> 
+
+              </div>
+            </div>
+          {{!-- END OF EDIT PROFILE MODAL --}}
+
+
       </div>
       {{!-- END OF PROFILE NAV --}}
 
@@ -59,8 +119,11 @@
 
         {{!-- PROFILE MEDIA BEGINS --}}
         <div class="profile-media">
+
           <h1>Need some inspiration?</h1>
+
           <a href="/search"><button>Browse Samples</button></a>
+
         </div>
         {{!-- END OF PROFILE MEDIA --}}
 
@@ -93,7 +156,7 @@
   </div>
   {{!-- END OF PROFILE CONTENT --}}
 
-  <button style="margin: 0; position: absolute; top: 10px; right: 10px;" id="toggle-theme">Toggle Theme</button>
+  {{!-- <button style="margin: 0; position: absolute; top: 10px; right: 10px;" id="toggle-theme">Toggle Theme</button> --}}
 
 </div>
 {{/with}}
