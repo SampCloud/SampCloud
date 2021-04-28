@@ -10,7 +10,7 @@ router.get("/", (req, res, next) => {
   res.render("index");
 });
 
-router.post('/singerProfile/edit', uploader.single('avatar'), (req, res, next) => {
+router.post('/singerProfile/edit', loginCheck(), uploader.single('avatar'), (req, res, next) => {
   const { artisticName, description, soundUrl } = req.body;
   const userId = req.session.user._id;
   const imgPath = req.file.path;
@@ -35,7 +35,7 @@ router.post('/singerProfile/edit', uploader.single('avatar'), (req, res, next) =
     })
 });
 
-router.post('/producerProfile/edit', uploader.single('avatar'), (req, res, next) => {
+router.post('/producerProfile/edit', loginCheck(), uploader.single('avatar'), (req, res, next) => {
   const { artisticName, description, soundUrl } = req.body;
   const userId = req.session.user._id;
   const imgPath = req.file.path;
@@ -79,10 +79,9 @@ router.get('/producerProfile/edit', loginCheck(), (req, res, next) => {
   res.render('users/producer/editProfile', { producerDetails: currentUser });
 });
 
-router.get('/singerProfile/edit', loginCheck(), (req, res, next) => {
+router.get('/singerProfile/edit', loginCheck(), isSinger(), (req, res, next) => {
   const currentUser = req.session.user;
   res.render('users/singer/editProfile', { singerDetails: currentUser });
-
 });
 
 module.exports = router;
