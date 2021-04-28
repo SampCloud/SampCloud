@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const { loginCheck, isSinger, isProducer } = require("./middlewares");
 const User = require('../models/User');
-const { uploaderAudio, cloudinary } = require("../config/cloudinary");
+const { uploader, uploaderAudio, cloudinary } = require("../config/cloudinary");
 const Track = require('../models/Track');
 const streamifier = require('streamifier');
 const fs = require('fs');
@@ -76,10 +76,38 @@ router.post('/singerProfile/addTrack', uploaderAudio.single('audio'), (req, res)
           next(err);
         })
     }
-
-
-
   }
+});
+
+router.get('/editSample/:sampleId', loginCheck(), (req, res, next) => {
+  console.log(req.params)
+  Track.findById(req.params.sampleId)
+    .then(track => {
+      res.render('users/singer/editTrack', { trackDetails: track });
+    })
+
+});
+
+router.post('/editSample/:sampleId', uploader.single('cover'), (req, res, next) => {
+  const { title, description } = req.body;
+  const imgPath = req.file.path;
+  const imgName = req.file.originalname;
+  const publicId = req.file.filename;
+  console.log(req.file);
+  Track.findByIdAndUpdate(req.params.sampleId, {
+    title: title,
+    imgPath: imgPath,
+    imgName: imgName,
+    publicId: publicId,
+    description: description,
+  }, { new: true })
+    .then(trackUp => {
+      req.params.sampleId = trackUp;
+      res.redirect('/singerProfile',)
+    })
+    .catch(err => {
+      next(err)
+    })
 });
 
 
