@@ -3,7 +3,7 @@
 <nav>
   <div class="nav-content">
 
-    <div class="nav-logo"><a href="#"><img src="/images/orange-logo.png" style="height: 100%"></a></div>
+    <div class="nav-logo"><a href="/search"><img src="/images/orange-logo.png" style="height: 100%"></a></div>
 
     <div class="nav-search">
       <form action="/search" method="POST" >
@@ -50,7 +50,7 @@
   {{!-- END OF HEADER --}}
 
   {{!-- PROFILE CONTENT BEGINS --}}
-  <div class="main-profile-block">
+  {{!-- <div class="main-profile-block"> --}}
     <div class="profile-content">
 
       {{!-- PROFILE NAV BEGINS --}}
@@ -63,13 +63,13 @@
             <li><a href="#">Album</a></li>
             <li><a href="#">Playlists</a></li>
             <li><a href="#">Reposts</a></li>
-            <li><a href="#">Samples</a></li>
+            <li><a href="#" class="current">Samples</a></li>
           </ul>
         </div>
           
           {{!-- EDIT PROFILE MODAL BEGINS --}}
-          <button id="button">Edit</button></a>
-            <div class="modal-bg">
+          <button class="button" data-modal="editProducer">Edit</button></a>
+            <div id="editProducer" class="modal-bg">
               <div class="modal-contents">
                         
                 <form action="/producerProfile/edit"  method="POST" enctype="multipart/form-data">
@@ -119,11 +119,10 @@
 
         {{!-- PROFILE MEDIA BEGINS --}}
         <div class="profile-media">
-
-          <h1>Need some inspiration?</h1>
-
-          <a href="/search"><button>Browse Samples</button></a>
-
+          <div class="empty-profile">
+            <h1>Need some inspiration?</h1>
+            <a href="/search"><button>Browse Samples</button></a>
+          </div>
         </div>
         {{!-- END OF PROFILE MEDIA --}}
 
@@ -153,12 +152,11 @@
       {{!-- END OF PROFILE BODY --}}
 
     </div>
-  </div>
-  {{!-- END OF PROFILE CONTENT --}}
+    {{!-- END OF PROFILE CONTENT --}}
+
+  {{!-- </div> --}}
 
   {{!-- <button style="margin: 0; position: absolute; top: 10px; right: 10px;" id="toggle-theme">Toggle Theme</button> --}}
 
 </div>
 {{/with}}
-
-<a href="/logout">log out</a>

@@ -84,8 +84,4 @@ router.get('/singerProfile/edit', loginCheck(), isSinger(), (req, res, next) => 
   res.render('users/singer/editProfile', { singerDetails: currentUser });
 });
 
-
-
-
-
 module.exports = router;

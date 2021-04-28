@@ -23,9 +23,9 @@ modalButtons.forEach(function (button) {
 });
 
 let closeButtons = [...document.querySelectorAll(".close")];
-closeBtns.forEach(function (button) {
+closeButtons.forEach(function (button) {
   button.onclick = function () {
-    let modal = button.closest('.modal');
+    let modal = button.closest('.modal-bg');
     modal.style.display = "none";
   }
 });
@@ -35,12 +35,4 @@ window.onclick = function (event) {
     event.target.style.display = "none";
   }
 }
-
-
-
-
-
-// document.querySelector('.close').addEventListener("click", function() {
-// 	document.querySelector('.modal-bg').style.display = "none";
-// });
 
