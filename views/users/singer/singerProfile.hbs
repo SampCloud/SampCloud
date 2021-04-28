@@ -96,13 +96,13 @@
 
                                     <div class="user-info">
                                         <label for="artisticName">Display Name:</label>
-                                        <input type="text" name="artisticName" id="artisticName">
+                                        <input type="text" name="artisticName" id="artisticName" value="{{artisticName}}">
 
                                         <label for="description">Bio:</label>
-                                        <input type="text" name="description" id="description">
+                                        <input type="text" name="description" id="description" value="{{description}}">
 
                                         <label for="soundUrl">SoundCloud:</label>
-                                        <input type="text" name="soundUrl" id="soundUrl">
+                                        <input type="text" name="soundUrl" id="soundUrl" value="{{soundUrl}}">
                                     </div>
                                 </div>
                             </div>
@@ -219,11 +219,18 @@
 
                 {{!-- SIDE FOOTER BEGINS --}}
                 <div class="footer">
+                    {{#with singerDetails}}
                     <div class="profile-bio">
+
+                        {{#if description}}
+                        <p>{{description}}</p>
+                        {{else}}
                         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis ut praesentium
                         accusantium necessitatibus voluptate libero, sit deserunt nisi ipsa enim adipisci 
                         architecto aliquam inpossimus consectetur!</p>
+                        {{/if}}
                     </div>
+                    {{/with}}
                     <div class="footer-links">
                         <a href="#">Legal - </a>
                         <a href="#">Privacy - </a>
