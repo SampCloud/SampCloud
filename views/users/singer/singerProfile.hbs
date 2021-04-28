@@ -126,31 +126,6 @@
 
                     {{!-- IF TRACKS HAVE BEEN UPLOADED, SHOW THEM --}}
                     {{#if tracks}}
-                    <div id="uploadSample" class="modal-bg">
-                        <div class="modal-contents">
-                            <form action="/singerProfile/addTrack" method="POST" enctype="multipart/form-data">
-
-                                 <div class="edit-your-profile">
-                                    <div class="title">Upload a Sample</div>
-                                    <div class="close">&times;</div>
-                                </div>
-
-                                <label for="title">Title:</label>
-                                <input type="text" name="title">
-
-                                <label for="genre">Genre:</label>
-                                <input type="text" name="genre">
-
-                                <label for="description">Description:</label>
-                                <input type="text" name="description">
-
-                                <label for="audio">File:</label>
-                                <input type="file" name="audio" id="audio">
-
-                                <button type="submit">Upload</button>
-                            </form>
-                        </div>
-                    </div>
 
                     <div class="profile-samples">
                     {{#each tracks}}
@@ -168,7 +143,7 @@
                                     <code>audio</code> element.
                                 </figure>
                                 <a href="/editSample/{{_id}}">Edit</a>
-                                <a href="#">Delete</a>
+                                <a href="/delete/{{_id}}">Delete</a>
                                 </div>
 
                                 {{!-- TRACK EDIT MODAL BEGINS --}}
@@ -211,6 +186,32 @@
                     <div class="empty-profile">
                         <h1>No samples yet</h1>
                         <button class="button" data-modal="uploadSample">Upload now</button>
+                    </div>
+
+                     <div id="uploadSample" class="modal-bg">
+                        <div class="modal-contents">
+                            <form action="/singerProfile/addTrack" method="POST" enctype="multipart/form-data">
+
+                                 <div class="edit-your-profile">
+                                    <div class="title">Upload a Sample</div>
+                                    <div class="close">&times;</div>
+                                </div>
+
+                                <label for="title">Title:</label>
+                                <input type="text" name="title">
+
+                                <label for="genre">Genre:</label>
+                                <input type="text" name="genre">
+
+                                <label for="description">Description:</label>
+                                <input type="text" name="description">
+
+                                <label for="audio">File:</label>
+                                <input type="file" name="audio" id="audio">
+
+                                <button type="submit">Upload</button>
+                            </form>
+                        </div>
                     </div>
                     {{/if}}
 
