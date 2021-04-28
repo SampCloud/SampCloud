@@ -29,7 +29,7 @@ router.post('/search', (req, res, next) => {
 
 
 
-router.get('/singerProfile/addTrack', (req, res, next) => {
+router.get('/singerProfile/addTrack', isSinger(), (req, res, next) => {
   res.render('users/singer/addTrack');
 })
 
@@ -39,14 +39,12 @@ router.get('/producerProfile/addTrack', (req, res, next) => {
 
 
 
-router.post('/singerProfile/addTrack', uploaderAudio.single('audio'), (req, res) => {
+router.post('/singerProfile/addTrack', isSinger(), loginCheck(), uploaderAudio.single('audio'), (req, res) => {
   console.log('Got file:', req.file.originalname);
   console.log('Extra form fields:', req.body);
 
-
   cloudinary.uploader.upload_stream({ resource_type: "video" }, cloudinaryDone).end(req.file.buffer);
 
-  // After the upload is completed, this callback gets called
   function cloudinaryDone(error, result) {
     if (error) {
       console.log("Error in cloudinary.uploader.upload_stream\n", error);
@@ -56,8 +54,8 @@ router.post('/singerProfile/addTrack', uploaderAudio.single('audio'), (req, res)
       const fileName = req.file.originalname;
       const publicId = req.file.filename;
       console.log("Cloudinary audio info: ", result.audio);
-
-      console.log('Cloudinary url', result.url);
+      console.log('what is this?', req.file)
+      console.log('Cloudinary url', result);
       Track.create({
         title: title,
         genre: genre,
@@ -65,11 +63,11 @@ router.post('/singerProfile/addTrack', uploaderAudio.single('audio'), (req, res)
         imgPath: 'https://res.cloudinary.com/davidx8/image/upload/v1619543579/avatar-uploads/poolside-pack_qst27z.png',
         filePath: result.url,
         fileName: fileName,
-        publicId: publicId,
+        publicId: result.public_id,
         owner: req.session.user._id
       })
         .then(track => {
-          console.log(track)
+          console.log('The track', track)
           res.redirect('/singerProfile');
         })
         .catch(err => {
@@ -79,16 +77,15 @@ router.post('/singerProfile/addTrack', uploaderAudio.single('audio'), (req, res)
   }
 });
 
-router.get('/editSample/:sampleId', loginCheck(), (req, res, next) => {
-  console.log(req.params)
+router.get('/editSample/:sampleId', isSinger(), loginCheck(), (req, res, next) => {
+  //console.log(req.params)
   Track.findById(req.params.sampleId)
     .then(track => {
       res.render('users/singer/editTrack', { trackDetails: track });
     })
-
 });
 
-router.post('/editSample/:sampleId', uploader.single('cover'), (req, res, next) => {
+router.post('/editSample/:sampleId', isSinger(), loginCheck(), uploader.single('cover'), (req, res, next) => {
   const { title, description } = req.body;
   const imgPath = req.file.path;
   const imgName = req.file.originalname;
@@ -111,7 +108,7 @@ router.post('/editSample/:sampleId', uploader.single('cover'), (req, res, next) 
 });
 
 router.get('/trackDetails/:sampleId', loginCheck(), (req, res, next) => {
-  console.log(req.params)
+  //console.log(req.params)
   Track.findById(req.params.sampleId).populate('owner')
     .then(track => {
       res.render('users/partials/tracksDetails', { trackDetails: track });
@@ -127,11 +124,24 @@ router.get('/profileDetails/:ownerId', loginCheck(), (req, res, next) => {
 
           res.render('users/partials/profileDetails', { profileDetails: user, trackDetails: tracks });
         })
-      console.log('the user', user)
+      //console.log('the user', user)
     })
 });
 
+router.get('/delete/:sampleId', loginCheck(), isSinger(), (req, res, next) => {
+  console.log(req.params.sampleId)
+  Track.findByIdAndDelete(req.params.sampleId)
+    .then(deletedTrack => {
 
+      if (deletedTrack.publicId) {
+        cloudinary.uploader.destroy(deletedTrack.publicId);
+      }
+      res.redirect('/singerProfile');
+    })
+    .catch(err => {
+      next(err);
+    })
+});
 
 
 module.exports = router
