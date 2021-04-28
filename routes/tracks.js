@@ -110,5 +110,28 @@ router.post('/editSample/:sampleId', uploader.single('cover'), (req, res, next) 
     })
 });
 
+router.get('/trackDetails/:sampleId', loginCheck(), (req, res, next) => {
+  console.log(req.params)
+  Track.findById(req.params.sampleId).populate('owner')
+    .then(track => {
+      res.render('users/partials/tracksDetails', { trackDetails: track });
+    })
+});
+
+router.get('/profileDetails/:ownerId', loginCheck(), (req, res, next) => {
+  console.log('what is this:', req.params)
+  User.findById(req.params.ownerId)
+    .then(user => {
+      Track.find({ owner: req.params.ownerId })
+        .then(tracks => {
+
+          res.render('users/partials/profileDetails', { profileDetails: user, trackDetails: tracks });
+        })
+      console.log('the user', user)
+    })
+});
+
+
+
 
 module.exports = router
