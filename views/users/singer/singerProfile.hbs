@@ -1,24 +1,24 @@
 {{!-- NAV BEGINS --}}
 <nav>
-  <div class="nav-content">
+    <div class="nav-content">
 
-    <div class="nav-logo"><a href="/search"><img src="/images/orange-logo.png" style="height: 100%"></a></div>
+        <div class="nav-logo"><a href="/search"><img src="/images/orange-logo.png" style="height: 100%"></a></div>
 
-    <div class="nav-search">
-      <form action="/search" method="POST" >
-        <div class="wrapper">
-        <input type="text" id="search" name="q" autocomplete="off">
-        <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+        <div class="nav-search">
+            <form action="/search" method="POST">
+                <div class="wrapper">
+                    <input type="text" id="search" name="q" autocomplete="off">
+                    <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                </div>
+            </form>
         </div>
-      </form>
-    </div>
 
-    <div class="nav-links">
-        <button id="toggle-theme">Toggle Theme</button>
-        <a href="/logout"><button>Log Out</button></a>
+        <div class="nav-links">
+            <button id="toggle-theme">Toggle Theme</button>
+            <a href="/logout"><button>Log Out</button></a>
+        </div>
+
     </div>
-    
-  </div>
 </nav>
 {{!-- END OF NAV --}}
 
@@ -26,30 +26,32 @@
     {{!-- HEADER BEGINS --}}
     {{#with singerDetails}}
     <div class="header">
-      ​
-      <div class="header-photo-area">
-        {{#if imgPath}}
-            <img src="{{imgPath}}" style="margin-top: 44px; margin-bottom: 22px; padding: 0; width: 200px; height: 200px; border-radius: 50%;">
-        {{else}}
-        <div class="header-photo-circle"></div>
-        {{/if}}
-      </div>
-      ​
-      <div class="header-labels">
-        {{#if artisticName}}
-        <div class="h1-profile">{{artisticName}}</div>
-        {{else}}
-        <div class="h1-profile">{{username}}</div>
-        {{/if}}
+        ​
+        <div class="header-photo-area">
+            {{#if imgPath}}
+            <img src="{{imgPath}}"
+                style="margin-top: 44px; margin-bottom: 22px; padding: 0; width: 200px; height: 200px; border-radius: 50%;">
+            {{else}}
+            <div class="header-photo-circle"></div>
+            {{/if}}
+        </div>
+        ​
+        <div class="header-labels">
+            {{#if artisticName}}
+            <div class="h1-profile">{{artisticName}}</div>
+            {{else}}
+            <div class="h1-profile">{{username}}</div>
+            {{/if}}
 
-        <div class="h2-profile">Location</div>
-      </div>
-      ​
+            <div class="h2-profile">Location</div>
+        </div>
+        ​
     </div>
     {{/with}}
     {{!-- END OF HEADER --}}
     ​
     {{!-- MAIN PROFILE BLOCK BEGINS --}}
+
     <div class="main-profile-block">
 
         {{!-- PROFILE CONTENT BEGINS --}}
@@ -69,13 +71,13 @@
                     </ul>
                 </div>
 
-                 {{!-- EDIT PROFILE MODAL BEGINS --}}
+                {{!-- EDIT PROFILE MODAL BEGINS --}}
                 {{#with singerDetails}}
                 <button class="button" data-modal="editProfile">Edit</button>
                 <div id="editProfile" class="modal-bg">
                     <div class="modal-contents">
-                        
-                        <form action="/singerProfile/edit"  method="POST" enctype="multipart/form-data">
+
+                        <form action="/singerProfile/edit" method="POST" enctype="multipart/form-data">
                             <div class="edit-your-profile">
                                 <div class="title">Edit your Profile</div>
                                 <div class="close">&times;</div>
@@ -86,9 +88,10 @@
 
                                     <div class="photo">
                                         {{#if imgPath}}
-                                            <img src="{{imgPath}}" style="margin: 20px 0; padding: 0; width: 200px; height: 200px; border-radius: 50%;">
+                                        <img src="{{imgPath}}"
+                                            style="margin: 20px 0; padding: 0; width: 200px; height: 200px; border-radius: 50%;">
                                         {{else}}
-                                            <div class="edit-profile-photo"></div>
+                                        <div class="edit-profile-photo"></div>
                                         {{/if}}
                                         <label for="avatar"></label>
                                         <input type="file" name="avatar" id="avatar" value="{{imgName}}">
@@ -108,7 +111,7 @@
                             </div>
 
                             <div class="save-profile"><button type="submit">Save</button></div>
-                        </form> 
+                        </form>
 
                     </div>
                 </div>
@@ -168,7 +171,7 @@
                                     <code>audio</code> element.
                                 </figure>
                                 <a href="/editSample/{{_id}}">Edit</a>
-                                <a href="#">Delete</a>
+                                <a href="/delete/{{_id}}">Delete</a>
                                 </div>
 
                                 {{!-- TRACK EDIT MODAL BEGINS --}}
@@ -202,6 +205,7 @@
                                 {{!-- END OF TRACK EDIT MODAL --}}
                             </div>
                             {{!-- END OF TRACK --}}
+
                     {{/each}}
 
                     </div>
@@ -229,6 +233,7 @@
                         accusantium necessitatibus voluptate libero, sit deserunt nisi ipsa enim adipisci 
                         architecto aliquam inpossimus consectetur!</p>
                         {{/if}}
+
                     </div>
                     {{/with}}
                     <div class="footer-links">
@@ -256,8 +261,15 @@
         {{!-- END OF PROFILE CONTENT --}}
 
     </div>
-    {{!-- END OF MAIN PROFILE BLOCK --}}
+    {{!-- END OF PROFILE BODY --}}
+    ​
+</div>
+{{!-- END OF PROFILE CONTENT --}}
+​
+</div>
+{{!-- END OF MAIN PROFILE BLOCK --}}
 
-    {{!-- <button style="margin: 0; position: absolute; top: 10px; right: 10px;" id="toggle-theme">Toggle Theme</button> --}}
+{{!-- <button style="margin: 0; position: absolute; top: 10px; right: 10px;" id="toggle-theme">Toggle Theme</button>
+--}}
 
 </div>

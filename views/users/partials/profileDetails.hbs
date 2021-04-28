@@ -1,0 +1,16 @@
+<h1>Sample Artist profile</h1>
+{{#with profileDetails}}
+<img src="{{imgPath}}" alt="Profile picture">
+<h1>{{artisticName}}</h1>
+<h1>About</h1>
+<p>{{description}}</p>
+<h2>Contact me at:</h2>
+<p>{{email}}</p>
+{{#if soundUrl}}
+<a href="{{soundUrl}}">My SoundCloud</a>
+{{/if}}
+{{/with}}
+{{#each trackDetails}}
+<h1>{{title}}</h1>
+<a href="/trackDetails/{{_id}}"><img src="{{imgPath}}" alt=""></a>
+{{/each}}
