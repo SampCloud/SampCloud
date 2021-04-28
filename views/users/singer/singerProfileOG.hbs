@@ -36,10 +36,13 @@
   {{#each tracks}}
   <div>
     <h3>{{title}}</h3>
-    <img src="{{cover}}" alt="cover from {{title}}">
-    <h4>{{genre}}</h4>
     <p>{{description}}</p>
-    <audio src="{{file}}"></audio>
+    <figure>
+      <audio controls src="{{file}}">
+        Your browser does not support the
+        <code>audio</code> element.
+      </audio>
+    </figure>
   </div>
   {{/each}}
 </div>
@@ -54,8 +57,3 @@
 {{/with}}
 
 <a href="">Look for producers</a>
-
-
-
-
-

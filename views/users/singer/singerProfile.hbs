@@ -1,9 +1,8 @@
-
 {{!-- NAV BEGINS --}}
 <nav>
   <div class="nav-content">
 
-    <div class="nav-logo"><a href="#"><img src="/images/orange-logo.png" style="height: 100%"></a></div>
+    <div class="nav-logo"><a href="/search"><img src="/images/orange-logo.png" style="height: 100%"></a></div>
 
     <div class="nav-search">
       <form action="/search" method="POST" >
@@ -24,32 +23,33 @@
 {{!-- END OF NAV --}}
 
 <div class="main-block">
+
     {{!-- HEADER BEGINS --}}
     {{#with singerDetails}}
     <div class="header">
-
-        <div class="header-photo-area">
+      ​
+      <div class="header-photo-area">
         {{#if imgPath}}
             <img src="{{imgPath}}" style="margin-top: 44px; margin-bottom: 22px; padding: 0; width: 200px; height: 200px; border-radius: 50%;">
         {{else}}
-            <div class="header-photo-circle"></div>
+        <div class="header-photo-circle"></div>
         {{/if}}
-        </div>
-
-        <div class="header-labels">
+      </div>
+      ​
+      <div class="header-labels">
         {{#if artisticName}}
-            <div class="h1-profile">{{artisticName}}</div>
+        <div class="h1-profile">{{artisticName}}</div>
         {{else}}
-            <div class="h1-profile">{{username}}</div>
+        <div class="h1-profile">{{username}}</div>
         {{/if}}
-        
-        <div class="h2-profile">Location</div>
-        </div>
 
+        <div class="h2-profile">Location</div>
+      </div>
+      ​
     </div>
     {{/with}}
     {{!-- END OF HEADER --}}
-
+    ​
     {{!-- MAIN PROFILE BLOCK BEGINS --}}
     
     <div class="main-profile-block">
@@ -167,8 +167,6 @@
                         </div>
                     {{/each}}
 
-                
-
                 </div>
                 {{!-- END OF PROFILE MEDIA --}}
 
@@ -198,16 +196,50 @@
                 {{!-- END OF SIDE FOOTER --}}
 
             </div>
-            {{!-- END OF PROFILE BODY --}}
-
+            ​
+          </div>
         </div>
-        {{!-- END OF PROFILE CONTENT --}}
+        {{!-- END OF PROFILE NAV --}}
+        ​
+        {{!-- PROFILE BODY BEGINS --}}
+        <div class="profile-body">
+          {{!-- PROFILE MEDIA BEGINS --}}
+          <div class="profile-media">
 
+          </div>
+          {{!-- END OF PROFILE MEDIA --}}
+          ​
+          {{!-- SIDE FOOTER BEGINS --}}
+          <div class="footer" style="padding-top: 20px">
+            {{!-- <div class="search-spacer"></div>
+            <!--fix to align with nav--> --}}
+            {{!-- <div class="footer-app-container"></div> <!-- Create new divider for this purpose--> --}}
+            <div class="footer-links">
+              <a href="#">Legal - </a>
+              <a href="#">Privacy - </a>
+              <a href="#">Cookie Policy - </a>
+              <a href="#">Cookie Manager - </a>
+              <a href="#">Imprint - </a>
+              <a href="#">Creator Resources - </a>
+              <a href="#">Blog - </a>
+              <a href="#">Charts - </a>
+              <a href="#">Popular searches </a>
+            </div>
+            <div class="footer-language">
+              Language: English
+            </div>
+          </div>
+          {{!-- END OF SIDE FOOTER --}}
+          ​
+        </div>
+        {{!-- END OF PROFILE BODY --}}
+        ​
+      </div>
+      {{!-- END OF PROFILE CONTENT --}}
+      ​
     </div>
     {{!-- END OF MAIN PROFILE BLOCK --}}
 
     {{!-- <button style="margin: 0; position: absolute; top: 10px; right: 10px;" id="toggle-theme">Toggle Theme</button> --}}
 
 </div>
-
-

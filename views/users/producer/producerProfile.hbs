@@ -30,29 +30,29 @@
 
     <div class="header-photo-area">
       {{#if imgPath}}
-        <img src="{{imgPath}}" style="margin-top: 44px; padding: 0; width: 200px; height: 200px; border-radius: 50%;">
+      <img src="{{imgPath}}" style="margin-top: 44px; padding: 0; width: 200px; height: 200px; border-radius: 50%;">
       {{else}}
-        <div class="header-photo-circle"></div>
+      <div class="header-photo-circle"></div>
       {{/if}}
     </div>
 
     <div class="header-labels">
       {{#if artisticName}}
-        <div class="h1-profile">{{artisticName}}</div>
+      <div class="h1-profile">{{artisticName}}</div>
       {{else}}
-        <div class="h1-profile">{{username}}</div>
+      <div class="h1-profile">{{username}}</div>
       {{/if}}
-    
+
       <div class="h2-profile">Location</div>
     </div>
-    
+
   </div>
   {{!-- END OF HEADER --}}
 
   {{!-- PROFILE CONTENT BEGINS --}}
   <div class="main-profile-block">
     <div class="profile-content">
-    
+
       {{!-- PROFILE NAV BEGINS --}}
       <div class="profile-nav">
         <div class="profile-nav-links">
@@ -121,29 +121,31 @@
         <div class="profile-media">
 
           <h1>Need some inspiration?</h1>
-          <a href=""><button>Browse Samples</button></a>
-          
+
+          <a href="/search"><button>Browse Samples</button></a>
+
         </div>
         {{!-- END OF PROFILE MEDIA --}}
 
         {{!-- SIDE FOOTER BEGINS --}}
         <div class="footer">
-          <div class="search-spacer"></div> <!--fix to align with nav-->
+          <div class="search-spacer"></div>
+          <!--fix to align with nav-->
           <div class="footer-app-container"></div> <!-- Create new divider for this purpose-->
-            <div class="footer-links">
-              <a href="#">Legal - </a>
-              <a href="#">Privacy - </a>
-              <a href="#">Cookie Policy - </a>
-              <a href="#">Cookie Manager - </a>
-              <a href="#">Imprint - </a>
-              <a href="#">Creator Resources - </a>
-              <a href="#">Blog - </a>
-              <a href="#">Charts - </a>
-              <a href="#">Popular searches </a>
-            </div>
-            <div class="footer-language">
-              Language: English
-            </div>
+          <div class="footer-links">
+            <a href="#">Legal - </a>
+            <a href="#">Privacy - </a>
+            <a href="#">Cookie Policy - </a>
+            <a href="#">Cookie Manager - </a>
+            <a href="#">Imprint - </a>
+            <a href="#">Creator Resources - </a>
+            <a href="#">Blog - </a>
+            <a href="#">Charts - </a>
+            <a href="#">Popular searches </a>
+          </div>
+          <div class="footer-language">
+            Language: English
+          </div>
         </div>
         {{!-- END OF SIDE FOOTER --}}
 
@@ -158,3 +160,5 @@
 
 </div>
 {{/with}}
+
+<a href="/logout">log out</a>

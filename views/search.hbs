@@ -1,0 +1,12 @@
+<h1>Search</h1>
+<form action="/search" method="POST">
+  <input type="text" id="search" name="q">
+  <button type="submit">Search</button>
+</form>
+
+
+{{#each tracklist}}
+<div>
+  <a href="#"><img src="{{imgPath}}" alt=""></a>
+</div>
+{{/each}}

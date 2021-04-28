@@ -1,0 +1,12 @@
+<h1>Edit Sample</h1>
+{{#with trackDetails}}
+<form action="/editSample/{{_id}}" method="POST" enctype="multipart/form-data">
+  <label for="cover">Cover:</label>
+  <input type="file" name="cover" id="cover">
+  <label for="artisticName">Title:</label>
+  <input type="text" name="title" id="title" value="{{title}}">
+  <label for="description">Description</label>
+  <input type="text" name="description" id="description" value="{{description}}">
+  <button type="submit">Edit</button>
+</form>
+{{/with}}
