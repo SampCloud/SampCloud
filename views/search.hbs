@@ -1,12 +1,72 @@
-<h1>Search</h1>
-<form action="/search" method="POST">
-  <input type="text" id="search" name="q">
-  <button type="submit">Search</button>
-</form>
+{{!-- NAV BEGINS --}}
+<nav>
+  <div class="nav-content">
 
+    <div class="nav-logo"><a href="/search"><img src="/images/orange-logo.png" style="height: 100%"></a></div>
 
-{{#each tracklist}}
-<div>
-  <a href="/trackDetails/{{_id}}"><img src="{{imgPath}}" alt=""></a>
+    <div class="nav-search">
+      <form action="/search" method="POST" >
+        <div class="wrapper">
+        <input type="text" id="search" name="q" autocomplete="off">
+        <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+        </div>
+      </form>
+    </div>
+
+    <div class="nav-links-search">
+      <a href=""><button>Profile</button></a>
+      <button id="toggle-theme">Toggle Theme</button>
+      <a href="/logout"><button>Log Out</button></a>
+    </div>
+    
+  </div>
+</nav>
+{{!-- END OF NAV --}}
+
+{{!-- MAIN SEARCH BLOCK BEGINS --}}
+<div class="main-search">
+  <div class="search-content">
+    
+    <div>
+      <div class="h1-search">Most Popular</div>
+      <h2>This week's most popular samples</h2>
+    </div>
+
+    <div class="samples">
+      {{#each tracklist}}
+      <div>
+        <a href="/trackDetails/{{_id}}"><img src="{{imgPath}}" alt=""></a>
+      </div>
+      {{/each}}
+    </div>
+
+  </div>
+
+    {{!-- SIDE FOOTER BEGINS --}}
+                <div class="search-footer">
+                    <div class="profile-bio">
+                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis ut praesentium
+                        accusantium necessitatibus voluptate libero, sit deserunt nisi ipsa enim adipisci 
+                        architecto aliquam inpossimus consectetur!</p>
+                    </div>
+                    <div class="footer-links">
+                        <a href="#">Legal - </a>
+                        <a href="#">Privacy - </a>
+                        <a href="#">Cookie Policy - </a>
+                        <a href="#">Cookie Manager - </a>
+                        <a href="#">Imprint - </a>
+                        <a href="#">Creator Resources - </a>
+                        <a href="#">Blog - </a>
+                        <a href="#">Charts - </a>
+                        <a href="#">Popular searches </a>
+                    </div>
+                    <div class="footer-language">
+                        Language: English
+                    </div>
+
+                </div>
+    {{!-- END OF SIDE FOOTER --}}
+
+   {{!-- <button style="margin: 0; position: absolute; top: 10px; right: 10px;" id="toggle-theme">Toggle Theme</button> --}}
 </div>
-{{/each}}
+{{!-- END OF MAIN SEARCH BLOCK --}}
