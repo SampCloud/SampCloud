@@ -2,23 +2,21 @@
 {{!-- NAV BEGINS --}}
 <nav>
   <div class="nav-content">
-
     <div class="nav-logo"><a href="/search"><img src="/images/orange-logo.png" style="height: 100%"></a></div>
 
     <div class="nav-search">
-      <form action="/search" method="POST" >
-        <div class="wrapper">
-        <input type="text" id="search" name="q" autocomplete="off">
-        <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-        </div>
+      <form action="/search" method="POST">
+          <input type="text" id="search" name="q" autocomplete="off">
+          <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
       </form>
     </div>
 
-    <div class="nav-links">
-        <a href="/logout"><button>Log Out</button></a>
-        <button id="toggle-theme" class="toggle-theme-1"><i class="fas fa-adjust"></i></button>
+    <div class="nav-links-profile">
+      <div class="nav-icons">
+        <button id="toggle-theme" class="nav-icon" alt="Toggle Theme"><i class="fas fa-adjust"></i></button>
+        <a href="/logout" class="nav-icon" alt="Log Out"><i class="fas fa-sign-out-alt"></i></a>
+      </div>
     </div>
-    
   </div>
 </nav>
 {{!-- END OF NAV --}}
@@ -88,22 +86,24 @@
                             <div class="edit-profile-photo"></div>
                         {{/if}}
                         <label for="avatar"></label>
-                        <input type="file" name="avatar" id="avatar" value="{{imgName}}">
+                        <input type="file" name="avatar" id="avatar" value="{{imgName}}" autocomplete="off">
                       </div>
 
                       <div class="user-info">
                           <label for="artisticName">Display Name:</label>
-                          <input type="text" name="artisticName" id="artisticName">
+                          <input type="text" name="artisticName" id="artisticName" autocomplete="off">
 
                           <label for="description">Bio:</label>
-                          <input type="text" name="description" id="description">
+                          <input type="text" name="description" id="description" autocomplete="off">
 
                           <label for="soundUrl">SoundCloud:</label>
-                          <input type="text" name="soundUrl" id="soundUrl">
+                          <input type="text" name="soundUrl" id="soundUrl" autocomplete="off">
                       </div>
                     </div>
                   </div>
+
                   <div class="save-profile"><button type="submit">Save</button></div>
+                  
                 </form> 
 
               </div>

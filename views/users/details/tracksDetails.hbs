@@ -1,7 +1,6 @@
 {{!-- NAV BEGINS --}}
 <nav>
   <div class="nav-content">
-
     <div class="nav-logo"><a href="/search"><img src="/images/orange-logo.png" style="height: 100%"></a></div>
 
     <div class="nav-search">
@@ -12,32 +11,32 @@
     </div>
 
     <div class="nav-links">
-
       {{#with currentUser}}
-        <a href="/{{role}}Profile">
+        <a href="/{{role}}Profile"></a>
           {{#if imgPath}}
-            <img src="{{imgPath}}">
-              {{#if artisticName}}
-                <div class="nav-user">{{artisticName}}</div>
-              {{else}}
-                <div class="nav-user">{{username}}</div>
-              {{/if}}
-            
+            <div class="nav-user">
+              <a href="/{{role}}Profile"><img src="{{imgPath}}"></a>
+                {{#if artisticName}}
+                  <a href="/{{role}}Profile">{{artisticName}}</a>
+                {{else}}
+                  <a href="/{{role}}Profile">{{username}}</a>
+                {{/if}}
+            </div>
           {{else}}
-            <img src="/images/default-user-photo.png" style="margin: 0; height: 28px; width: 28px; border-radius: 50%;">
-              
-              {{#if artisticName}}
-                <p>{{artisticName}}</p>
-              {{else}}
-                <p>{{username}}</p>
-              {{/if}}
-
+            <div class="nav-user">
+               <a href="/{{role}}Profile"><img src="/images/default-user-photo.png" style="margin: 0; height: 28px; width: 28px; border-radius: 50%;"></a>
+                {{#if artisticName}}
+                  <a href="/{{role}}Profile">{{artisticName}}</a>
+                {{else}}
+                  <a href="/{{role}}Profile">{{username}}</a>
+                {{/if}}
+            </div>
           {{/if}}
-        </a>
       {{/with}}
-
-      <button id="toggle-theme" class="nav-icons" alt="Toggle Theme"><i class="fas fa-adjust"></i></button>
-      <a href="/logout" class="nav-icons" alt="Log Out"><i class="fas fa-sign-out-alt"></i></a> 
+      <div class="nav-icons">
+        <button id="toggle-theme" class="nav-icon" alt="Toggle Theme"><i class="fas fa-adjust"></i></button>
+        <a href="/logout" class="nav-icon" alt="Log Out"><i class="fas fa-sign-out-alt"></i></a>
+      </div>
     </div>
   </div>
 </nav>
@@ -93,7 +92,6 @@
                 {{description}}
               </div>
             {{else}}
-                <div class="description"></div>
             {{/if}}
           </div>
           {{!-- END OF SAMPLE OVERVIEW --}}

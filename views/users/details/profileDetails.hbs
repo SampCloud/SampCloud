@@ -1,7 +1,6 @@
 {{!-- NAV BEGINS --}}
 <nav>
   <div class="nav-content">
-
     <div class="nav-logo"><a href="/search"><img src="/images/orange-logo.png" style="height: 100%"></a></div>
 
     <div class="nav-search">
@@ -12,34 +11,33 @@
     </div>
 
     <div class="nav-links">
-
       {{#with currentUser}}
-        <a href="/{{role}}Profile">
+        <a href="/{{role}}Profile"></a>
           {{#if imgPath}}
-            <img src="{{imgPath}}">
-              {{#if artisticName}}
-                <div class="nav-user">{{artisticName}}</div>
-              {{else}}
-                <div class="nav-user">{{username}}</div>
-              {{/if}}
-            
+            <div class="nav-user">
+              <a href="/{{role}}Profile"><img src="{{imgPath}}"></a>
+                {{#if artisticName}}
+                  <a href="/{{role}}Profile">{{artisticName}}</a>
+                {{else}}
+                  <a href="/{{role}}Profile">{{username}}</a>
+                {{/if}}
+            </div>
           {{else}}
-            <img src="/images/default-user-photo.png" style="margin: 0; height: 28px; width: 28px; border-radius: 50%;">
-              
-              {{#if artisticName}}
-                <p>{{artisticName}}</p>
-              {{else}}
-                <p>{{username}}</p>
-              {{/if}}
-
+            <div class="nav-user">
+               <a href="/{{role}}Profile"><img src="/images/default-user-photo.png" style="margin: 0; height: 28px; width: 28px; border-radius: 50%;"></a>
+                {{#if artisticName}}
+                  <a href="/{{role}}Profile">{{artisticName}}</a>
+                {{else}}
+                  <a href="/{{role}}Profile">{{username}}</a>
+                {{/if}}
+            </div>
           {{/if}}
-        </a>
       {{/with}}
-
-      <button id="toggle-theme" class="nav-icons" alt="Toggle Theme"><i class="fas fa-adjust"></i></button>
-      <a href="/logout" class="nav-icons" alt="Log Out"><i class="fas fa-sign-out-alt"></i></a>
+      <div class="nav-icons">
+        <button id="toggle-theme" class="nav-icon" alt="Toggle Theme"><i class="fas fa-adjust"></i></button>
+        <a href="/logout" class="nav-icon" alt="Log Out"><i class="fas fa-sign-out-alt"></i></a>
+      </div>
     </div>
-
   </div>
 </nav>
 {{!-- END OF NAV --}}
@@ -63,8 +61,11 @@
         {{else}}
         <div class="h1-profile">{{username}}</div>
         {{/if}}
-
-        <div class="h2-profile">Location</div>
+        
+        {{#if soundUrl}}
+        <div class="h2-profile">{{soundUrl}}</div>
+        {{else}}
+        {{/if}}
       </div>
       ​
     </div>
@@ -87,53 +88,6 @@
                         <li><a href="#" class="current">Samples</a></li>
                     </ul>
                 </div>
-
-                 {{!-- EDIT PROFILE MODAL BEGINS --}}
-                {{#with profileDetails}}
-                <button class="button" data-modal="editProfile">Edit</button>
-                <div id="editProfile" class="modal-bg">
-                    <div class="modal-contents">
-                        
-                        <form action="/singerProfile/edit"  method="POST" enctype="multipart/form-data">
-                            <div class="edit-your-profile">
-                                <div class="title">Edit your Profile</div>
-                                <div class="close">&times;</div>
-                            </div>
-
-                            <div class="edit-profile-contents">
-                                <div class="wrapper">
-
-                                    <div class="photo">
-                                        {{#if imgPath}}
-                                            <img src="{{imgPath}}" style="margin: 20px 0; padding: 0; width: 200px; height: 200px; border-radius: 50%;">
-                                        {{else}}
-                                            <div class="edit-profile-photo"></div>
-                                        {{/if}}
-                                        <label for="avatar"></label>
-                                        <input type="file" name="avatar" id="avatar" value="{{imgName}}">
-                                    </div>
-
-                                    <div class="user-info">
-                                        <label for="artisticName">Display Name:</label>
-                                        <input type="text" name="artisticName" id="artisticName" value="{{artisticName}}">
-
-                                        <label for="description">Description:</label>
-                                        <input type="text" name="description" id="description" value="{{description}}">
-
-                                        <label for="soundUrl">SoundCloud:</label>
-                                        <input type="text" name="soundUrl" id="soundUrl" value="{{soundUrl}}">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="save-profile"><button type="submit">Save</button></div>
-                        </form> 
-
-                    </div>
-                </div>
-                {{/with}}
-                {{!-- END OF EDIT PROFILE MODAL --}}
-
             </div>
             {{!-- END OF PROFILE NAV --}}
 
@@ -142,7 +96,6 @@
 
                 {{!-- PROFILE MEDIA BEGINS --}}
                 <div class="profile-media">
-
                     {{!-- IF TRACKS HAVE BEEN UPLOADED, DISPLAY, OTHERWISE SHOW NO TRACKS MESSAGE --}}
                     
                     {{#if trackDetails}}
@@ -180,39 +133,11 @@
                     </div>
                     {{else}}
 
-                    {{!-- IF NO TRACKS HAVE BEEN UPLOADED, SUGGEST UPLOAD --}}
                     <div class="empty-profile">
                         <h1 style="font-size: 24px;">Nothing to hear here...</h1>
                         <h2 style="font-size: 15px;">Check back later for uploaded samples</h2>
                     </div>
-
-                     <div id="uploadSample" class="modal-bg">
-                        <div class="modal-contents">
-                            <form action="/singerProfile/addTrack" method="POST" enctype="multipart/form-data">
-
-                                 <div class="edit-your-profile">
-                                    <div class="title">Upload a Sample</div>
-                                    <div class="close">&times;</div>
-                                </div>
-
-                                <label for="title">Title:</label>
-                                <input type="text" name="title">
-
-                                <label for="genre">Genre:</label>
-                                <input type="text" name="genre">
-
-                                <label for="description">Description:</label>
-                                <input type="text" name="description">
-
-                                <label for="audio">File:</label>
-                                <input type="file" name="audio" id="audio">
-
-                                <button type="submit">Upload</button>
-                            </form>
-                        </div>
-                    </div>
-                    {{/if}}
-                    
+                    {{/if}}  
                 </div>
                 {{!-- END OF PROFILE MEDIA --}}
 
@@ -224,13 +149,10 @@
                         {{#if description}}
                         <p>{{description}}</p>
                         {{else}}
-                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis ut praesentium
-                        accusantium necessitatibus voluptate libero, sit deserunt nisi ipsa enim adipisci 
-                        architecto aliquam inpossimus consectetur!</p>
                         {{/if}}
-
-                        <a href="mailto:{{email}}" style="color: var(--p1-color); font-size: 20px;"><i class="far fa-envelope"></i></a>
-
+                        <div class="message">
+                            <a href="mailto:{{email}}" style="color: var(--p1-color); font-size: 20px;"><i class="far fa-envelope"></i></a>
+                        </div>
                     </div>
                     {{/with}}
                     <div class="footer-links">
@@ -256,22 +178,4 @@
 
         </div>
         {{!-- END OF PROFILE CONTENT --}}
-
 </div>
-
-{{!-- <h1>Sample Artist profile</h1>
-{{#with profileDetails}}
-<img src="{{imgPath}}" alt="Profile picture">
-<h1>{{artisticName}}</h1>
-<h1>About</h1>
-<p>{{description}}</p>
-<h2>Contact me at:</h2>
-<p>{{email}}</p>
-{{#if soundUrl}}
-<a href="{{soundUrl}}">My SoundCloud</a>
-{{/if}}
-{{/with}}
-{{#each trackDetails}}
-<h1>{{title}}</h1>
-<a href="/trackDetails/{{_id}}"><img src="{{imgPath}}" alt=""></a>
-{{/each}} --}}
