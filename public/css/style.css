@@ -8,23 +8,28 @@
     --primary-button: #FC7401;
     --secondary-button: #ECECED;
     --h1-color: #989998;
+    --h1-search: #333333;
+    --h2-search: #999999;
     --h2-color: #675f5b;
     --h2-background: #271d19;
     --h3-color: #675f5b;
     --p1-color: #181818;
     --p2-color: #000000;
     --nav-color: #383434;
+    --nav-input: #E5E5E5;
     --profile-nav-color: #181818;
     --divider-color: #ECECED;
-    --footer-links: #989998;
+    --footer-links: #CCCCCC;
     --form-placeholder: #675f5b;
     --modal-overlay: rgba(245, 244, 244, 0.8);
     --search-background: #FFFFFF;
     --form-focus: #dddddd;
     --sample-nav-button: #E5E5E5;
+    --go-mobile: #999999;
 }
 
 [data-theme="dark"] {
+    --h1-search: #FFFFFF;
     --primary-background: #161418;
     --secondary-background: #201E21;
     --primary-button: #FC7401;
@@ -40,6 +45,7 @@
     --search-background: #201E21;
     --form-focus: #000000;
     --sample-nav-button: #222225;
+    --go-mobile: #FFFFFF;
 }
 
 html, body {
@@ -50,7 +56,7 @@ html, body {
 body {
     width: 100%;
     height: 100%;
-    font-family: "Helvetica";
+    font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
     font-size: 14px;
     background-color: var(--primary-background);
 }
@@ -64,16 +70,16 @@ body {
 h1 {
     padding: 0 0 0 20px;
     color: var(--h1-color);
-    font-family: "Helvetica";
+    font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
     font-weight: 200;
     font-size: 24px;
 }
 
 h2 {
     margin: 0;
-    padding: 10px 0 0 20px;
+    padding: 10px 0 0 40px;
     color: var(--h2-color);
-    font-family: "Helvetica";
+    font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
     font-weight: 300;
     font-size: 12px;
 }
@@ -82,7 +88,7 @@ h3 {
     margin: 20px;
     padding: 0;
     color: var(--h2-color);
-    font-family: "Helvetica";
+    font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
     font-size: 14px;
     font-weight: normal;
 }
@@ -94,7 +100,7 @@ h3 {
     top: 77px;
     background-color: #271d19;
     color: white;
-    font-family: "Helvetica";
+    font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
     font-weight: 200;
     font-size: 24px;
 }
@@ -106,7 +112,8 @@ h3 {
     top: 130px;
     background-color: #271d19;
     color: #675f5b;
-    font-family:"Helvetica";
+    font-family:Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
+;
     font-weight: 300;
     font-size: 16px;
 }
@@ -115,7 +122,8 @@ p {
     margin: 20px 0;
     padding: 0;
     color: var(--p1-color);
-    font-family: "Helvetica";
+    font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
+;
     font-size: 12px;
 }
 
@@ -123,7 +131,8 @@ p {
     margin: 20px 0;
     padding: 0;
     color: var(--p1-color);
-    font-family: "Helvetica";
+    font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
+;
     font-size: 12px;
     text-align: justify;
 }
@@ -146,7 +155,8 @@ p {
     padding: 0;
     position: absolute;
     bottom: 350px;
-    font-family: "Helvetica";
+    font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
+;
     font-size: 12px;
     color: #FF0000;
     /* text-align: center; */
@@ -158,7 +168,8 @@ p {
     position: absolute;
     bottom: 2%;
     color: var(--p2-color);
-    font-family: "Helvetica";
+    font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
+;
     font-size: 10px;
 }
 
@@ -191,30 +202,44 @@ nav {
 
 .nav-search {
     margin: 0;
-    width: 70%;
+    width: 100%;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
+.nav-search form {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .nav-search input[type="text"] {
     margin: 0;
-    padding: 5px;
+    padding: 5px 0 5px 5px;
+    width: 50%;
     border: none;
-    border-radius: 2px 0 0 2px;
+    outline: none;
+    border-radius: 4px 0 0 4px;
+    background-color: var(--nav-input);
 }
 
 .nav-search button {
     margin: 0;
-    padding: 5px;
+    padding: 5px 10px;
     border: none;
-    border-radius: 0 2px 2px 0;
+    border-radius: 0 4px 4px 0;
+    background-color: var(--nav-input);
+    color: #E5E5E5;
 }
 
 .nav-search input:focus {
     outline: none;
-}
+} 
 
 .nav-links {
     margin: 0;
@@ -449,7 +474,8 @@ input[type="radio"] {
     list-style: none;
     padding-top: 22px;
     padding-right: 22px;
-    font-family: "Helvetica";
+    font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
+;
     font-size: 18px;
 }
 
@@ -552,7 +578,8 @@ a.current:link, a.current:visited {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-family: "Helvetica";
+    font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
+;
     font-size: 18px;
     font-weight: normal;
     color: var(--profile-nav-color);
@@ -688,7 +715,7 @@ a.current:link, a.current:visited {
     margin: 0 auto;
     padding: 0 0 5px 0;
     width: 80%;
-    color: #989998;
+    color: var(--go-mobile);
     border-bottom: 1px solid var(--divider-color);
     /* background-color: purple; FOR TESTING */
 }
@@ -711,7 +738,7 @@ a.current:link, a.current:visited {
     margin: 0 auto;
     padding: 10px 0px 10px 0px;
     width: 80%;
-    font-family: "Helvetica";
+    font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
     font-size: 12px;
     color: var(--footer-links);
 }
@@ -725,7 +752,8 @@ a.current:link, a.current:visited {
     margin: 0 auto;
     padding: 5px 0px 5px 0px;
     width: 80%;
-    font-family: "Helvetica";
+    font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
+;
     font-size: 12px;
     color: var(--p1-color);
 }
@@ -734,7 +762,7 @@ a.current:link, a.current:visited {
 
 .main-search {
     margin: 0 auto;
-    padding-top: 50px;
+    padding-top: 45px;
     width: 70%;
     min-height: 100vh;
     height: 100%;
@@ -744,12 +772,21 @@ a.current:link, a.current:visited {
 }
 
 .h1-search {
-    margin: 20px 0 0 20px;
+    margin: 40px 0 0 40px;
     padding: 0;
-    color: var(--h1-color);
-    font-family: "Helvetica";
-    font-weight: 200;
+    color: var(--h1-search);
+    font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
+    font-weight: 100;
     font-size: 24px;
+}
+
+.h2-search {
+    margin: 5px 0 0 40px;
+    padding: 0;
+    color: var(--h2-search);
+    font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
+    font-weight: 100;
+    font-size: 14px;
 }
 
 .search-content {
@@ -777,8 +814,8 @@ a.current:link, a.current:visited {
 
 .search-footer {
     margin: 0;
-    padding: 0;
-    width: 40%;
+    padding: 40px 0;
+    width: 47%;
     min-height: 100%;
     border-left: 1px solid var(--divider-color);
     /* background-color: pink;  FOR TESTING */
@@ -895,7 +932,8 @@ a.current:link, a.current:visited {
     padding: 30px;
     width: 100%;
     font-size: 20px;
-    font-family: "Helvetica";
+    font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
+;
     font-weight: normal;
     color: var(--h1-color);
     border-bottom: 1px solid var(--divider-color);

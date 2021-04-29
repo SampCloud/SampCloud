@@ -125,9 +125,6 @@
                     {{#if tracks}}
 
                     {{!-- ADD MORE TRACKS --}}
-                    {{!-- <div class="upload-more">
-                        <button class="button secondary-button-short" data-modal="uploadSample">&#43;</button>
-                    </div> --}}
 
                     <div id="uploadSample" class="modal-bg">
                         <div class="modal-contents">
@@ -199,40 +196,6 @@
                                         <a href="/delete/{{_id}}"><button>Delete</button></a>
                                     </div>
                                 </div>
-
-
-
-
-
-                                {{!-- TRACK EDIT MODAL BEGINS --}}
-                                {{!-- <button class="button" data-modal="editTrack">Edit</button>
-                    
-                                <div id="editTrack" class="modal-bg">
-                                    <div class="modal-contents">
-                                        
-                                        <form action="/editSample/{{_id}}" method="POST" enctype="multipart/form-data">
-
-                                        <div class="edit-your-profile">
-                                            <div class="title">Edit Your Sample</div>
-                                            <div class="close">&times;</div>
-                                        </div>
-
-                                        <label for="cover">Cover:</label>
-                                        <input type="file" name="cover" id="cover">
-
-                                        <label for="artisticName">Title:</label>
-                                        <input type="text" name="title" id="title" value="{{title}}">
-
-                                        <label for="description">Description</label>
-                                        <input type="text" name="description" id="description" value="{{description}}">
-
-                                        <button type="submit">Edit</button>
-
-                                        </form>
-                                    
-                                    </div>
-                                </div> --}}
-                                {{!-- END OF TRACK EDIT MODAL --}}
                             </div>
                             {{!-- END OF TRACK --}}
                     {{/each}}
