@@ -20,10 +20,14 @@ router.post('/login', (req, res, next) => {
         res.render('login', { message: 'Invalid credentials' });
         return;
       }
+      if (!bcrypt.compareSync(password, userFromDB.password)) {
+        res.render('login', { message: 'Invalid credentials' });
+        return;
+      }
       if (bcrypt.compareSync(password, userFromDB.password)) {
         req.session.user = userFromDB;
         if (userFromDB.role === 'singer') {
-          console.log(userFromDB)
+          //console.log(userFromDB)
           res.redirect('/singerProfile');
         } else {
           res.redirect('/producerProfile')
@@ -38,8 +42,8 @@ router.post('/signup', (req, res, next) => {
   const { username, password, role, email } = req.body;
 
 
-  if (password.length < 1) {
-    res.render('signup', { message: 'Password must be minimum of 7 characters' });
+  if (password.length < 6) {
+    res.render('signup', { message: 'Password must contain at least 6 characters' });
     return
   }
   if (username === '') {
@@ -55,10 +59,10 @@ router.post('/signup', (req, res, next) => {
       } else {
         const salt = bcrypt.genSaltSync();
         const hash = bcrypt.hashSync(password, salt);
-        console.log(hash);
+        //console.log(hash);
         User.create({ username: username, password: hash, email: email, role: role })
           .then(createdUser => {
-            console.log(createdUser);
+            //console.log(createdUser);
             req.login(createdUser, err => {
               if (err) {
                 next(err);

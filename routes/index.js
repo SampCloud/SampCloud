@@ -11,53 +11,91 @@ router.get("/", (req, res, next) => {
 });
 
 router.post('/singerProfile/edit', loginCheck(), uploader.single('avatar'), (req, res, next) => {
-  const { artisticName, description, soundUrl } = req.body;
-  const userId = req.session.user._id;
-  const imgPath = req.file.path;
-  const imgName = req.file.originalname;
-  const publicId = req.file.filename;
-  console.log(req.file);
-  User.findByIdAndUpdate(userId, {
-    artisticName: artisticName,
-    imgPath: imgPath,
-    imgName: imgName,
-    publicId: publicId,
-    description: description,
-    soundUrl: soundUrl
-  }, { new: true })
-    .then(userUp => {
-      req.session.user = userUp;
-      console.log(userUp)
-      res.redirect('/singerProfile',)
-    })
-    .catch(err => {
-      next(err)
-    })
+  if (req.file === undefined) {
+    const { artisticName, description, soundUrl } = req.body;
+    const userId = req.session.user._id;
+    //console.log(req.file);
+    User.findByIdAndUpdate(userId, {
+      artisticName: artisticName,
+      description: description,
+      soundUrl: soundUrl
+    }, { new: true })
+      .then(userUp => {
+        req.session.user = userUp;
+        console.log(userUp)
+        res.redirect('/singerProfile',)
+      })
+      .catch(err => {
+        next(err)
+      })
+  } else {
+    const { artisticName, description, soundUrl } = req.body;
+    const userId = req.session.user._id;
+    const imgPath = req.file.path;
+    const imgName = req.file.originalname;
+    const publicId = req.file.filename;
+    //console.log(req.file);
+    User.findByIdAndUpdate(userId, {
+      artisticName: artisticName,
+      imgPath: imgPath,
+      imgName: imgName,
+      publicId: publicId,
+      description: description,
+      soundUrl: soundUrl
+    }, { new: true })
+      .then(userUp => {
+        req.session.user = userUp;
+        //console.log(userUp)
+        res.redirect('/singerProfile',)
+      })
+      .catch(err => {
+        next(err)
+      })
+  }
 });
 
 router.post('/producerProfile/edit', loginCheck(), uploader.single('avatar'), (req, res, next) => {
-  const { artisticName, description, soundUrl } = req.body;
-  const userId = req.session.user._id;
-  const imgPath = req.file.path;
-  const imgName = req.file.originalname;
-  const publicId = req.file.filename;
-  console.log(req.file);
-  User.findByIdAndUpdate(userId, {
-    artisticName: artisticName,
-    imgPath: imgPath,
-    imgName: imgName,
-    publicId: publicId,
-    description: description,
-    soundUrl: soundUrl
-  }, { new: true })
-    .then(userUp => {
-      req.session.user = userUp;
-      console.log(userUp)
-      res.redirect('/producerProfile',)
-    })
-    .catch(err => {
-      next(err)
-    })
+  if (req.file === undefined) {
+    const { artisticName, description, soundUrl } = req.body;
+    const userId = req.session.user._id;
+    //console.log(req.file);
+    User.findByIdAndUpdate(userId, {
+      artisticName: artisticName,
+      description: description,
+      soundUrl: soundUrl
+    }, { new: true })
+      .then(userUp => {
+        req.session.user = userUp;
+        //console.log(userUp)
+        res.redirect('/producerProfile',)
+      })
+      .catch(err => {
+        next(err)
+      })
+  } else {
+    const { artisticName, description, soundUrl } = req.body;
+    const userId = req.session.user._id;
+    const imgPath = req.file.path;
+    const imgName = req.file.originalname;
+    const publicId = req.file.filename;
+    //console.log(req.file);
+    User.findByIdAndUpdate(userId, {
+      artisticName: artisticName,
+      imgPath: imgPath,
+      imgName: imgName,
+      publicId: publicId,
+      description: description,
+      soundUrl: soundUrl
+    }, { new: true })
+      .then(userUp => {
+        req.session.user = userUp;
+        //console.log(userUp)
+        res.redirect('/producerProfile',)
+      })
+      .catch(err => {
+        next(err)
+      })
+  }
 });
 
 router.get('/singerProfile', loginCheck(), isSinger(), (req, res) => {
