@@ -21,6 +21,7 @@
     --modal-overlay: rgba(245, 244, 244, 0.8);
     --search-background: #FFFFFF;
     --form-focus: #dddddd;
+    --sample-nav-button: #E5E5E5;
 }
 
 [data-theme="dark"] {
@@ -38,6 +39,7 @@
     --modal-overlay: rgba(10, 10, 10, 0.8);
     --search-background: #201E21;
     --form-focus: #000000;
+    --sample-nav-button: #222225;
 }
 
 html, body {
@@ -74,6 +76,15 @@ h2 {
     font-family: "Helvetica";
     font-weight: 300;
     font-size: 12px;
+}
+
+h3 {
+    margin: 20px;
+    padding: 0;
+    color: var(--h2-color);
+    font-family: "Helvetica";
+    font-size: 14px;
+    font-weight: normal;
 }
 
 .h1-profile {
@@ -225,9 +236,22 @@ nav {
     align-items: center; 
 }
 
-
 .nav-links button {
     margin-left: 20px;
+}
+
+.toggle-theme-1 {
+    font-size: 20px;
+    border: none;
+    background-color: var(--nav-color);
+    color: var(--p1-color);
+}
+
+.toggle-theme-2 {
+    font-size: 20px;
+    border: none;
+    background-color: var(--primary-background);
+    color: var(--p1-color);
 }
 
 /* Login Page -------------------------------------------------- */
@@ -318,6 +342,7 @@ input[type="radio"] {
     color: white;
     border: none;
     border-radius: 2px;
+    cursor: pointer;
 }
 
 .secondary-button-wide {
@@ -329,6 +354,7 @@ input[type="radio"] {
     border: none;
     border-radius: 2px;
     color: #666666;
+    cursor: pointer;
 }
 
 .primary-button-short {
@@ -339,16 +365,18 @@ input[type="radio"] {
     color: white;
     border: none;
     border-radius: 2px;
+    cursor: pointer;
 }
 
 .secondary-button-short {
     margin: 5px;
-    padding: 0;
-    height: 44px;
+    padding: 0 12px;
     background-color: var(--secondary-button);
     border: none;
     border-radius: 2px;
+    font-size: 3em;
     color: #666666;
+    cursor: pointer;
 }
 
 .app-container {
@@ -377,33 +405,11 @@ input[type="radio"] {
     /* border: 2px solid orange; */
 }
 
-.sample-area {
-    margin: 0;
-    padding: 0;
-    width: 70%;
-    height: 100%;
-    /* background-color: yellow; FOR TESTING */
-    /* border: 5px solid green; FOR TESTING */
-}
-
-.popular-samples {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    /* background-color: orange; */
-}
-
-.popular-samples img {
-    max-width: 350px;
-    padding: 20px;
-}
-
 /* Profile Page ---------------–--------------------------------- */
 
 .profile-nav {
     margin: 0 auto;
+    margin-bottom: 20px;
     padding: 0;
     width: 100%;
     height: 50px;
@@ -452,15 +458,6 @@ a.current:link, a.current:visited {
     border-bottom: 1px solid var(--primary-button);
 }
 
-/* .main-profile-block {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    min-height: 100%;
-    display: flex;
-    border: 1px solid black;
-} */
-
 .profile-content {
     margin: 0;
     padding: 0 3%;
@@ -484,7 +481,7 @@ a.current:link, a.current:visited {
     margin: 0;
     padding: 0;
     width: 100%;
-    height: 100%;
+    min-height: 400px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -510,7 +507,7 @@ a.current:link, a.current:visited {
     margin: 0;
     padding: 0;
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
 }
 
 .profile-samples .track {
@@ -518,11 +515,64 @@ a.current:link, a.current:visited {
     padding: 0;
     width: 100%;
     display: flex;
+    justify-content: space-between;
 }
 
 .profile-samples .track .info {
     margin: 0;
+    padding: 0;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    /* border: 1px solid red; */
 }
+
+.sample-description {
+    margin: 0;
+    padding: 0 20px;
+}
+
+.audio-container {
+    margin: 0;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    /* border: 1px solid blue; */
+}
+
+.audio-container figure {
+    margin: 10px 0;
+    width: 100%;
+}
+
+.my-samples {
+    margin: 0;
+    padding: 15px 0;
+    width: 98%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: "Helvetica";
+    font-size: 18px;
+    font-weight: normal;
+    color: var(--profile-nav-color);
+    border-bottom: 1px solid var(--divider-color);
+}
+
+
+.upload-button {
+    margin: 0;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    font-size: 1.5rem;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    background-color: var(--primary-background);
+    color: var(--h2-background);
+}
+
 
 /* Header ------------------------------------------------------- */
 
@@ -571,21 +621,62 @@ a.current:link, a.current:visited {
     /* border: 1px solid black; FOR TESTING */
 }
 
+.sample-header {
+    margin: 0 auto;
+    padding: 0;
+    width: 100%;
+    height: 400px;
+    display: flex;
+    justify-content: flex-end;
+    background-image: linear-gradient(to right, #e5846f, #74939a);
+}
+
+.sample-photo-area {
+    margin: 0;
+    padding: 0;
+    width: 30%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid black; */
+}
+
+.sample-photo-area img {
+    margin-top: 44px; 
+    margin-bottom: 0; 
+    padding: 0; 
+    width: 275px; 
+    height: 275px; 
+    border-radius: 1%;
+}
+
+.sample-photo-area .cover {
+    margin: 66px 0px 22px 0px;
+    padding: 0px;
+    width: 250px;
+    height: 250px;
+    background-image: linear-gradient(to bottom right, #74939a, #e5846f);
+    border-radius: 5%;
+}
+
+
+
 /* Pseudo Footer ------------------------------------------------ */
 
 .footer {
-    margin: 0;
+    margin: 20px 0;
     padding: 0;
     width: 25%;
     min-height: 100%;
     border-left: 1px solid var(--divider-color);
-    /* background-color: pink;  FOR TESTING */
-    /* border: 5px solid blue; FOR TESTING */
+    /* background-color: pink;  */
+    /* border: 5px solid red; */
 }
 
 .profile-bio {
     margin: 0 auto;
-    padding: 5px 0;
+    padding: 0;
     width: 80%;
     min-height: 20px;
     color: var(--p1-color);
@@ -671,18 +762,17 @@ a.current:link, a.current:visited {
 
 .search-content .samples {
     margin: 0;
-    padding: 0;
+    padding: 20px;
     width: 100%;
     display: flex;
-    justify-content: space-between;
     flex-wrap: wrap;
     /* border: 1px solid red; */
 }
 
 .search-content .samples img {
     margin: 15px 10px;
-    padding: 0;
-    max-width: 300px;
+    padding: 10px;
+    width: 350px;
 }
 
 .search-footer {
@@ -695,8 +785,6 @@ a.current:link, a.current:visited {
     /* border: 5px solid blue; FOR TESTING */
 }
 
-
-
 /* Sample Page ------------------------------------------------- */
 
 .sample-nav {
@@ -705,82 +793,155 @@ a.current:link, a.current:visited {
     width: 100%;
     height: 50px;
     display: flex;
+    align-items: center;
     border-bottom: 1px solid var(--divider-color);
+}
+
+.sample-nav button {
+    margin: 0 10px 0 0;
+    padding: 5px 10px;
+    height: 60%;
+    font-weight: normal;
+    border: none;
+    border-radius: 2px;
+    background-color: var(--sample-nav-button);
+    color: var(--h1-color);
 }
 
 .sample-info {
     margin: 0;
-    padding: 0;
+    padding: 0 3%;
     width: 100%;
+    min-height: 100%;
     display: flex;
-    border: 1px solid green;
-}
-/* Remember to create bottom border on div */
-
-.sample-creator {
-    margin: 0;
-    padding: 0;
-    width: 25%;
-    border: 1px solid blue;
+    flex-direction: column;
+    /* border: 1px solid green; */
 }
 
-.sample-description {
-    margin: 0;
-    padding: 0;
-    width: 75%;
-    border: 1px solid red;
-}
-
-.samples-area {
+.sample-info .container {
     margin: 0;
     padding: 0;
     width: 100%;
     display: flex;
-    border: 1px solid orange;
 }
 
-.samples-left-spacer {
+.sample-content {
     margin: 0;
-    padding: 0;
-    width: 25%;
-    border: 2px solid purple;
-}
-
-.samples-container {
-    margin: 0;
-    padding: 0;
+    padding: 0 20px 0 0;
     width: 75%;
     display: flex;
     flex-direction: column;
-    border: 2px solid yellow;
+    /* border: 1px solid yellow; */
 }
 
-.single-sample-div {
+.sample-overview {
     margin: 0;
     padding: 0;
     width: 100%;
     display: flex;
+    border-bottom: 1px solid var(--divider-color);
 }
 
-.sample-order-number {
+.sample-overview .user {
     margin: 0;
-    padding: 0;
-    width: 5%;
-    border: 1px solid red;
+    padding-bottom: 20px;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid blue; */
 }
 
-.sample-title {
-    margin: 0;
-    padding: 0;
-    width: 85%;
-    border: 1px solid pink;
+.sample-user-circle {
+    margin: 20px 0;
+    padding: 0px;
+    width: 150px;
+    height: 150px;
+    background-image: linear-gradient(to bottom right, #74939a, #e5846f);
+    border-radius: 50%;
 }
 
-.sample-play {
+.sample-overview .description {
+    margin: 0;
+    padding: 20px;
+    width: 70%;
+    /* border: 1px solid red; */
+}
+
+.sample-area {
     margin: 0;
     padding: 0;
-    width: 10%;
-    border: 1px solid orange;
+    width: 100%;
+}
+
+.sample-area .container {
+    margin: 0 0 0 30%;
+    padding: 15px 10px;
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--divider-color);
+}
+
+.sample-area figure {
+    margin: 0;
+    padding: 0;
+}
+
+.edit-sample-title {
+    margin: 0;
+    padding: 30px;
+    width: 100%;
+    font-size: 20px;
+    font-family: "Helvetica";
+    font-weight: normal;
+    color: var(--h1-color);
+    border-bottom: 1px solid var(--divider-color);
+}
+
+.edit-sample {
+    margin: 0px;
+    padding: 20px;
+    /* border: 1px solid red; */
+    display: flex;
+}
+
+.edit-sample-cover {
+    margin: 0;
+    padding: 0;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    /* border: 1px solid green; */
+}
+
+.edit-sample-cover img {
+    margin: 0px;
+    padding: 10px;
+    width: 100%;
+}
+
+.edit-sample-info {
+    margin: 0px;
+    padding: 40px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    /* border: 1px solid orange; */
+}
+
+.edit-sample-info input[type="text"] {
+    margin: 0 auto;
+    margin-top: 10px;
+    margin-bottom: 25px;
+    padding: 16px;
+    width: 100%;
+	display: block;
+    background-color: var(--primary-background);
+    border: none;
+    border-radius: 2px;
 }
 
 /* Edit Profile Modal -------------------------------------------- */
@@ -796,6 +957,7 @@ a.current:link, a.current:visited {
 	display: none;
 	justify-content: center;
 	align-items: center;
+    z-index: 10;
 }
 
 .modal-contents {
@@ -811,7 +973,7 @@ a.current:link, a.current:visited {
     transform: translate(-50%, -60%);
 	background-color: var(--secondary-background);
 	padding: 30px;
-    z-index: 100;
+    z-index: 11;
 }
 
 .modal-contents input[type="text"] {
@@ -837,6 +999,86 @@ a.current:link, a.current:visited {
 	color: var(--h1-color);
 	cursor: pointer;
 }
+
+/* Classes for adding a sample  */
+
+.add-sample-area {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.add-sample-area .button {
+    margin: 50px auto;
+    padding: 5px;
+    display: flex;
+}
+
+.add-sample {
+    margin: 0;
+    padding: 5px 0;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--divider-color);
+}
+
+.add-sample .title {
+    margin: 10px 0;
+    padding: 0;
+    font-size: 1.5rem;
+}
+
+.add-sample-contents {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    display: flex;
+    border-bottom: 1px solid var(--divider-color);
+    /* border: 1px solid blue; */
+}
+
+.add-sample-contents .audio {
+    margin: 0;
+    padding: 10px;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.add-sample-contents .info {
+    margin: 20px;
+    padding: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid var(--divider-color);
+}
+
+.add-sample-contents .info input[type="text"] {
+    margin: 0 auto;
+    padding: 16px;
+    width: 100%;
+    background-color: var(--primary-background);
+    border: none;
+    border-radius: 2px;
+}
+
+.add-sample-contents .info label {
+    margin: 0;
+    padding: 10px 0 20px 0;
+}
+
+.add-sample .button {
+    margin: 0;
+    padding: 0;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+}
+
+/* Classes for editing user profile */
 
 .edit-your-profile {
     margin: 0;
@@ -902,3 +1144,5 @@ a.current:link, a.current:visited {
     justify-content: flex-end;
     border-top: 1px solid var(--divider-color);
 }
+
+

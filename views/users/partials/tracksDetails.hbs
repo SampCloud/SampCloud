@@ -1,13 +1,129 @@
-<h1>Sample Details</h1>
-{{#with trackDetails}}
-<img src="{{imgPath}}" alt="">
-<h1>{{title}}</h1>
-<p>{{description}}</p>
-<figure>
-  <audio controls src="{{filePath}}">
-    Your browser does not support the
-    <code>audio</code> element.
-  </audio>
-</figure>
-<a href="/profileDetails/{{owner._id}}">Check the work of: {{owner.artisticName}}</a>
-{{/with}}
+{{!-- NAV BEGINS --}}
+<nav>
+  <div class="nav-content">
+
+    <div class="nav-logo"><a href="/search"><img src="/images/orange-logo.png" style="height: 100%"></a></div>
+
+    <div class="nav-search">
+      <form action="/search" method="POST" >
+        <div class="wrapper">
+        <input type="text" id="search" name="q" autocomplete="off">
+        <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+        </div>
+      </form>
+    </div>
+
+    <div class="nav-links">
+        <a href="/logout"><button>Log Out</button></a>
+        <button id="toggle-theme" class="toggle-theme-1"><i class="fas fa-adjust"></i></button>
+    </div>
+    
+  </div>
+</nav>
+{{!-- END OF NAV --}}
+
+<div class="main-block">
+    {{!-- HEADER BEGINS --}}
+    {{#with trackDetails}}
+    <div class="sample-header">
+      ​
+      <div class="sample-photo-area">
+        {{#if imgPath}}
+            <img src="{{imgPath}}">
+        {{else}}
+        <div class="header-photo-circle"></div>
+        {{/if}}
+      </div>
+      ​
+    </div>
+    {{/with}}
+    {{!-- END OF HEADER --}}
+
+    {{!-- MAIN TRACK DETAILS BLOCK BEGINS --}}
+    <div class="sample-info">
+      <div class="sample-nav">
+        <button class="sample-page-button">&nbsp;<i class="fas fa-heart"></i>&nbsp;&nbsp;Like</button>
+        <button class="sample-page-button">&nbsp;<i class="far fa-bookmark"></i>&nbsp;&nbsp;Save</button>
+        <button class="sample-page-button">&nbsp;<i class="fas fa-shopping-cart"></i>&nbsp;&nbsp;Purchase</button>
+      </div>
+
+      <div class="container">
+
+        {{!-- SAMPLE CONTENT AREA BEGINS --}}
+        <div class="sample-content">
+          {{#with trackDetails}}
+          {{!-- BEGIN SAMPLE OVERVIEW --}}
+          <div class="sample-overview">
+            <div class="user">
+
+              {{!-- {{#with singerDetails}}
+                {{#if imgPath}}
+                  <img src="{{imgPath}}" style="margin: 20px 0; padding: 0; width: 150px; height: 150px; border-radius: 50%;">
+                {{else}}
+                  <div class="sample-user-circle"></div>
+                {{/if}}
+              {{/with}} --}}
+
+              {{#if owner.imgPath}}
+                <a href="/profileDetails/{{owner._id}}"><img src="{{owner.imgPath}}" style="margin: 20px 0; padding: 0; width: 150px; height: 150px; border-radius: 50%;"></a>
+                <a href="/profileDetails/{{owner._id}}">{{owner.artisticName}}</a>
+              {{else}}
+              <div class="sample-user-circle"></div>
+               <a href="/profileDetails/{{owner._id}}">{{owner.artisticName}}</a>
+              {{/if}}
+            </div>
+
+            {{!-- Create if for description <p>{{description}}</p> --}}
+            <div class="description">
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum ipsum natus temporibus sed! In veniam 
+              corrupti dolor expedita nisi. Ab, accusamus! Sint sit voluptate repudiandae, magnam et quae ducimus 
+              distinctio at itaque illo eius laborum unde nihil mollitia. Repellat, nostrum?</p>
+            </div>
+          </div>
+          {{!-- END OF SAMPLE OVERVIEW --}}
+
+          {{!-- BEGIN SAMPLE AREA --}}
+          <div class="sample-area"> 
+              <div class="container">
+                <h3>{{title}}</h3>
+                <figure>
+                  <audio controls src="{{filePath}}">
+                    Your browser does not support the
+                    <code>audio</code> element.
+                  </audio>
+                </figure>
+              </div>
+          </div>
+          {{!-- END OF SAMPLE AREA --}}
+          {{/with}}
+        </div>
+        {{!-- END OF SAMPLE CONTENT AREA --}}
+
+
+        {{!-- SIDE FOOTER BEGINS --}}
+        <div class="footer">
+          
+          <!--fix to align with nav-->
+          <div class="footer-app-container"></div> <!-- Create new divider for this purpose-->
+          <div class="footer-links">
+            <a href="#">Legal - </a>
+            <a href="#">Privacy - </a>
+            <a href="#">Cookie Policy - </a>
+            <a href="#">Cookie Manager - </a>
+            <a href="#">Imprint - </a>
+            <a href="#">Creator Resources - </a>
+            <a href="#">Blog - </a>
+            <a href="#">Charts - </a>
+            <a href="#">Popular searches </a>
+          </div>
+          <div class="footer-language">
+            <span>Language: English</span>
+          </div>
+        </div>
+        {{!-- END OF SIDE FOOTER --}}
+      </div>
+
+    </div>
+    {{!-- END OF MAIN TRACK DETAILS BLOCK --}}
+</div>
+{{!-- END OF MAIN BLOCK --}}

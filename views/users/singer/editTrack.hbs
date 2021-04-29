@@ -1,12 +1,59 @@
-<h1>Edit Sample</h1>
-{{#with trackDetails}}
-<form action="/editSample/{{_id}}" method="POST" enctype="multipart/form-data">
-  <label for="cover">Cover:</label>
-  <input type="file" name="cover" id="cover">
-  <label for="artisticName">Title:</label>
-  <input type="text" name="title" id="title" value="{{title}}">
-  <label for="description">Description</label>
-  <input type="text" name="description" id="description" value="{{description}}">
-  <button type="submit">Edit</button>
-</form>
-{{/with}}
+{{!-- NAV BEGINS --}}
+<nav>
+  <div class="nav-content">
+
+    <div class="nav-logo"><a href="/search"><img src="/images/orange-logo.png" style="height: 100%"></a></div>
+
+    <div class="nav-search">
+      <form action="/search" method="POST" >
+        <div class="wrapper">
+        <input type="text" id="search" name="q" autocomplete="off">
+        <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+        </div>
+      </form>
+    </div>
+
+    <div class="nav-links-search">
+      <a href=""><button>Profile</button></a>
+      <a href="/logout"><button>Log Out</button></a>
+      <button id="toggle-theme" class="toggle-theme-1"><i class="fas fa-adjust"></i></button>
+    </div>
+    
+  </div>
+</nav>
+{{!-- END OF NAV --}}
+
+{{!-- MAIN BLOCK BEGINS --}}
+<div class="main-block">
+  <div class="search-spacer"></div>
+
+    <div class="edit-sample-title">Edit Sample</div>
+    
+    {{#with trackDetails}}
+    <form action="/editSample/{{_id}}" method="POST" enctype="multipart/form-data">
+
+      <div class="edit-sample">
+
+        <div class="edit-sample-cover">
+          <img src="{{imgPath}}">
+          <label for="cover"></label>
+          <input type="file" name="cover" id="cover">
+        </div>
+
+        <div class="edit-sample-info">
+          <label for="artisticName">Title:</label>
+          <input type="text" name="title" id="title" value="{{title}}">
+
+          <label for="description">Description</label>
+          <input type="text" name="description" id="description" value="{{description}}" style="min-height: 150px;">
+
+          <button type="submit">Save</button>
+        </div>
+      </div>
+
+    </form>
+    {{/with}}
+
+   <button style="margin: 0; position: absolute; top: 10px; right: 10px;" id="toggle-theme">Toggle Theme</button>
+</div>
+{{!-- END OF MAIN BLOCK --}}

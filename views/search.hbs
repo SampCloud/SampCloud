@@ -14,11 +14,14 @@
     </div>
 
     <div class="nav-links-search">
+
       {{#with currentUser}}
       <a href="/{{role}}Profile"><button>Profile</button></a>
       {{/with}}
       <button id="toggle-theme">Toggle Theme</button>
+
       <a href="/logout"><button>Log Out</button></a>
+      <button id="toggle-theme" class="toggle-theme-1"><i class="fas fa-adjust"></i></button>
     </div>
 
   </div>
@@ -36,43 +39,42 @@
 
     <div class="samples">
       {{#each tracklist}}
-      <div>
         <a href="/trackDetails/{{_id}}"><img src="{{imgPath}}" alt=""></a>
-      </div>
       {{/each}}
     </div>
 
   </div>
 
-  {{!-- SIDE FOOTER BEGINS --}}
-  <div class="search-footer">
-    <div class="profile-bio">
-      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis ut praesentium
-        accusantium necessitatibus voluptate libero, sit deserunt nisi ipsa enim adipisci
-        architecto aliquam inpossimus consectetur!</p>
-    </div>
-    <div class="footer-links">
 
-      <a href="#">Legal - </a>
-      <a href="#">Privacy - </a>
-      <a href="#">Cookie Policy - </a>
-      <a href="#">Cookie Manager - </a>
-      <a href="#">Imprint - </a>
-      <a href="#">Creator Resources - </a>
-      <a href="#">Blog - </a>
-      <a href="#">Charts - </a>
-      <a href="#">Popular searches </a>
+    {{!-- SIDE FOOTER BEGINS --}}
+                <div class="search-footer">
+                  <div class="search-spacer"></div> <!--fix to align with nav-->
+                  <div class="go-mobile">
+                    <span>Go mobile</span>
+                  </div>
+                  <div class="footer-app-container">
+                      <a href="#"><img src="/images/apple-app-store.png"></a>
+                      <a href="#"><img src="/images/google-play-store.png"></a>
+                  </div>
+                  <div class="footer-links">
 
-    </div>
-    <div class="footer-language">
-      Language: English
-    </div>
+                    <a href="#">Legal - </a>
+                    <a href="#">Privacy - </a>
+                    <a href="#">Cookie Policy - </a>
+                    <a href="#">Cookie Manager - </a>
+                    <a href="#">Imprint - </a>
+                    <a href="#">Creator Resources - </a>
+                    <a href="#">Blog - </a>
+                    <a href="#">Charts - </a>
+                    <a href="#">Popular searches </a>
+                        
+                  </div>
+                  <div class="footer-language">
+                    Language: English
+                  </div>
 
   </div>
   {{!-- END OF SIDE FOOTER --}}
 
-  {{!-- <button style="margin: 0; position: absolute; top: 10px; right: 10px;" id="toggle-theme">Toggle Theme</button>
-  --}}
 </div>
-
 {{!-- END OF MAIN SEARCH BLOCK --}}

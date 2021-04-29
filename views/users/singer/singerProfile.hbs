@@ -14,8 +14,8 @@
     </div>
 
     <div class="nav-links">
-        <button id="toggle-theme">Toggle Theme</button>
         <a href="/logout"><button>Log Out</button></a>
+        <button id="toggle-theme" class="toggle-theme-1"><i class="fas fa-adjust"></i></button>
     </div>
     
   </div>
@@ -48,9 +48,6 @@
     </div>
     {{/with}}
     {{!-- END OF HEADER --}}
-    ​
-    {{!-- MAIN PROFILE BLOCK BEGINS --}}
-    <div class="main-profile-block">
 
         {{!-- PROFILE CONTENT BEGINS --}}
         <div class="profile-content">
@@ -124,30 +121,91 @@
                 {{!-- PROFILE MEDIA BEGINS --}}
                 <div class="profile-media">
 
-                    {{!-- IF TRACKS HAVE BEEN UPLOADED, SHOW THEM --}}
+                    {{!-- IF TRACKS HAVE BEEN UPLOADED, ADD MORE, THEN DISPLAY CURRENT UPLOADS --}}
                     {{#if tracks}}
 
+                    {{!-- ADD MORE TRACKS --}}
+                    {{!-- <div class="upload-more">
+                        <button class="button secondary-button-short" data-modal="uploadSample">&#43;</button>
+                    </div> --}}
+
+                    <div id="uploadSample" class="modal-bg">
+                        <div class="modal-contents">
+                            <form action="/singerProfile/addTrack" method="POST" enctype="multipart/form-data">
+
+                                {{#with tracks}}
+                                <div class="add-sample-area">
+                                    <div class="add-sample">
+                                        <div class="title">Upload a Sample</div>
+                                        <div class="close">&times;</div>
+                                    </div>
+                                    
+
+                                    <div class="add-sample-contents">
+                                        
+                                        <div class="audio">
+                                            <img src="">
+                                            <label for="audio"></label>
+                                            <input type="file" name="audio" id="audio">
+                                        </div>
+
+                                        <div class="info">
+                                            <label for="title">Title:</label>
+                                            <input type="text" name="title">
+
+                                            <label for="description">Description:</label>
+                                            <input type="text" name="description" style="min-height: 150px;">
+
+                                        </div>
+                                        
+                                    </div>
+
+                                    <button type="submit" class="button">Upload</button>
+                                </div>
+                                {{/with}}
+
+                            </form>
+                        </div>
+                    </div>
+                    {{!-- END OF ADD MORE TRACKS --}}
+
+                    <div class="my-samples">
+                        <span>My Samples</span>
+                        <button class="button upload-button" data-modal="uploadSample">&#43;</button>
+                    </div>
+
+                    {{!-- LIST OF CURRENT UPLOADS  --}}
                     <div class="profile-samples">
                     {{#each tracks}}
-                    
+
                             {{!-- TRACK BEGINS --}}
                             <div class="track">
                                 <img src="{{imgPath}}" alt="">
                             
                                 <div class="info">
-                                <p>{{title}}</p>
-                                <p>{{description}}</p>
-                                <figure>
-                                    <audio controls src="{{filePath}}">
-                                    Your browser does not support the
-                                    <code>audio</code> element.
-                                </figure>
-                                <a href="/editSample/{{_id}}">Edit</a>
-                                <a href="/delete/{{_id}}">Delete</a>
+
+                                    <div class="sample-description">
+                                        <p>{{title}}</p>
+                                        <p>{{description}}</p>
+                                    </div>
+
+                                    <div class="audio-container">
+                                        <figure>
+                                            <audio controls src="{{filePath}}">
+                                            Your browser does not support the
+                                            <code>audio</code> element.
+                                        </figure>
+                                        <a href="/editSample/{{_id}}"><button>Edit</button>
+                                        <a href="/delete/{{_id}}"><button>Delete</button></a>
+                                    </div>
                                 </div>
 
+
+
+
+
                                 {{!-- TRACK EDIT MODAL BEGINS --}}
-                                <button class="button" data-modal="editTrack">Edit</button>
+                                {{!-- <button class="button" data-modal="editTrack">Edit</button>
                     
                                 <div id="editTrack" class="modal-bg">
                                     <div class="modal-contents">
@@ -173,7 +231,7 @@
                                         </form>
                                     
                                     </div>
-                                </div>
+                                </div> --}}
                                 {{!-- END OF TRACK EDIT MODAL --}}
                             </div>
                             {{!-- END OF TRACK --}}
@@ -182,7 +240,7 @@
                     </div>
                     {{else}}
 
-                    {{!-- IF NO TRACKS HAVE BEEN UPLOADEED, SUGGEST UPLOAD --}}
+                    {{!-- IF NO TRACKS HAVE BEEN UPLOADED, SUGGEST UPLOAD --}}
                     <div class="empty-profile">
                         <h1>No samples yet</h1>
                         <button class="button" data-modal="uploadSample">Upload now</button>
@@ -255,8 +313,5 @@
 
         </div>
         {{!-- END OF PROFILE CONTENT --}}
-
-    </div>
-    {{!-- END OF MAIN PROFILE BLOCK --}}
 
 </div>
