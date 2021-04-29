@@ -131,20 +131,21 @@ router.post('/editSample/:sampleId', isSinger(), loginCheck(), uploader.single('
 
 router.get('/trackDetails/:sampleId', loginCheck(), (req, res, next) => {
   //console.log(req.params)
+  const currentUser = req.session.user;
   Track.findById(req.params.sampleId).populate('owner')
     .then(track => {
-      res.render('users/details/tracksDetails', { trackDetails: track });
+      res.render('users/details/tracksDetails', { trackDetails: track, currentUser });
     })
 });
 
 router.get('/profileDetails/:ownerId', loginCheck(), (req, res, next) => {
   //console.log('what is this:', req.params)
+  const currentUser = req.session.user;
   User.findById(req.params.ownerId)
     .then(user => {
       Track.find({ owner: req.params.ownerId })
         .then(tracks => {
-
-          res.render('users/details/profileDetails', { profileDetails: user, trackDetails: tracks });
+          res.render('users/details/profileDetails', { profileDetails: user, trackDetails: tracks, currentUser });
         })
       //console.log('the user', user)
     })
