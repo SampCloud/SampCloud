@@ -14,8 +14,8 @@
     </div>
 
     <div class="nav-links">
-        <button id="toggle-theme">Toggle Theme</button>
         <a href="/logout"><button>Log Out</button></a>
+        <button id="toggle-theme" class="toggle-theme-1"><i class="fas fa-adjust"></i></button>
     </div>
     
   </div>
@@ -42,9 +42,9 @@
     {{!-- MAIN TRACK DETAILS BLOCK BEGINS --}}
     <div class="sample-info">
       <div class="sample-nav">
-        <button>Like</button>
-        <button>Save</button>
-        <button>Purchase</button>
+        <button>&nbsp;<i class="fas fa-heart"></i>&nbsp;&nbsp;&nbsp;Like</button>
+        <button>&nbsp;<i class="far fa-bookmark"></i>&nbsp;&nbsp;&nbsp;Save</button>
+        <button>&nbsp;<i class="fas fa-shopping-cart"></i>&nbsp;&nbsp;&nbsp;Purchase</button>
       </div>
 
       <div class="container">
@@ -63,8 +63,14 @@
                   <div class="sample-user-circle"></div>
                 {{/if}}
               {{/with}} --}}
+
+              {{#if owner.imgPath}}
+                <a href="/profileDetails/{{owner._id}}"><img src="{{owner.imgPath}}" style="margin: 20px 0; padding: 0; width: 150px; height: 150px; border-radius: 50%;"></a>
+                <a href="/profileDetails/{{owner._id}}">{{owner.artisticName}}</a>
+              {{else}}
               <div class="sample-user-circle"></div>
                <a href="/profileDetails/{{owner._id}}">{{owner.artisticName}}</a>
+              {{/if}}
             </div>
 
             {{!-- Create if for description <p>{{description}}</p> --}}
@@ -111,7 +117,7 @@
             <a href="#">Popular searches </a>
           </div>
           <div class="footer-language">
-            Language: English
+            <span>Language: English</span>
           </div>
         </div>
         {{!-- END OF SIDE FOOTER --}}
