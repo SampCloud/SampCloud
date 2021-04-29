@@ -21,6 +21,7 @@
     --modal-overlay: rgba(245, 244, 244, 0.8);
     --search-background: #FFFFFF;
     --form-focus: #dddddd;
+    --sample-nav-button: #E5E5E5;
 }
 
 [data-theme="dark"] {
@@ -38,6 +39,7 @@
     --modal-overlay: rgba(10, 10, 10, 0.8);
     --search-background: #201E21;
     --form-focus: #000000;
+    --sample-nav-button: #222225;
 }
 
 html, body {
@@ -535,7 +537,7 @@ a.current:link, a.current:visited {
     padding: 0 20px;
     display: flex;
     align-items: center;
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
 }
 
 .audio-container figure {
@@ -663,7 +665,7 @@ a.current:link, a.current:visited {
 /* Pseudo Footer ------------------------------------------------ */
 
 .footer {
-    margin: 0;
+    margin: 20px 0;
     padding: 0;
     width: 25%;
     min-height: 100%;
@@ -674,7 +676,7 @@ a.current:link, a.current:visited {
 
 .profile-bio {
     margin: 0 auto;
-    padding: 5px 0;
+    padding: 0;
     width: 80%;
     min-height: 20px;
     color: var(--p1-color);
@@ -760,18 +762,17 @@ a.current:link, a.current:visited {
 
 .search-content .samples {
     margin: 0;
-    padding: 0;
+    padding: 20px;
     width: 100%;
     display: flex;
-    justify-content: space-between;
     flex-wrap: wrap;
     /* border: 1px solid red; */
 }
 
 .search-content .samples img {
     margin: 15px 10px;
-    padding: 0;
-    width: 300px;
+    padding: 10px;
+    width: 350px;
 }
 
 .search-footer {
@@ -798,8 +799,13 @@ a.current:link, a.current:visited {
 
 .sample-nav button {
     margin: 0 10px 0 0;
-    padding: 2px 5px;
-    height: 50%;
+    padding: 5px 10px;
+    height: 60%;
+    font-weight: normal;
+    border: none;
+    border-radius: 2px;
+    background-color: var(--sample-nav-button);
+    color: var(--h1-color);
 }
 
 .sample-info {
@@ -821,7 +827,7 @@ a.current:link, a.current:visited {
 
 .sample-content {
     margin: 0;
-    padding: 0;
+    padding: 0 20px 0 0;
     width: 75%;
     display: flex;
     flex-direction: column;
@@ -1138,3 +1144,5 @@ a.current:link, a.current:visited {
     justify-content: flex-end;
     border-top: 1px solid var(--divider-color);
 }
+
+
