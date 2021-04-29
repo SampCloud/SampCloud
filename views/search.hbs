@@ -16,7 +16,14 @@
     <div class="nav-links-search">
 
       {{#with currentUser}}
-      <a href="/{{role}}Profile"><button>Profile</button></a>
+      <a href="/{{role}}Profile">
+        {{#if imgPath}}
+        <img src="{{imgPath}}">
+        {{else}}
+        <img src="/images/default-user-photo.png">
+        {{!-- <button>Profile</button> --}}
+        {{/if}}
+      </a>
       {{/with}}
       <button id="toggle-theme">Toggle Theme</button>
 
@@ -39,39 +46,40 @@
 
     <div class="samples">
       {{#each tracklist}}
-        <a href="/trackDetails/{{_id}}"><img src="{{imgPath}}" alt=""></a>
+      <a href="/trackDetails/{{_id}}"><img src="{{imgPath}}" alt=""></a>
       {{/each}}
     </div>
 
   </div>
 
 
-    {{!-- SIDE FOOTER BEGINS --}}
-                <div class="search-footer">
-                  <div class="search-spacer"></div> <!--fix to align with nav-->
-                  <div class="go-mobile">
-                    <span>Go mobile</span>
-                  </div>
-                  <div class="footer-app-container">
-                      <a href="#"><img src="/images/apple-app-store.png"></a>
-                      <a href="#"><img src="/images/google-play-store.png"></a>
-                  </div>
-                  <div class="footer-links">
+  {{!-- SIDE FOOTER BEGINS --}}
+  <div class="search-footer">
+    <div class="search-spacer"></div>
+    <!--fix to align with nav-->
+    <div class="go-mobile">
+      <span>Go mobile</span>
+    </div>
+    <div class="footer-app-container">
+      <a href="#"><img src="/images/apple-app-store.png"></a>
+      <a href="#"><img src="/images/google-play-store.png"></a>
+    </div>
+    <div class="footer-links">
 
-                    <a href="#">Legal - </a>
-                    <a href="#">Privacy - </a>
-                    <a href="#">Cookie Policy - </a>
-                    <a href="#">Cookie Manager - </a>
-                    <a href="#">Imprint - </a>
-                    <a href="#">Creator Resources - </a>
-                    <a href="#">Blog - </a>
-                    <a href="#">Charts - </a>
-                    <a href="#">Popular searches </a>
-                        
-                  </div>
-                  <div class="footer-language">
-                    Language: English
-                  </div>
+      <a href="#">Legal - </a>
+      <a href="#">Privacy - </a>
+      <a href="#">Cookie Policy - </a>
+      <a href="#">Cookie Manager - </a>
+      <a href="#">Imprint - </a>
+      <a href="#">Creator Resources - </a>
+      <a href="#">Blog - </a>
+      <a href="#">Charts - </a>
+      <a href="#">Popular searches </a>
+
+    </div>
+    <div class="footer-language">
+      Language: English
+    </div>
 
   </div>
   {{!-- END OF SIDE FOOTER --}}
