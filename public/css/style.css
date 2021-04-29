@@ -113,7 +113,6 @@ h3 {
     background-color: #271d19;
     color: #675f5b;
     font-family:Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
-;
     font-weight: 300;
     font-size: 16px;
 }
@@ -123,7 +122,6 @@ p {
     padding: 0;
     color: var(--p1-color);
     font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
-;
     font-size: 12px;
 }
 
@@ -132,7 +130,6 @@ p {
     padding: 0;
     color: var(--p1-color);
     font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
-;
     font-size: 12px;
     text-align: justify;
 }
@@ -156,7 +153,6 @@ p {
     position: absolute;
     bottom: 350px;
     font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
-;
     font-size: 12px;
     color: #FF0000;
     /* text-align: center; */
@@ -169,7 +165,6 @@ p {
     bottom: 2%;
     color: var(--p2-color);
     font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
-;
     font-size: 10px;
 }
 
@@ -234,7 +229,8 @@ nav {
     border: none;
     border-radius: 0 4px 4px 0;
     background-color: var(--nav-input);
-    color: #E5E5E5;
+    color: #666666;
+    cursor: pointer;
 }
 
 .nav-search input:focus {
@@ -251,18 +247,43 @@ nav {
     align-items: center;
 }
 
-.nav-links-search {
+/* .nav-links-search {
     margin: 0;
-    padding: 0;
+    padding: 0 0 0 0px;
     width: 30%;
     height: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center; 
+} */
+
+.nav-links i {
+    margin: 0 0 0 10px;
+    padding: 0;
+    cursor: pointer;
 }
 
-.nav-links button {
-    margin-left: 20px;
+.nav-links i:hover {
+    color: #FFFFFF;
+}
+
+.nav-icons {
+    margin: 0;
+    padding: 0 5px 0 0;
+    font-size: 20px;
+    border: none;
+    background-color: var(--nav-color);
+    color: #CCCCCC;
+}
+
+.nav-user a {
+    margin: 0;
+    padding: 0;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    font-size: 12px;
+    color: var(--p1-color);
 }
 
 .toggle-theme-1 {
@@ -270,13 +291,7 @@ nav {
     border: none;
     background-color: var(--nav-color);
     color: var(--p1-color);
-}
-
-.toggle-theme-2 {
-    font-size: 20px;
-    border: none;
-    background-color: var(--primary-background);
-    color: var(--p1-color);
+    cursor: pointer;
 }
 
 /* Login Page -------------------------------------------------- */
@@ -897,6 +912,14 @@ a.current:link, a.current:visited {
     height: 150px;
     background-image: linear-gradient(to bottom right, #74939a, #e5846f);
     border-radius: 50%;
+}
+
+.sample-username a {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    text-decoration: none;
+    color: var(--p1-color);
 }
 
 .sample-overview .description {

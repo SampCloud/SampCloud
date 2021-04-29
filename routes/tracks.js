@@ -133,7 +133,7 @@ router.get('/trackDetails/:sampleId', loginCheck(), (req, res, next) => {
   //console.log(req.params)
   Track.findById(req.params.sampleId).populate('owner')
     .then(track => {
-      res.render('users/partials/tracksDetails', { trackDetails: track });
+      res.render('users/details/tracksDetails', { trackDetails: track });
     })
 });
 
@@ -144,7 +144,7 @@ router.get('/profileDetails/:ownerId', loginCheck(), (req, res, next) => {
       Track.find({ owner: req.params.ownerId })
         .then(tracks => {
 
-          res.render('users/partials/profileDetails', { profileDetails: user, trackDetails: tracks });
+          res.render('users/details/profileDetails', { profileDetails: user, trackDetails: tracks });
         })
       //console.log('the user', user)
     })

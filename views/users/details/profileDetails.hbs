@@ -5,19 +5,41 @@
     <div class="nav-logo"><a href="/search"><img src="/images/orange-logo.png" style="height: 100%"></a></div>
 
     <div class="nav-search">
-      <form action="/search" method="POST" >
-        <div class="wrapper">
-        <input type="text" id="search" name="q" autocomplete="off">
-        <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-        </div>
+      <form action="/search" method="POST">
+          <input type="text" id="search" name="q" autocomplete="off">
+          <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
       </form>
     </div>
 
     <div class="nav-links">
-        <a href="/logout"><button>Log Out</button></a>
-        <button id="toggle-theme" class="toggle-theme-1"><i class="fas fa-adjust"></i></button>
+
+      {{#with currentUser}}
+        <a href="/{{role}}Profile">
+          {{#if imgPath}}
+            <img src="{{imgPath}}">
+              {{#if artisticName}}
+                <div class="nav-user">{{artisticName}}</div>
+              {{else}}
+                <div class="nav-user">{{username}}</div>
+              {{/if}}
+            
+          {{else}}
+            <img src="/images/default-user-photo.png" style="margin: 0; height: 28px; width: 28px; border-radius: 50%;">
+              
+              {{#if artisticName}}
+                <p>{{artisticName}}</p>
+              {{else}}
+                <p>{{username}}</p>
+              {{/if}}
+
+          {{/if}}
+        </a>
+      {{/with}}
+
+      <button id="toggle-theme" class="nav-icons" alt="Toggle Theme"><i class="fas fa-adjust"></i></button>
+      <a href="/logout" class="nav-icons" alt="Log Out"><i class="fas fa-sign-out-alt"></i></a>
     </div>
-    
+
   </div>
 </nav>
 {{!-- END OF NAV --}}
