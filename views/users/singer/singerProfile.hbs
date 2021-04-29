@@ -67,7 +67,7 @@
 
                  {{!-- EDIT PROFILE MODAL BEGINS --}}
                 {{#with singerDetails}}
-                <button class="button" data-modal="editProfile">Edit</button>
+                <button class="button clear-button" data-modal="editProfile">Edit</button>
                 <div id="editProfile" class="modal-bg">
                     <div class="modal-contents">
                         
@@ -204,7 +204,7 @@
                     {{!-- IF NO TRACKS HAVE BEEN UPLOADED, SUGGEST UPLOAD --}}
                     <div class="empty-profile">
                         <h1>Nothing to hear here...</h1>
-                        <button class="button" data-modal="uploadSample">Upload now</button>
+                        <button class="button clear-button" data-modal="uploadSample" style="margin: 10px 0; padding: 5px 10px; font-size: 16px;">Upload now</button>
                     </div>
 
                     <div id="uploadSample" class="modal-bg">
@@ -277,7 +277,7 @@
                         <a href="#">Popular searches </a>
                     </div>
                     <div class="footer-language">
-                        Language: English
+                        <span style="color:#4988D7">Language:</span> English (UK)
                     </div>
 
                 </div>

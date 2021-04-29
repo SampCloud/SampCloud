@@ -64,9 +64,9 @@
     {{!-- MAIN TRACK DETAILS BLOCK BEGINS --}}
     <div class="sample-info">
       <div class="sample-nav">
-        <button class="sample-page-button">&nbsp;<i class="fas fa-heart"></i>&nbsp;&nbsp;Like</button>
-        <button class="sample-page-button">&nbsp;<i class="far fa-bookmark"></i>&nbsp;&nbsp;Save</button>
-        <button class="sample-page-button">&nbsp;<i class="fas fa-shopping-cart"></i>&nbsp;&nbsp;Purchase</button>
+        <button class="clear-button">&nbsp;<i class="fas fa-heart"></i>&nbsp;&nbsp;Like</button>
+        <button class="clear-button">&nbsp;<i class="far fa-bookmark"></i>&nbsp;&nbsp;Save</button>
+        <button class="clear-button">&nbsp;<i class="fas fa-shopping-cart"></i>&nbsp;&nbsp;Purchase</button>
       </div>
 
       <div class="container">
@@ -87,12 +87,14 @@
               {{/if}}
             </div>
 
-            {{!-- Create if for description <p>{{description}}</p> --}}
-            <div class="description">
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum ipsum natus temporibus sed! In veniam 
-              corrupti dolor expedita nisi. Ab, accusamus! Sint sit voluptate repudiandae, magnam et quae ducimus 
-              distinctio at itaque illo eius laborum unde nihil mollitia. Repellat, nostrum?</p>
-            </div>
+            {{!-- IF STATEMENT FOR SAMPLE DESCRIPTION --}}
+            {{#if description}}
+              <div class="description">
+                {{description}}
+              </div>
+            {{else}}
+                <div class="description"></div>
+            {{/if}}
           </div>
           {{!-- END OF SAMPLE OVERVIEW --}}
 
@@ -116,22 +118,19 @@
 
         {{!-- SIDE FOOTER BEGINS --}}
         <div class="footer">
-          
-          <!--fix to align with nav-->
-          <div class="footer-app-container"></div> <!-- Create new divider for this purpose-->
           <div class="footer-links">
-            <a href="#">Legal - </a>
-            <a href="#">Privacy - </a>
-            <a href="#">Cookie Policy - </a>
-            <a href="#">Cookie Manager - </a>
-            <a href="#">Imprint - </a>
-            <a href="#">Creator Resources - </a>
-            <a href="#">Blog - </a>
-            <a href="#">Charts - </a>
-            <a href="#">Popular searches </a>
+            <a href="#">Legal</a>&nbsp;-
+              <a href="#">Privacy</a>&nbsp;-
+              <a href="#">Cookie Policy</a>&nbsp;-
+              <a href="#">Cookie Manager</a>&nbsp;-
+              <a href="#">Imprint</a>&nbsp;-
+              <a href="#">Creator Resources</a>&nbsp;-
+              <a href="#">Blog</a>&nbsp;-
+              <a href="#">Charts</a>&nbsp;-
+              <a href="#">Popular searches</a>
           </div>
           <div class="footer-language">
-            <span>Language: English</span>
+            <span style="color:#4988D7">Language:</span> English (UK)
           </div>
         </div>
         {{!-- END OF SIDE FOOTER --}}
