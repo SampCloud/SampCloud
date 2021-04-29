@@ -7,9 +7,11 @@ const streamifier = require('streamifier');
 const fs = require('fs');
 
 router.get('/search', (req, res, next) => {
+  const currentUser = req.session.user;
   Track.find()
     .then(tracks => {
-      res.render('search', { tracklist: tracks })
+
+      res.render('search', { tracklist: tracks, currentUser })
     });
 })
 
@@ -40,14 +42,17 @@ router.get('/producerProfile/addTrack', (req, res, next) => {
 
 
 router.post('/singerProfile/addTrack', isSinger(), loginCheck(), uploaderAudio.single('audio'), (req, res) => {
-  console.log('Got file:', req.file.originalname);
-  console.log('Extra form fields:', req.body);
-
+  //console.log('Got file:', req.file.originalname);
+  //console.log('Extra form fields:', req.body);
+  if (req.file === undefined) {
+    res.redirect('/singerProfile');
+    return
+  }
   cloudinary.uploader.upload_stream({ resource_type: "video" }, cloudinaryDone).end(req.file.buffer);
 
   function cloudinaryDone(error, result) {
     if (error) {
-      console.log("Error in cloudinary.uploader.upload_stream\n", error);
+      //console.log("Error in cloudinary.uploader.upload_stream\n", error);
       return;
     } else {
       const { title, genre, description } = req.body;
@@ -85,26 +90,43 @@ router.get('/editSample/:sampleId', isSinger(), loginCheck(), (req, res, next) =
     })
 });
 
+
 router.post('/editSample/:sampleId', isSinger(), loginCheck(), uploader.single('cover'), (req, res, next) => {
-  const { title, description } = req.body;
-  const imgPath = req.file.path;
-  const imgName = req.file.originalname;
-  const publicId = req.file.filename;
-  console.log(req.file);
-  Track.findByIdAndUpdate(req.params.sampleId, {
-    title: title,
-    imgPath: imgPath,
-    imgName: imgName,
-    publicId: publicId,
-    description: description,
-  }, { new: true })
-    .then(trackUp => {
-      req.params.sampleId = trackUp;
-      res.redirect('/singerProfile',)
-    })
-    .catch(err => {
-      next(err)
-    })
+  if (req.file === undefined) {
+    const { title, description } = req.body;
+    //console.log(req.file);
+    Track.findByIdAndUpdate(req.params.sampleId, {
+      title: title,
+      description: description,
+    }, { new: true })
+      .then(trackUp => {
+        req.params.sampleId = trackUp;
+        res.redirect('/singerProfile',)
+      })
+      .catch(err => {
+        next(err)
+      })
+  } else {
+    const { title, description } = req.body;
+    const imgPath = req.file.path;
+    const imgName = req.file.originalname;
+    const publicId = req.file.filename;
+    //console.log(req.file);
+    Track.findByIdAndUpdate(req.params.sampleId, {
+      title: title,
+      imgPath: imgPath,
+      imgName: imgName,
+      publicId: publicId,
+      description: description,
+    }, { new: true })
+      .then(trackUp => {
+        req.params.sampleId = trackUp;
+        res.redirect('/singerProfile',)
+      })
+      .catch(err => {
+        next(err)
+      })
+  }
 });
 
 router.get('/trackDetails/:sampleId', loginCheck(), (req, res, next) => {
@@ -116,7 +138,7 @@ router.get('/trackDetails/:sampleId', loginCheck(), (req, res, next) => {
 });
 
 router.get('/profileDetails/:ownerId', loginCheck(), (req, res, next) => {
-  console.log('what is this:', req.params)
+  //console.log('what is this:', req.params)
   User.findById(req.params.ownerId)
     .then(user => {
       Track.find({ owner: req.params.ownerId })
