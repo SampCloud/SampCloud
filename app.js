@@ -23,7 +23,7 @@ require("./config")(app);
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
 const mongoose = require('./db/index');
-const DB_URL = 'mongodb://localhost/artistsmatch';
+const DB_URL = process.env.MONGODB_URI;
 
 
 app.use(

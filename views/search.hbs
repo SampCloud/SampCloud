@@ -5,20 +5,25 @@
     <div class="nav-logo"><a href="/search"><img src="/images/orange-logo.png" style="height: 100%"></a></div>
 
     <div class="nav-search">
-      <form action="/search" method="POST" >
+      <form action="/search" method="POST">
         <div class="wrapper">
-        <input type="text" id="search" name="q" autocomplete="off">
-        <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+          <input type="text" id="search" name="q" autocomplete="off">
+          <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
         </div>
       </form>
     </div>
 
     <div class="nav-links-search">
-      <a href=""><button>Profile</button></a>
+
+      {{#with currentUser}}
+      <a href="/{{role}}Profile"><button>Profile</button></a>
+      {{/with}}
+      <button id="toggle-theme">Toggle Theme</button>
+
       <a href="/logout"><button>Log Out</button></a>
       <button id="toggle-theme" class="toggle-theme-1"><i class="fas fa-adjust"></i></button>
     </div>
-    
+
   </div>
 </nav>
 {{!-- END OF NAV --}}
@@ -26,7 +31,7 @@
 {{!-- MAIN SEARCH BLOCK BEGINS --}}
 <div class="main-search">
   <div class="search-content">
-    
+
     <div>
       <div class="h1-search">Most Popular</div>
       <h2>This week's most popular samples</h2>
@@ -39,6 +44,7 @@
     </div>
 
   </div>
+
 
     {{!-- SIDE FOOTER BEGINS --}}
                 <div class="search-footer">
@@ -67,9 +73,8 @@
                     Language: English
                   </div>
 
-                </div>
-    {{!-- END OF SIDE FOOTER --}}
+  </div>
+  {{!-- END OF SIDE FOOTER --}}
 
 </div>
-
 {{!-- END OF MAIN SEARCH BLOCK --}}
