@@ -145,7 +145,6 @@ router.get('/profileDetails/:ownerId', loginCheck(), (req, res, next) => {
     .then(user => {
       Track.find({ owner: req.params.ownerId })
         .then(tracks => {
-
           res.render('users/details/profileDetails', { profileDetails: user, trackDetails: tracks, currentUser });
         })
       //console.log('the user', user)
