@@ -65,7 +65,7 @@ router.post('/singerProfile/addTrack', isSinger(), loginCheck(), uploaderAudio.s
         title: title,
         genre: genre,
         description: description,
-        imgPath: 'https://res.cloudinary.com/davidx8/image/upload/v1619543579/avatar-uploads/poolside-pack_qst27z.png',
+        imgPath: 'https://res.cloudinary.com/davidx8/image/upload/v1619769517/avatar-uploads/default-sample-cover_xntxwt.png',
         filePath: result.url,
         fileName: fileName,
         publicId: result.public_id,

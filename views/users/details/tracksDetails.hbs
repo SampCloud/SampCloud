@@ -5,33 +5,35 @@
 
     <div class="nav-search">
       <form action="/search" method="POST">
-          <input type="text" id="search" name="q" autocomplete="off">
-          <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+        <input type="text" id="search" name="q" autocomplete="off">
+        <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
       </form>
     </div>
 
     <div class="nav-links">
       {{#with currentUser}}
-        <a href="/{{role}}Profile"></a>
-          {{#if imgPath}}
-            <div class="nav-user">
-              <a href="/{{role}}Profile"><img src="{{imgPath}}"></a>
-                {{#if artisticName}}
-                  <a href="/{{role}}Profile">{{artisticName}}</a>
-                {{else}}
-                  <a href="/{{role}}Profile">{{username}}</a>
-                {{/if}}
-            </div>
-          {{else}}
-            <div class="nav-user">
-               <a href="/{{role}}Profile"><img src="/images/default-user-photo.png" style="margin: 0; height: 28px; width: 28px; border-radius: 50%;"></a>
-                {{#if artisticName}}
-                  <a href="/{{role}}Profile">{{artisticName}}</a>
-                {{else}}
-                  <a href="/{{role}}Profile">{{username}}</a>
-                {{/if}}
-            </div>
-          {{/if}}
+      <a href="/{{role}}Profile"></a>
+      {{#if imgPath}}
+      <div class="nav-user">
+        <a href="/{{role}}Profile"><img src="{{imgPath}}"
+            style="margin: 0; height: 28px; width: 28px; border-radius: 50%;"></a>
+        {{#if artisticName}}
+        <a href="/{{role}}Profile">{{artisticName}}</a>
+        {{else}}
+        <a href="/{{role}}Profile">{{username}}</a>
+        {{/if}}
+      </div>
+      {{else}}
+      <div class="nav-user">
+        <a href="/{{role}}Profile"><img src="/images/default-user-photo.png"
+            style="margin: 0; height: 28px; width: 28px; border-radius: 50%;"></a>
+        {{#if artisticName}}
+        <a href="/{{role}}Profile">{{artisticName}}</a>
+        {{else}}
+        <a href="/{{role}}Profile">{{username}}</a>
+        {{/if}}
+      </div>
+      {{/if}}
       {{/with}}
       <div class="nav-icons">
         <button id="toggle-theme" class="nav-icon" alt="Toggle Theme"><i class="fas fa-adjust"></i></button>
@@ -44,97 +46,98 @@
 
 <div class="main-block">
 
-    {{!-- HEADER BEGINS --}}
-    {{#with trackDetails}}
-    <div class="sample-header">
-      ​
-      <div class="sample-photo-area">
-        {{#if imgPath}}
-            <img src="{{imgPath}}">
-        {{else}}
-        <div class="header-photo-circle"></div>
-        {{/if}}
-      </div>
-      ​
+  {{!-- HEADER BEGINS --}}
+  {{#with trackDetails}}
+  <div class="sample-header">
+    ​
+    <div class="sample-photo-area">
+      {{#if imgPath}}
+      <img src="{{imgPath}}">
+      {{else}}
+      <div class="header-photo-circle"></div>
+      {{/if}}
     </div>
-    {{/with}}
-    {{!-- END OF HEADER --}}
+    ​
+  </div>
+  {{/with}}
+  {{!-- END OF HEADER --}}
 
-    {{!-- MAIN TRACK DETAILS BLOCK BEGINS --}}
-    <div class="sample-info">
-      <div class="sample-nav">
-        <button class="clear-button">&nbsp;<i class="fas fa-heart"></i>&nbsp;&nbsp;Like</button>
-        <button class="clear-button">&nbsp;<i class="far fa-bookmark"></i>&nbsp;&nbsp;Save</button>
-        <button class="clear-button">&nbsp;<i class="fas fa-shopping-cart"></i>&nbsp;&nbsp;Purchase</button>
-      </div>
+  {{!-- MAIN TRACK DETAILS BLOCK BEGINS --}}
+  <div class="sample-info">
+    <div class="sample-nav">
+      <button class="clear-button">&nbsp;<i class="fas fa-heart"></i>&nbsp;&nbsp;Like</button>
+      <button class="clear-button">&nbsp;<i class="far fa-bookmark"></i>&nbsp;&nbsp;Save</button>
+      <button class="clear-button">&nbsp;<i class="fas fa-shopping-cart"></i>&nbsp;&nbsp;Purchase</button>
+    </div>
 
-      <div class="container">
+    <div class="container">
 
-        {{!-- SAMPLE CONTENT AREA BEGINS --}}
-        <div class="sample-content">
-          {{#with trackDetails}}
-          {{!-- BEGIN SAMPLE OVERVIEW --}}
-          <div class="sample-overview">
-            <div class="user">
+      {{!-- SAMPLE CONTENT AREA BEGINS --}}
+      <div class="sample-content">
+        {{#with trackDetails}}
+        {{!-- BEGIN SAMPLE OVERVIEW --}}
+        <div class="sample-overview">
+          <div class="user">
 
-              {{#if owner.imgPath}}
-                <a href="/profileDetails/{{owner._id}}"><img src="{{owner.imgPath}}" style="margin: 20px 0; padding: 0; width: 150px; height: 150px; border-radius: 50%;"></a>
-                <div class="sample-username"><a href="/profileDetails/{{owner._id}}">{{owner.artisticName}}</a></div>
-              {{else}}
-                <div class="sample-user-circle"></div>
-                <div class="sample-username"><a href="/profileDetails/{{owner._id}}">{{owner.artisticName}}</a></div>
-              {{/if}}
-            </div>
-
-            {{!-- IF STATEMENT FOR SAMPLE DESCRIPTION --}}
-            {{#if description}}
-              <div class="description">
-                {{description}}
-              </div>
+            {{#if owner.imgPath}}
+            <a href="/profileDetails/{{owner._id}}"><img src="{{owner.imgPath}}"
+                style="margin: 20px 0; padding: 0; width: 150px; height: 150px; border-radius: 50%;"></a>
+            <div class="sample-username"><a href="/profileDetails/{{owner._id}}">{{owner.artisticName}}</a></div>
             {{else}}
+            <div class="sample-user-circle"></div>
+            <div class="sample-username"><a href="/profileDetails/{{owner._id}}">{{owner.artisticName}}</a></div>
             {{/if}}
           </div>
-          {{!-- END OF SAMPLE OVERVIEW --}}
 
-          {{!-- BEGIN SAMPLE AREA --}}
-          <div class="sample-area"> 
-              <div class="container">
-                <h3>{{title}}</h3>
-                <figure>
-                  <audio controls src="{{filePath}}">
-                    Your browser does not support the
-                    <code>audio</code> element.
-                  </audio>
-                </figure>
-              </div>
+          {{!-- IF STATEMENT FOR SAMPLE DESCRIPTION --}}
+          {{#if description}}
+          <div class="description">
+            {{description}}
           </div>
-          {{!-- END OF SAMPLE AREA --}}
-          {{/with}}
+          {{else}}
+          {{/if}}
         </div>
-        {{!-- END OF SAMPLE CONTENT AREA --}}
+        {{!-- END OF SAMPLE OVERVIEW --}}
 
-
-        {{!-- SIDE FOOTER BEGINS --}}
-        <div class="footer">
-          <div class="footer-links">
-            <a href="#">Legal</a>&nbsp;-
-              <a href="#">Privacy</a>&nbsp;-
-              <a href="#">Cookie Policy</a>&nbsp;-
-              <a href="#">Cookie Manager</a>&nbsp;-
-              <a href="#">Imprint</a>&nbsp;-
-              <a href="#">Creator Resources</a>&nbsp;-
-              <a href="#">Blog</a>&nbsp;-
-              <a href="#">Charts</a>&nbsp;-
-              <a href="#">Popular searches</a>
-          </div>
-          <div class="footer-language">
-            <span style="color:#4988D7">Language:</span> English (UK)
+        {{!-- BEGIN SAMPLE AREA --}}
+        <div class="sample-area">
+          <div class="container">
+            <h3>{{title}}</h3>
+            <figure>
+              <audio controls src="{{filePath}}">
+                Your browser does not support the
+                <code>audio</code> element.
+              </audio>
+            </figure>
           </div>
         </div>
-        {{!-- END OF SIDE FOOTER --}}
+        {{!-- END OF SAMPLE AREA --}}
+        {{/with}}
       </div>
+      {{!-- END OF SAMPLE CONTENT AREA --}}
 
+
+      {{!-- SIDE FOOTER BEGINS --}}
+      <div class="footer">
+        <div class="footer-links">
+          <a href="#">Legal</a>&nbsp;-
+          <a href="#">Privacy</a>&nbsp;-
+          <a href="#">Cookie Policy</a>&nbsp;-
+          <a href="#">Cookie Manager</a>&nbsp;-
+          <a href="#">Imprint</a>&nbsp;-
+          <a href="#">Creator Resources</a>&nbsp;-
+          <a href="#">Blog</a>&nbsp;-
+          <a href="#">Charts</a>&nbsp;-
+          <a href="#">Popular searches</a>
+        </div>
+        <div class="footer-language">
+          <span style="color:#4988D7">Language:</span> English (UK)
+        </div>
+      </div>
+      {{!-- END OF SIDE FOOTER --}}
     </div>
-    {{!-- END OF MAIN TRACK DETAILS BLOCK --}}
+
+  </div>
+  {{!-- END OF MAIN TRACK DETAILS BLOCK --}}
 </div>
 {{!-- END OF MAIN BLOCK --}}
