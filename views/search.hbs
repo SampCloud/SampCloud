@@ -12,6 +12,7 @@
 
     <div class="nav-links">
       {{#with currentUser}}
+
       <a href="/{{role}}Profile"></a>
       {{#if imgPath}}
       <div class="nav-user">
@@ -34,6 +35,7 @@
         {{/if}}
       </div>
       {{/if}}
+
       {{/with}}
       <div class="nav-icons">
         <button id="toggle-theme" class="nav-icon" alt="Toggle Theme"><i class="fas fa-adjust"></i></button>
