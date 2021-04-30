@@ -24,27 +24,30 @@
 <div class="main-block">
 
   {{!-- HEADER BEGINS --}}
-  <div class="header">
-
-    <div class="header-photo-area">
-      {{#if imgPath}}
-      <img src="{{imgPath}}" style="margin-top: 44px; padding: 0; width: 200px; height: 200px; border-radius: 50%;">
-      {{else}}
-      <div class="header-photo-circle"></div>
-      {{/if}}
+   {{#with producerDetails}}
+    <div class="header">
+      ​
+      <div class="header-photo-area">
+        {{#if imgPath}}
+            <img src="{{imgPath}}" style="margin-top: 44px; margin-bottom: 22px; padding: 0; width: 200px; height: 200px; border-radius: 50%;">
+        {{else}}
+            <div class="header-photo-circle"></div>
+        {{/if}}
+      </div>
+      ​
+      <div class="header-labels">
+        {{#if artisticName}}
+            <div class="h1-profile">{{artisticName}}</div>
+        {{else}}
+            <div class="h1-profile">{{username}}</div>
+        {{/if}}
+        {{#if soundUrl}}
+            <div class="h2-profile">{{soundUrl}}</div>
+        {{else}}
+        {{/if}}
+      </div>
+      ​
     </div>
-
-    <div class="header-labels">
-      {{#if artisticName}}
-      <div class="h1-profile">{{artisticName}}</div>
-      {{else}}
-      <div class="h1-profile">{{username}}</div>
-      {{/if}}
-
-      <div class="h2-profile">Location</div>
-    </div>
-
-  </div>
   {{!-- END OF HEADER --}}
 
   {{!-- PROFILE CONTENT BEGINS --}}
@@ -93,7 +96,7 @@
                           <label for="artisticName">Display Name:</label>
                           <input type="text" name="artisticName" id="artisticName" autocomplete="off">
 
-                          <label for="description">Bio:</label>
+                          <label for="description">Description:</label>
                           <input type="text" name="description" id="description" autocomplete="off">
 
                           <label for="soundUrl">SoundCloud:</label>

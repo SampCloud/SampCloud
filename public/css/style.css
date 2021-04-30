@@ -317,10 +317,10 @@ nav {
     color: #FFFFFF;
 }
 
-.toggle-theme-1 {
+.toggle-theme {
     font-size: 20px;
     border: none;
-    background-color: var(--nav-color);
+    background-color: var(--primary-background);
     color: var(--p1-color);
     cursor: pointer;
 }
