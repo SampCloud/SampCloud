@@ -1,4 +1,3 @@
-{{#with producerDetails}}
 {{!-- NAV BEGINS --}}
 <nav>
   <div class="nav-content">
@@ -6,8 +5,8 @@
 
     <div class="nav-search">
       <form action="/search" method="POST">
-          <input type="text" id="search" name="q" autocomplete="off">
-          <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+        <input type="text" id="search" name="q" autocomplete="off">
+        <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
       </form>
     </div>
 
@@ -24,30 +23,31 @@
 <div class="main-block">
 
   {{!-- HEADER BEGINS --}}
-   {{#with producerDetails}}
-    <div class="header">
-      ​
-      <div class="header-photo-area">
-        {{#if imgPath}}
-            <img src="{{imgPath}}" style="margin-top: 44px; margin-bottom: 22px; padding: 0; width: 200px; height: 200px; border-radius: 50%;">
-        {{else}}
-            <div class="header-photo-circle"></div>
-        {{/if}}
-      </div>
-      ​
-      <div class="header-labels">
-        {{#if artisticName}}
-            <div class="h1-profile">{{artisticName}}</div>
-        {{else}}
-            <div class="h1-profile">{{username}}</div>
-        {{/if}}
-        {{#if soundUrl}}
-            <div class="h2-profile">{{soundUrl}}</div>
-        {{else}}
-        {{/if}}
-      </div>
-      ​
+  {{#with producerDetails}}
+  <div class="header">
+    ​
+    <div class="header-photo-area">
+      {{#if imgPath}}
+      <img src="{{imgPath}}"
+        style="margin-top: 44px; margin-bottom: 22px; padding: 0; width: 200px; height: 200px; border-radius: 50%;">
+      {{else}}
+      <div class="header-photo-circle"></div>
+      {{/if}}
     </div>
+    ​
+    <div class="header-labels">
+      {{#if artisticName}}
+      <div class="h1-profile">{{artisticName}}</div>
+      {{else}}
+      <div class="h1-profile">{{username}}</div>
+      {{/if}}
+      {{#if soundUrl}}
+      <div class="h2-profile">{{soundUrl}}</div>
+      {{else}}
+      {{/if}}
+    </div>
+    ​
+  </div>
   {{!-- END OF HEADER --}}
 
   {{!-- PROFILE CONTENT BEGINS --}}
@@ -67,51 +67,52 @@
             <li><a href="#" class="current">Samples</a></li>
           </ul>
         </div>
-          
-          {{!-- EDIT PROFILE MODAL BEGINS --}}
-          <button class="button" data-modal="editProducer">Edit</button></a>
-            <div id="editProducer" class="modal-bg">
-              <div class="modal-contents">
-                        
-                <form action="/producerProfile/edit"  method="POST" enctype="multipart/form-data">
-                  <div class="edit-your-profile">
-                    <div class="title">Edit your Profile</div>
-                    <div class="close">&times;</div>
-                  </div>
 
-                  <div class="edit-profile-contents">
-                    <div class="wrapper">
+        {{!-- EDIT PROFILE MODAL BEGINS --}}
+        <button class="button" data-modal="editProducer">Edit</button></a>
+        <div id="editProducer" class="modal-bg">
+          <div class="modal-contents">
 
-                      <div class="photo">
-                        {{#if imgPath}}
-                            <img src="{{imgPath}}" style="margin: 20px 0; padding: 0; max-width: 200px max-height: 200px; border-radius: 50%;">
-                        {{else}}
-                            <div class="edit-profile-photo"></div>
-                        {{/if}}
-                        <label for="avatar"></label>
-                        <input type="file" name="avatar" id="avatar" value="{{imgName}}" autocomplete="off">
-                      </div>
-
-                      <div class="user-info">
-                          <label for="artisticName">Display Name:</label>
-                          <input type="text" name="artisticName" id="artisticName" autocomplete="off">
-
-                          <label for="description">Description:</label>
-                          <input type="text" name="description" id="description" autocomplete="off">
-
-                          <label for="soundUrl">SoundCloud:</label>
-                          <input type="text" name="soundUrl" id="soundUrl" autocomplete="off">
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="save-profile"><button type="submit">Save</button></div>
-                  
-                </form> 
-
+            <form action="/producerProfile/edit" method="POST" enctype="multipart/form-data">
+              <div class="edit-your-profile">
+                <div class="title">Edit your Profile</div>
+                <div class="close">&times;</div>
               </div>
-            </div>
-          {{!-- END OF EDIT PROFILE MODAL --}}
+
+              <div class="edit-profile-contents">
+                <div class="wrapper">
+
+                  <div class="photo">
+                    {{#if imgPath}}
+                    <img src="{{imgPath}}"
+                      style="margin: 20px 0; padding: 0; max-width: 200px max-height: 200px; border-radius: 50%;">
+                    {{else}}
+                    <div class="edit-profile-photo"></div>
+                    {{/if}}
+                    <label for="avatar"></label>
+                    <input type="file" name="avatar" id="avatar" value="{{imgName}}" autocomplete="off">
+                  </div>
+
+                  <div class="user-info">
+                    <label for="artisticName">Display Name:</label>
+                    <input type="text" name="artisticName" id="artisticName" autocomplete="off">
+
+                    <label for="description">Description:</label>
+                    <input type="text" name="description" id="description" autocomplete="off">
+
+                    <label for="soundUrl">SoundCloud:</label>
+                    <input type="text" name="soundUrl" id="soundUrl" autocomplete="off">
+                  </div>
+                </div>
+              </div>
+
+              <div class="save-profile"><button type="submit">Save</button></div>
+
+            </form>
+
+          </div>
+        </div>
+        {{!-- END OF EDIT PROFILE MODAL --}}
 
 
       </div>
@@ -154,9 +155,11 @@
     </div>
     {{!-- END OF PROFILE CONTENT --}}
 
-  {{!-- </div> --}}
+    {{!--
+  </div> --}}
 
-  {{!-- <button style="margin: 0; position: absolute; top: 10px; right: 10px;" id="toggle-theme">Toggle Theme</button> --}}
+  {{!-- <button style="margin: 0; position: absolute; top: 10px; right: 10px;" id="toggle-theme">Toggle Theme</button>
+  --}}
 
 </div>
 {{/with}}
