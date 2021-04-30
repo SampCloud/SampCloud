@@ -153,7 +153,7 @@
                                     </div>
                                 </div>
 
-                                <div class="add-sample-save"><button type="submit" class="button clear-button">Upload</button></div>
+                                <div class="add-sample-save"><button type="submit" class="button">Upload</button></div>
                                 {{/with}}
                             </form>
                         </div>
@@ -173,7 +173,7 @@
                             <div class="track">
                                 <img src="{{imgPath}}" alt="">
                             
-                                <div class="info">
+                                {{!-- <div class="info">
 
                                     <div class="sample-description">
                                         <p>{{title}}</p>
@@ -186,12 +186,44 @@
                                             Your browser does not support the
                                             <code>audio</code> element.
                                         </figure>
+
                                         <a href="/editSample/{{_id}}"><button>Edit</button>
                                         <a href="/delete/{{_id}}"><button>Delete</button></a>
                                     </div>
                                 </div>
+                            </div> --}}
+                            {{!-- END OF TRACK --}}
+
+
+                            {{!-- TRACK BEGINS --}}
+                        
+    
+                                <div class="info">
+                                    <div>
+                                        <div style="display: flex; justify-content: flex-end;">
+                                            <div class="delete-sample">
+                                                <a href="/delete/{{_id}}"><button>Delete</button></a>
+                                                <a href="/editSample/{{_id}}"><button>Edit</button></a>
+                                            </div>
+                                        </div>
+                                        
+                                        <p style="margin: 0 0 5px 0">{{description}}</p>
+                                    </div>
+                                    <div class="title-audio">
+                                        <div><p>{{title}}</p></div>
+                                        <div class="audio-container" style="float: right;">
+                                            <figure>
+                                                <audio controls src="{{filePath}}">
+                                                Your browser does not support the
+                                                <code>audio</code> element.
+                                            </figure>
+                                        </div>
+                                    </div>     
+                                </div>
                             </div>
                             {{!-- END OF TRACK --}}
+
+
                     {{/each}}
 
                     </div>

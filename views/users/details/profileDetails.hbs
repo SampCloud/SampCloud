@@ -112,19 +112,19 @@
                                 <a href="/trackDetails/{{_id}}"><img src="{{imgPath}}" alt=""></a>
     
                                 <div class="info">
-
-                                    <div class="sample-description">
-                                        <p>{{title}}</p>
-                                        <p>{{description}}</p>
+                                    <p>{{description}}</p>
+                                    
+                                    <div class="title-audio">
+                                        <div><p>{{title}}</p></div>
+                                        <div class="audio-container" style="float: right;">
+                                            <figure>
+                                                <audio controls src="{{filePath}}">
+                                                Your browser does not support the
+                                                <code>audio</code> element.
+                                            </figure>
+                                        </div>
                                     </div>
-
-                                    <div class="audio-container">
-                                        <figure>
-                                            <audio controls src="{{filePath}}">
-                                            Your browser does not support the
-                                            <code>audio</code> element.
-                                        </figure>
-                                    </div>
+                                    
                                 </div>
                             </div>
                             {{!-- END OF TRACK --}}
