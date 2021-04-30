@@ -26,6 +26,7 @@
     --form-focus: #dddddd;
     --sample-nav-button: #E5E5E5;
     --go-mobile: #999999;
+    --like-color: #271d19;
 }
 
 [data-theme="dark"] {
@@ -38,24 +39,26 @@
     --p2-color: #FFFFFF;
     --nav-color: #100E11;
     --profile-nav-color: #989998;
+    --nav-input: #201E21;
     --divider-color: #161418;
-    --footer-links: #989998;
+    --footer-links: #665F5C;
     --form-placeholder: #ECECED;
     --modal-overlay: rgba(10, 10, 10, 0.8);
     --search-background: #201E21;
     --form-focus: #000000;
     --sample-nav-button: #222225;
-    --go-mobile: #FFFFFF;
+    --go-mobile: #CCCCCC;
+    --like-color: #757579;
 }
 
 html, body {
     margin: 0;
     padding: 0;
-}
-
-body {
     width: 100%;
     height: 100%;
+}
+
+body  {
     font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
     font-size: 14px;
     background-color: var(--primary-background);
@@ -101,7 +104,7 @@ h3 {
     background-color: #271d19;
     color: white;
     font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
-    font-weight: 200;
+    font-weight: normal;
     font-size: 24px;
 }
 
@@ -183,7 +186,7 @@ nav {
 .nav-content {
     margin: 0 auto;
     padding: 0;
-    width: 70%;
+    width: 75%;
     height: 44px;
     display: flex;
 }
@@ -229,7 +232,7 @@ nav {
     border: none;
     border-radius: 0 4px 4px 0;
     background-color: var(--nav-input);
-    color: #666666;
+    color: var(--like-color);
     cursor: pointer;
 }
 
@@ -240,22 +243,12 @@ nav {
 .nav-links {
     margin: 0;
     padding: 0;
-    width: 30%;
+    width: 53%;
     height: 100%;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
 }
-
-/* .nav-links-search {
-    margin: 0;
-    padding: 0 0 0 0px;
-    width: 30%;
-    height: 100%;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center; 
-} */
 
 .nav-links i {
     margin: 0 0 0 10px;
@@ -267,7 +260,33 @@ nav {
     color: #FFFFFF;
 }
 
+.nav-links-profile {
+    margin: 0;
+    padding: 0;
+    width: 30%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.nav-links-profile i {
+    margin: 0 0 0 10px;
+    padding: 0;
+    cursor: pointer;
+}
+
+.nav-links-profile i:hover {
+    color: #FFFFFF;
+}
+
 .nav-icons {
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.nav-icon {
     margin: 0;
     padding: 0 5px 0 0;
     font-size: 20px;
@@ -276,20 +295,32 @@ nav {
     color: #CCCCCC;
 }
 
-.nav-user a {
+.nav-user {
     margin: 0;
     padding: 0;
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
-    font-size: 12px;
-    color: var(--p1-color);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: #CCCCCC;
 }
 
-.toggle-theme-1 {
+.nav-user a {
+    margin: 0;
+    padding: 0 5px;
+    color: #CCCCCC;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.nav-user a:hover {
+    color: #FFFFFF;
+}
+
+.toggle-theme {
     font-size: 20px;
     border: none;
-    background-color: var(--nav-color);
+    background-color: var(--primary-background);
     color: var(--p1-color);
     cursor: pointer;
 }
@@ -436,9 +467,9 @@ input[type="radio"] {
 .main-block {
     margin: 0 auto;
     padding: 0;
-    width: 70%;
+    width: 75%;
     min-height: 100vh;
-    height: 100%;
+    position: relative;
     display: flex;
     flex-direction: column;
     background-color: var(--secondary-background);
@@ -506,6 +537,7 @@ a.current:link, a.current:visited {
     height: 100%;
     display: flex;
     flex-direction: column;
+    flex: 1;
     /* border: 2px solid blue; */
 }
 
@@ -515,6 +547,7 @@ a.current:link, a.current:visited {
     width: 100%;
     min-height: 100%;
     display: flex;
+    flex: 1;
     /* border: 2px solid orange;  */
 }
 
@@ -527,13 +560,14 @@ a.current:link, a.current:visited {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    flex: 1;
     /* border: 5px solid red; */
 }
 
 .profile-media {
     margin: 0;
     padding: 0;
-    width: 75%;
+    width: 70%;
     min-height: 100%;
     /* border: 3px solid purple; */
 }
@@ -549,6 +583,7 @@ a.current:link, a.current:visited {
     padding: 0;
     display: flex;
     flex-direction: column-reverse;
+    flex: 1;
 }
 
 .profile-samples .track {
@@ -561,10 +596,11 @@ a.current:link, a.current:visited {
 
 .profile-samples .track .info {
     margin: 0;
-    padding: 0;
+    padding: 0 20px;
     display: flex;
     width: 100%;
     flex-direction: column;
+    justify-content: space-between;
     /* border: 1px solid red; */
 }
 
@@ -573,9 +609,18 @@ a.current:link, a.current:visited {
     padding: 0 20px;
 }
 
+.title-audio {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--divider-color);
+}
+
 .audio-container {
     margin: 0;
-    padding: 0 20px;
+    padding: 0;
     display: flex;
     align-items: center;
     /* border: 1px solid blue; */
@@ -587,15 +632,14 @@ a.current:link, a.current:visited {
 }
 
 .my-samples {
-    margin: 0;
+    margin: 20px 0 0 0;
     padding: 15px 0;
     width: 98%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
-;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: normal;
     color: var(--profile-nav-color);
     border-bottom: 1px solid var(--divider-color);
@@ -608,13 +652,12 @@ a.current:link, a.current:visited {
     width: 30px;
     height: 30px;
     font-size: 1.5rem;
-    border: none;
+    border: 1px solid var(--divider-color);
     border-radius: 2px;
     cursor: pointer;
-    background-color: var(--primary-background);
+    background-color: var(--secondary-background);
     color: var(--h2-background);
 }
-
 
 /* Header ------------------------------------------------------- */
 
@@ -676,7 +719,7 @@ a.current:link, a.current:visited {
 .sample-photo-area {
     margin: 0;
     padding: 0;
-    width: 30%;
+    width: 35%;
     height: 100%;
     display: flex;
     justify-content: center;
@@ -685,8 +728,7 @@ a.current:link, a.current:visited {
 }
 
 .sample-photo-area img {
-    margin-top: 44px; 
-    margin-bottom: 0; 
+    margin: 44px 0 0 0;
     padding: 0; 
     width: 275px; 
     height: 275px; 
@@ -707,10 +749,11 @@ a.current:link, a.current:visited {
 /* Pseudo Footer ------------------------------------------------ */
 
 .footer {
-    margin: 20px 0;
-    padding: 0;
-    width: 25%;
+    margin-top: 20px 0 -20px 0;
+    padding: 0 10px;
+    width: 30%;
     min-height: 100%;
+    flex: 1;
     border-left: 1px solid var(--divider-color);
     /* background-color: pink;  */
     /* border: 5px solid red; */
@@ -719,7 +762,7 @@ a.current:link, a.current:visited {
 .profile-bio {
     margin: 0 auto;
     padding: 0;
-    width: 80%;
+    width: 90%;
     min-height: 20px;
     color: var(--p1-color);
     /* border: 2px solid red; */
@@ -729,7 +772,7 @@ a.current:link, a.current:visited {
 .go-mobile {
     margin: 0 auto;
     padding: 0 0 5px 0;
-    width: 80%;
+    width: 90%;
     color: var(--go-mobile);
     border-bottom: 1px solid var(--divider-color);
     /* background-color: purple; FOR TESTING */
@@ -738,7 +781,7 @@ a.current:link, a.current:visited {
 .footer-app-container {
     margin: 0 auto;
     padding: 0;
-    width: 80%;
+    width: 90%;
     display: flex;
     border-bottom: 1px solid var(--divider-color);
 }
@@ -752,7 +795,7 @@ a.current:link, a.current:visited {
 .footer-links {
     margin: 0 auto;
     padding: 10px 0px 10px 0px;
-    width: 80%;
+    width: 90%;
     font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
     font-size: 12px;
     color: var(--footer-links);
@@ -766,9 +809,8 @@ a.current:link, a.current:visited {
 .footer-language {
     margin: 0 auto;
     padding: 5px 0px 5px 0px;
-    width: 80%;
+    width: 90%;
     font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
-;
     font-size: 12px;
     color: var(--p1-color);
 }
@@ -778,9 +820,8 @@ a.current:link, a.current:visited {
 .main-search {
     margin: 0 auto;
     padding-top: 45px;
-    width: 70%;
-    min-height: 100vh;
-    height: 100%;
+    width: 75%;
+    min-height: 100%;
     display: flex;
     background-color: var(--secondary-background);
     /* border: 2px solid orange; */
@@ -818,19 +859,21 @@ a.current:link, a.current:visited {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
+    align-content: stretch;
     /* border: 1px solid red; */
 }
 
 .search-content .samples img {
-    margin: 15px 10px;
+    margin: 15px 0 15px 10px;
     padding: 10px;
     width: 350px;
+    border: none;
 }
 
 .search-footer {
     margin: 0;
-    padding: 40px 0;
-    width: 47%;
+    padding: 40px 10px;
+    width: 40%;
     min-height: 100%;
     border-left: 1px solid var(--divider-color);
     /* background-color: pink;  FOR TESTING */
@@ -839,8 +882,9 @@ a.current:link, a.current:visited {
 
 /* Sample Page ------------------------------------------------- */
 
-.sample-nav {
-    margin: 0 auto;
+.sample-nav
+ {
+    margin: 10px 0 20px 0;
     padding: 0;
     width: 100%;
     height: 50px;
@@ -849,24 +893,27 @@ a.current:link, a.current:visited {
     border-bottom: 1px solid var(--divider-color);
 }
 
-.sample-nav button {
+.clear-button {
     margin: 0 10px 0 0;
-    padding: 5px 10px;
-    height: 60%;
-    font-weight: normal;
-    border: none;
+    padding: 0 10px;
+    height: 55%;
+    font-weight: 100;
+    border: 1px solid var(--divider-color);
     border-radius: 2px;
-    background-color: var(--sample-nav-button);
-    color: var(--h1-color);
+    background-color: var(--secondary-background);
+    color: var(--like-color);
+    cursor: pointer;
 }
 
 .sample-info {
     margin: 0;
     padding: 0 3%;
     width: 100%;
-    min-height: 100%;
+    height: 100%;
+    position: relative;
     display: flex;
     flex-direction: column;
+    flex: 1;
     /* border: 1px solid green; */
 }
 
@@ -874,13 +921,16 @@ a.current:link, a.current:visited {
     margin: 0;
     padding: 0;
     width: 100%;
+    height: 100%;
+    position: relative;
     display: flex;
+    flex: 1;
 }
 
 .sample-content {
     margin: 0;
     padding: 0 20px 0 0;
-    width: 75%;
+    width: 70%;
     display: flex;
     flex-direction: column;
     /* border: 1px solid yellow; */
@@ -926,6 +976,7 @@ a.current:link, a.current:visited {
     margin: 0;
     padding: 20px;
     width: 70%;
+    color: var(--p1-color);
     /* border: 1px solid red; */
 }
 
@@ -1023,7 +1074,7 @@ a.current:link, a.current:visited {
 
 .modal-contents {
     width: 60%;
-    height: 70%;
+    height: 60%;
     min-height: 500px;
     position: fixed;
     display: flex;
@@ -1057,7 +1108,7 @@ a.current:link, a.current:visited {
 
 .close {
 	font-size: 1.5rem;
-	color: var(--h1-color);
+	color: var(--like-color);
 	cursor: pointer;
 }
 
@@ -1101,7 +1152,7 @@ a.current:link, a.current:visited {
 
 .add-sample-contents .audio {
     margin: 0;
-    padding: 10px;
+    padding: 20px 10px;
     width: 80%;
     display: flex;
     flex-direction: column;
@@ -1109,8 +1160,8 @@ a.current:link, a.current:visited {
 }
 
 .add-sample-contents .info {
-    margin: 20px;
-    padding: 20px;
+    margin: 20px 0 40px 0;
+    padding: 50px;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -1131,13 +1182,44 @@ a.current:link, a.current:visited {
     padding: 10px 0 20px 0;
 }
 
-.add-sample .button {
-    margin: 0;
+.add-sample-save {
+    margin: 20px 0;
     padding: 0;
-    display: flex; 
-    justify-content: center;
-    align-items: center;
+    width: 100%;
+    height: 100%;
 }
+
+.add-sample-save button {
+    margin: 0;
+    padding: 5px 10px;
+    float: right;
+    font-weight: 100;
+    border: 1px solid var(--divider-color);
+    border-radius: 2px;
+    background-color: var(--secondary-background);
+    color: var(--nav-color);
+    cursor: pointer;
+}
+
+.delete-sample {
+    margin: 20px 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.delete-sample button {
+    margin: 0 0 0 5px;
+    padding: 5px 10px;
+    float: right;
+    font-weight: 100;
+    border: 1px solid var(--divider-color);
+    border-radius: 2px;
+    background-color: var(--secondary-background);
+    color: var(--nav-color);
+    cursor: pointer;
+}
+
 
 /* Classes for editing user profile */
 
@@ -1146,6 +1228,7 @@ a.current:link, a.current:visited {
     padding: 5px 0;
     display: flex;
     justify-content: space-between;
+    color: var(--like-color);
     border-bottom: 1px solid var(--divider-color);
 }
 
@@ -1207,3 +1290,35 @@ a.current:link, a.current:visited {
 }
 
 
+input[type="file"] {
+    color: transparent;
+}
+
+.edit-profile-contents input[type="text"] {
+    background-color: var(--primary-background);
+    color: var(--p1-color);
+    border: none;
+    border-radius: 2px;
+}
+
+.edit-profile-contents input:focus {
+    outline: none;
+    box-shadow: 0 0 1px 1px var(--form-focus);
+}
+
+.add-sample-contents input[type="text"] {
+    background-color: var(--primary-background);
+    color: var(--p1-color);
+    border: none;
+    border-radius: 2px;
+}
+
+.add-sample-contents input:focus {
+    outline: none;
+    box-shadow: 0 0 1px 1px var(--form-focus);
+}
+
+.message {
+    margin: 0;
+    padding: 10px 0;
+}
