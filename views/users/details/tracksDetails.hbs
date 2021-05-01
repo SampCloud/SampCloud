@@ -44,17 +44,17 @@
 </nav>
 {{!-- END OF NAV --}}
 
-<div class="main-block">
+<div class="secondary-block">
 
   {{!-- HEADER BEGINS --}}
   {{#with trackDetails}}
   <div class="sample-header">
     ​
-    <div class="sample-photo-area">
+    <div class="cover">
       {{#if imgPath}}
       <img src="{{imgPath}}">
       {{else}}
-      <div class="header-photo-circle"></div>
+      <div class="header-photo"></div>
       {{/if}}
     </div>
     ​
@@ -63,20 +63,20 @@
   {{!-- END OF HEADER --}}
 
   {{!-- MAIN TRACK DETAILS BLOCK BEGINS --}}
-  <div class="sample-info">
+  <div class="profile">
     <div class="sample-nav">
       <button class="clear-button">&nbsp;<i class="fas fa-heart"></i>&nbsp;&nbsp;Like</button>
       <button class="clear-button">&nbsp;<i class="far fa-bookmark"></i>&nbsp;&nbsp;Save</button>
       <button class="clear-button">&nbsp;<i class="fas fa-shopping-cart"></i>&nbsp;&nbsp;Purchase</button>
     </div>
 
-    <div class="container">
+    <div class="profile-content">
 
       {{!-- SAMPLE CONTENT AREA BEGINS --}}
-      <div class="sample-content">
+      <div class="profile-media" style="padding-right: 20px;">
         {{#with trackDetails}}
         {{!-- BEGIN SAMPLE OVERVIEW --}}
-        <div class="sample-overview">
+        <div class="sample-details">
           <div class="user">
 
             {{#if owner.imgPath}}
@@ -84,8 +84,8 @@
                 style="margin: 20px 0; padding: 0; width: 150px; height: 150px; border-radius: 50%;"></a>
             <div class="sample-username"><a href="/profileDetails/{{owner._id}}">{{owner.artisticName}}</a></div>
             {{else}}
-            <div class="sample-user-circle"></div>
-            <div class="sample-username"><a href="/profileDetails/{{owner._id}}">{{owner.artisticName}}</a></div>
+            <div class="photo"></div>
+            <div><a href="/profileDetails/{{owner._id}}">{{owner.artisticName}}</a></div>
             {{/if}}
           </div>
 
@@ -100,7 +100,7 @@
         {{!-- END OF SAMPLE OVERVIEW --}}
 
         {{!-- BEGIN SAMPLE AREA --}}
-        <div class="sample-area">
+        <div class="sample-track">
           <div class="container">
             <h3>{{title}}</h3>
             <figure>
@@ -140,4 +140,4 @@
   </div>
   {{!-- END OF MAIN TRACK DETAILS BLOCK --}}
 </div>
-{{!-- END OF MAIN BLOCK --}}
+{{!-- END OF SECONDARY BLOCK --}}

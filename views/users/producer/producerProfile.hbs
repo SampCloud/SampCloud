@@ -10,7 +10,7 @@
       </form>
     </div>
 
-    <div class="nav-links-profile">
+    <div class="reduced-nav-links">
       <div class="nav-icons">
         <button id="toggle-theme" class="nav-icon" alt="Toggle Theme"><i class="fas fa-adjust"></i></button>
         <a href="/logout" class="nav-icon" alt="Log Out"><i class="fas fa-sign-out-alt"></i></a>
@@ -20,21 +20,21 @@
 </nav>
 {{!-- END OF NAV --}}
 
-<div class="main-block">
+<div class="secondary-block">
 
   {{!-- HEADER BEGINS --}}
    {{#with producerDetails}}
     <div class="header">
       ​
-      <div class="header-photo-area">
+      <div class="photo-area">
         {{#if imgPath}}
             <img src="{{imgPath}}" style="margin-top: 44px; margin-bottom: 22px; padding: 0; width: 200px; height: 200px; border-radius: 50%;">
         {{else}}
-            <div class="header-photo-circle"></div>
+            <div class="header-photo"></div>
         {{/if}}
       </div>
       ​
-      <div class="header-labels">
+      <div class="header-info">
         {{#if artisticName}}
             <div class="h1-profile">{{artisticName}}</div>
         {{else}}
@@ -51,14 +51,14 @@
   {{!-- END OF HEADER --}}
 
   {{!-- PROFILE CONTENT BEGINS --}}
-  {{!-- <div class="main-profile-block"> --}}
-    <div class="profile-content">
+  
+    <div class="profile">
 
       {{!-- PROFILE NAV BEGINS --}}
-      <div class="profile-nav">
-        <div class="profile-nav-links">
+      <div class="secondary-nav">
+        <div class="links">
           <ul>
-            <li class="link-container"><a href="#">All</a></li>
+            <li><a href="#">All</a></li>
             <li><a href="#">Popular tracks</a></li>
             <li><a href="#">Tracks</a></li>
             <li><a href="#">Album</a></li>
@@ -72,28 +72,28 @@
           {{#with producerDetails}}
           <button class="button clear-button" data-modal="editProducer">Edit</button></a>
             <div id="editProducer" class="modal-bg">
-              <div class="modal-contents">
+              <div class="modal-block">
                         
                 <form action="/producerProfile/edit"  method="POST" enctype="multipart/form-data">
-                  <div class="edit-your-profile">
+                  <div class="modal-heading">
                     <div class="title">Edit your Profile</div>
                     <div class="close">&times;</div>
                   </div>
 
-                  <div class="edit-profile-contents">
-                    <div class="wrapper">
+                  <div class="modal-content">
+                    
 
-                      <div class="photo">
+                      <div class="media">
                         {{#if imgPath}}
                             <img src="{{imgPath}}" style="margin: 20px 0; padding: 0; max-width: 200px max-height: 200px; border-radius: 50%;">
                         {{else}}
-                            <div class="edit-profile-photo"></div>
+                            <div class="photo"></div>
                         {{/if}}
                         <label for="avatar"></label>
                         <input type="file" name="avatar" id="avatar" value="{{imgName}}" autocomplete="off">
                       </div>
 
-                      <div class="user-info">
+                      <div class="info">
                           <label for="artisticName">Display Name:</label>
                           <input type="text" name="artisticName" id="artisticName" autocomplete="off">
 
@@ -103,10 +103,10 @@
                           <label for="soundUrl">Location:</label>
                           <input type="text" name="soundUrl" id="soundUrl" autocomplete="off">
                       </div>
-                    </div>
+                  
                   </div>
 
-                  <div class="add-sample-save"><button type="submit">Save</button></div>
+                  <div class="modal-save"><button type="submit">Save</button></div>
                   
                 </form> 
 
@@ -119,7 +119,7 @@
       {{!-- END OF PROFILE NAV --}}
 
       {{!-- PROFILE BODY BEGINS --}}
-      <div class="profile-body">
+      <div class="profile-content">
 
         {{!-- PROFILE MEDIA BEGINS --}}
         <div class="profile-media">
@@ -134,7 +134,7 @@
         <div class="footer">
           {{#with producerDetails}}
             {{#if description}}
-                <div class="profile-bio">
+                <div class="bio">
                 <p>{{description}}</p>
                 </div>
             {{else}}
@@ -163,7 +163,5 @@
 
     </div>
     {{!-- END OF PROFILE CONTENT --}}
-
-  {{!-- </div> --}}
 
 </div>
