@@ -2,11 +2,11 @@
 <body class="orange-border">
 
     {{!-- LOGIN PAGE CONTAINER BEGINS --}}
-    <div class="login-page-container">
+    <div class="login">
 
         {{!-- LOGIN BEGINS // We reuse the login CSS for this --}}
-        <div class="login">
-            <div class="login-content">
+        <div class="container">
+            <div class="content">
                 {{!-- FORM BEGINS --}}
                 <form action="/signup" method="POST">
                     <label for="username"></label>
@@ -17,23 +17,23 @@
                     <input type="text" id="email" name="email" placeholder="email" autocomplete="off">
                     
                     {{!-- RADIO BUTTONS BEGIN --}}
-                    <div class="login-radio-container">
-                        <span class="login-radio">
+                    <div class="login-radio">
+                        <span class="button">
                             <input type="radio" id="singer" value="singer" name="role">
                             <label for="singer" class="radio-label">Sample artist</label>
                         </span>
 
-                        <span class="login-radio">
+                        <span class="button">
                             <input type="radio" type="radio" id="producer" value="producer" name="role">
                             <label for="producer" class="radio-label">Producer</label>
                         </span>
                     </div>
                     {{!-- END RADIO BUTTONS --}}
 
-                    <button class="primary-button-wide">Create account</button><br>
+                    <button class="primary-button">Create account</button><br>
                     
                     {{#if message}}
-                        <div class="invalid">{{message}}</div>
+                        <div class="invalid-input">{{message}}</div>
                     {{/if}}
                 </form>
                 {{!-- END OF FORM --}}

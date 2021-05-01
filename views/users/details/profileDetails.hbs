@@ -44,21 +44,21 @@
 </nav>
 {{!-- END OF NAV --}}
 
-<div class="main-block">
+<div class="secondary-block">
   {{!-- HEADER BEGINS --}}
   {{#with profileDetails}}
   <div class="header">
     ​
-    <div class="header-photo-area">
+    <div class="photo-area">
       {{#if imgPath}}
       <img src="{{imgPath}}"
         style="margin-top: 44px; margin-bottom: 22px; padding: 0; width: 200px; height: 200px; border-radius: 50%;">
       {{else}}
-      <div class="header-photo-circle"></div>
+      <div class="header-photo"></div>
       {{/if}}
     </div>
     ​
-    <div class="header-labels">
+    <div class="header-info">
       {{#if artisticName}}
       <div class="h1-profile">{{artisticName}}</div>
       {{else}}
@@ -76,11 +76,11 @@
   {{!-- END OF HEADER --}}
 
   {{!-- PROFILE CONTENT BEGINS --}}
-  <div class="profile-content">
+  <div class="profile">
 
     {{!-- PROFILE NAV BEGINS --}}
-    <div class="profile-nav">
-      <div class="profile-nav-links">
+    <div class="secondary-nav">
+      <div class="links">
         <ul>
           <li><a href="#">All</a></li>
           <li><a href="#">Popular tracks</a></li>
@@ -95,7 +95,7 @@
     {{!-- END OF PROFILE NAV --}}
 
     {{!-- PROFILE BODY BEGINS --}}
-    <div class="profile-body">
+    <div class="profile-content">
 
       {{!-- PROFILE MEDIA BEGINS --}}
       <div class="profile-media">
@@ -107,7 +107,7 @@
         </div>
 
         {{!-- LIST OF CURRENT UPLOADS --}}
-        <div class="profile-samples">
+        <div class="sample">
           {{#each trackDetails}}
 
           {{!-- TRACK BEGINS --}}
@@ -117,11 +117,11 @@
             <div class="info">
               <p>{{description}}</p>
 
-              <div class="title-audio">
+              <div class="audio-content">
                 <div>
                   <p>{{title}}</p>
                 </div>
-                <div class="audio-container" style="float: right;">
+                <div class="audio" style="float: right;">
                   <figure>
                     <audio controls src="{{filePath}}">
                       Your browser does not support the
@@ -149,7 +149,7 @@
       {{!-- SIDE FOOTER BEGINS --}}
       <div class="footer">
         {{#with profileDetails}}
-        <div class="profile-bio">
+        <div class="bio">
 
           {{#if description}}
           <p>{{description}}</p>

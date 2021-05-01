@@ -10,7 +10,7 @@
       </form>
     </div>
 
-    <div class="nav-links-profile">
+    <div class="reduced-nav-links">
       <div class="nav-icons">
         <button id="toggle-theme" class="nav-icon" alt="Toggle Theme"><i class="fas fa-adjust"></i></button>
         <a href="/logout" class="nav-icon" alt="Log Out"><i class="fas fa-sign-out-alt"></i></a>
@@ -20,31 +20,30 @@
 </nav>
 {{!-- END OF NAV --}}
 
-{{!-- MAIN BLOCK BEGINS --}}
-<div class="main-block">
-  <div class="search-spacer"></div>
+{{!-- SECONDARY BLOCK BEGINS --}}
+<div class="secondary-block">
 
-    <div class="edit-sample-title">Edit Sample</div>
+    <div class="edit-title">Edit Sample</div>
     
     {{#with trackDetails}}
     <form action="/editSample/{{_id}}" method="POST" enctype="multipart/form-data">
 
       <div class="edit-sample">
 
-        <div class="edit-sample-cover">
+        <div class="cover">
           <img src="{{imgPath}}">
           <label for="cover"></label>
           <input type="file" name="cover" id="cover">
         </div>
 
-        <div class="edit-sample-info">
+        <div class="info">
           <label for="artisticName">Title:</label>
           <input type="text" name="title" id="title" value="{{title}}">
 
           <label for="description">Description:</label>
-          <input type="text" name="description" id="description" value="{{description}}" style="height: 100px;">
+          <input type="text" name="description" id="description" value="{{description}}">
 
-          <div class="add-sample-save"><button type="submit">Save</button></div>
+          <div class="modal-save"><button type="submit">Save</button></div>
         </div>
       </div>
 
@@ -52,5 +51,4 @@
     {{/with}}
 
    <button style="margin: 0; position: absolute; top: 10px; right: 10px;" id="toggle-theme">Toggle Theme</button>
-</div>
-{{!-- END OF MAIN BLOCK --}}
+{{!-- END OF SECONDARY BLOCK --}}
