@@ -1,54 +1,71 @@
 {{!-- NAV BEGINS --}}
 <nav>
-  <div class="nav-content">
-    <div class="nav-logo"><a href="/search"><img src="/images/orange-logo.png" style="height: 100%"></a></div>
 
-    <div class="nav-search">
-      <form action="/search" method="POST">
-          <input type="text" id="search" name="q" autocomplete="off">
-          <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-      </form>
-    </div>
+	{{!-- NAV CONTAINER BEGINS --}}
+	<div class="nav-content">
 
-    <div class="reduced-nav-links">
-      <div class="nav-icons">
-        <button id="toggle-theme" class="nav-icon" alt="Toggle Theme"><i class="fas fa-adjust"></i></button>
-        <a href="/logout" class="nav-icon" alt="Log Out"><i class="fas fa-sign-out-alt"></i></a>
-      </div>
-    </div>
-  </div>
+		{{!-- NAV LOGO BEGINS --}}
+		<div class="nav-logo"><a href="/search"><img src="/images/orange-logo.png" style="height: 100%"></a></div>
+		{{!-- END OF NAV LOGO --}}
+
+		{{!-- NAV SEARCH BAR BEGINS --}}
+		<div class="nav-search">
+			<form action="/search" method="POST">
+				<input type="text" id="search" name="q" autocomplete="off">
+				<button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+			</form>
+		</div>
+		{{!-- END OF NAV SEARCH BAR --}}
+
+		{{!-- NAV LINKS BEGIN // Profile photo/display name are removed --}}
+		<div class="reduced-nav-links">
+			<div class="nav-icons">
+				<button id="toggle-theme" class="nav-icon" alt="Toggle Theme"><i class="fas fa-adjust"></i></button>
+				<a href="/logout" class="nav-icon" alt="Log Out"><i class="fas fa-sign-out-alt"></i></a>
+			</div>
+		</div>
+		{{!-- END OF NAV LINKS --}}
+
+	</div>
+	{{!-- END OF NAV CONTAINER --}}
+
 </nav>
 {{!-- END OF NAV --}}
 
-{{!-- SECONDARY BLOCK BEGINS --}}
+{{!-- MAIN BLOCK BEGINS // Labeled secondary block for profile/sample details pages --}}
 <div class="secondary-block">
 
-    <div class="edit-title">Edit Sample</div>
-    
-    {{#with trackDetails}}
-    <form action="/editSample/{{_id}}" method="POST" enctype="multipart/form-data">
+	<div class="edit-title">Edit Sample</div>
 
-      <div class="edit-sample">
+	{{#with trackDetails}}
 
-        <div class="cover">
-          <img src="{{imgPath}}">
-          <label for="cover"></label>
-          <input type="file" name="cover" id="cover">
-        </div>
+	{{!-- EDIT SAMPLE FORM BEGINS --}}
+	<form action="/editSample/{{_id}}" method="POST" enctype="multipart/form-data">
 
-        <div class="info">
-          <label for="artisticName">Title:</label>
-          <input type="text" name="title" id="title" value="{{title}}">
+		<div class="edit-sample">
 
-          <label for="description">Description:</label>
-          <input type="text" name="description" id="description" value="{{description}}">
+			<div class="cover">
+				<img src="{{imgPath}}">
+				<label for="cover"></label>
+				<input type="file" name="cover" id="cover">
+			</div>
 
-          <div class="modal-save"><button type="submit">Save</button></div>
-        </div>
-      </div>
+			<div class="info">
+				<label for="artisticName">Title:</label>
+				<input type="text" name="title" id="title" value="{{title}}">
 
-    </form>
-    {{/with}}
+				<label for="description">Description:</label>
+				<input type="text" name="description" id="description" value="{{description}}">
 
-   <button style="margin: 0; position: absolute; top: 10px; right: 10px;" id="toggle-theme">Toggle Theme</button>
-{{!-- END OF SECONDARY BLOCK --}}
+				<div class="modal-save"><button type="submit">Save</button></div>
+			</div>
+			
+		</div>
+
+	</form>
+	{{!-- END OF EDIT SAMPLE FORM --}}
+
+	{{/with}}
+
+</div>
+{{!-- END OF MAIN BLOCK --}}

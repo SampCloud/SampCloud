@@ -105,8 +105,8 @@ h3 {
 }
 
 .h1-profile {
-    margin: 0px;
-    padding: 10px;
+    margin: 5px 0;
+    padding: 7px 10px;
     position: absolute;
     top: 77px;
     background-color: #271d19;
@@ -117,7 +117,7 @@ h3 {
 }
 
 .h2-profile {
-    margin: 0px;
+    margin: 0;
     padding: 5px;
     position: absolute;
     top: 130px;
@@ -134,6 +134,15 @@ p {
     color: var(--p1-color);
     font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
     font-size: 12px;
+}
+
+p a, a:active, a:visited {
+    color: var(--p1-color);
+    text-decoration: none;
+}
+
+p a:hover {
+    color: var(--primary-button);
 }
 
 .invalid-input {
