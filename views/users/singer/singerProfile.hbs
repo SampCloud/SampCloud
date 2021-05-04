@@ -1,279 +1,341 @@
 {{!-- NAV BEGINS --}}
 <nav>
-  <div class="nav-content">
-    <div class="nav-logo"><a href="/search"><img src="/images/orange-logo.png" style="height: 100%"></a></div>
 
-    <div class="nav-search">
-      <form action="/search" method="POST">
-          <input type="text" id="search" name="q" autocomplete="off">
-          <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-      </form>
-    </div>
+    {{!-- NAV CONTAINER BEGINS --}}
+    <div class="nav-content">
 
-    <div class="reduced-nav-links">
-      <div class="nav-icons">
-        <button id="toggle-theme" class="nav-icon" alt="Toggle Theme"><i class="fas fa-adjust"></i></button>
-        <a href="/logout" class="nav-icon" alt="Log Out"><i class="fas fa-sign-out-alt"></i></a>
-      </div>
+        {{!-- NAV LOGO BEGINS --}}
+        <div class="nav-logo"><a href="/search"><img src="/images/orange-logo.png" style="height: 100%"></a></div>
+        {{!-- END OF NAV LOGO --}}
+
+        {{!-- NAV SEARCH BAR BEGINS --}}
+        <div class="nav-search">
+            <form action="/search" method="POST">
+                <input type="text" id="search" name="q" autocomplete="off">
+                <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+            </form>
+        </div>
+        {{!-- END OF NAV SEARCH BAR --}}
+
+        {{!-- NAV LINKS BEGIN // Profile photo/display name are removed --}}
+        <div class="reduced-nav-links">
+            <div class="nav-icons">
+                <button id="toggle-theme" class="nav-icon" alt="Toggle Theme"><i class="fas fa-adjust"></i></button>
+                <a href="/logout" class="nav-icon" alt="Log Out"><i class="fas fa-sign-out-alt"></i></a>
+            </div>
+        </div>
+        {{!-- END OF NAV LINKS --}}
+
     </div>
-  </div>
+    {{!-- END OF NAV CONTAINER --}}
+
 </nav>
 {{!-- END OF NAV --}}
 
+{{!-- MAIN BLOCK BEGINS // Labeled secondary block for profile/sample details pages --}}
 <div class="secondary-block">
+
     {{!-- HEADER BEGINS --}}
     {{#with singerDetails}}
     <div class="header">
-      ​
-      <div class="photo-area">
-        {{#if imgPath}}
-            <img src="{{imgPath}}" style="margin-top: 44px; margin-bottom: 22px; padding: 0; width: 200px; height: 200px; border-radius: 50%;">
-        {{else}}
-            <div class="header-photo"></div>
-        {{/if}}
-      </div>
-      ​
-      <div class="header-info">
-        {{#if artisticName}}
-            <div class="h1-profile">{{artisticName}}</div>
-        {{else}}
-            <div class="h1-profile">{{username}}</div>
-        {{/if}}
-        {{#if soundUrl}}
-            <div class="h2-profile">{{soundUrl}}</div>
-        {{else}}
-        {{/if}}
-      </div>
-      ​
+        ​
+        {{!-- HEADER PROFILE PHOTO BEGINS --}}
+        <div class="photo-area">
+
+            {{!-- IF PHOTO HAS BEEN CHOSEN, SHOW, ELSE SHOW DEFAULT GRADIENT --}}
+            {{#if imgPath}}
+                <img src="{{imgPath}}" style="margin-top: 44px; margin-bottom: 22px; padding: 0; width: 200px; height: 200px; border-radius: 50%;">
+            {{else}}
+                <div class="header-photo"></div>
+            {{/if}}
+
+        </div>
+        {{!-- END OF HEADER PROFILE PHOTO --}}
+        ​
+        {{!-- HEADER USER INFO BEGINS --}}
+        <div class="header-info">
+
+            {{!-- IF DISPLAY NAME HAS BEEN CHOSE, SHOW, ELSE SHOW USERNAME --}}
+            {{#if artisticName}}
+                <div class="h1-profile">{{artisticName}}</div>
+            {{else}}
+                <div class="h1-profile">{{username}}</div>
+            {{/if}}
+
+            {{!-- IF LOCATION HAS BEEN ADDED SHOW, ELSE LEAVE AREA BLANK --}}
+            {{#if soundUrl}}
+                <div class="h2-profile">{{soundUrl}}</div>
+            {{else}}
+            {{/if}}
+
+        </div>
+        {{!-- END OF HEADER USER INFO --}}
+        ​
     </div>
     {{/with}}
     {{!-- END OF HEADER --}}
 
-        {{!-- PROFILE CONTENT BEGINS --}}
-        <div class="profile">
+    {{!-- PROFILE BLOCK BEGINS --}}
+    <div class="profile">
 
-            {{!-- PROFILE NAV BEGINS --}}
-            <div class="secondary-nav">
-                <div class="links">
-                    <ul>
-                        <li><a href="#">All</a></li>
-                        <li><a href="#">Popular tracks</a></li>
-                        <li><a href="#">Tracks</a></li>
-                        <li><a href="#">Album</a></li>
-                        <li><a href="#">Playlists</a></li>
-                        <li><a href="#">Reposts</a></li>
-                        <li><a href="#" class="current">Samples</a></li>
-                    </ul>
+        {{!-- PROFILE NAV BEGINS --}}
+        <div class="secondary-nav">
+            <div class="links">
+                <ul>
+                    <li><a href="#">All</a></li>
+                    <li><a href="#">Popular tracks</a></li>
+                    <li><a href="#">Tracks</a></li>
+                    <li><a href="#">Album</a></li>
+                    <li><a href="#">Playlists</a></li>
+                    <li><a href="#">Reposts</a></li>
+                    <li><a href="#" class="current">Samples</a></li>
+                </ul>
+            </div>
+
+            {{!-- EDIT PROFILE MODAL BEGINS --}}
+            {{#with singerDetails}}
+            <button class="button clear-button" data-modal="editProfile">Edit</button>
+            
+            <div id="editProfile" class="modal-bg">
+                <div class="modal-block">
+
+                    {{!-- EDIT PROFILE FORM BEGINS --}}
+                    <form action="/singerProfile/edit" method="POST" enctype="multipart/form-data">
+                        
+                        <div class="modal-heading">
+                            <div class="title">Edit your Profile</div>
+                            <div class="close">&times;</div>
+                        </div>
+
+                        <div class="modal-content">
+                            <div class="media">
+
+                                {{!-- IF A PROFILE PHOTO HAS BEEN UPLOADED SHOW, ELSE SHOW DEFAULT PHOTO GRADIENT --}}
+                                {{#if imgPath}}
+                                    <img src="{{imgPath}}" style="margin: 20px 0; padding: 0; width: 200px; height: 200px; border-radius: 50%;">
+                                {{else}}
+                                    <div class="photo"></div>
+                                {{/if}}
+
+                                <label for="avatar"></label>
+                                <input type="file" name="avatar" id="avatar" value="{{imgName}}">
+                            </div>
+
+                            <div class="info">
+                                <label for="artisticName">Display Name:</label>
+                                <input type="text" name="artisticName" id="artisticName" value="{{artisticName}}" autocomplete="off">
+
+                                <label for="soundUrl">Location:</label>
+                                <input type="text" name="soundUrl" id="soundUrl" value="{{soundUrl}}" autocomplete="off">
+
+                                <label for="description">Description:</label>
+                                <input type="text" name="description" id="description" value="{{description}}" autocomplete="off">
+                            </div>
+                            
+                        </div>
+
+                        <div class="modal-save"><button type="submit" style="padding: 5px 10px;">Save</button></div>
+
+                    </form>
+                    {{!-- END OF EDIT PROFILE FORM --}}
+
                 </div>
 
-                 {{!-- EDIT PROFILE MODAL BEGINS --}}
-                {{#with singerDetails}}
-                <button class="button clear-button" data-modal="editProfile">Edit</button>
-                <div id="editProfile" class="modal-bg">
+            </div>
+            {{/with}}
+            {{!-- END OF EDIT PROFILE MODAL --}}
+
+        </div>
+        {{!-- END OF PROFILE NAV --}}
+
+        {{!-- PROFILE CONTENT BEGINS --}}
+        <div class="profile-content">
+
+            {{!-- PROFILE MEDIA BEGINS --}}
+            <div class="profile-media">
+
+                {{!-- IF SAMPLES HAVE BEEN UPLOADED, OPTIONALLY ADD MORE AND DISPLAY PAST UPLOADS --}}
+                {{#if tracks}}
+
+                {{!-- ADD SAMPLE MODAL --}}
+                <div id="uploadSample" class="modal-bg">
+
                     <div class="modal-block">
-                        
-                        <form action="/singerProfile/edit"  method="POST" enctype="multipart/form-data">
+
+                        {{!-- ADD SAMPLE FORM BEGINS --}}
+                        <form action="/singerProfile/addTrack" method="POST" enctype="multipart/form-data">
+
+                            {{#with tracks}}
                             <div class="modal-heading">
-                                <div class="title">Edit your Profile</div>
+                                <div class="title" class="button" data-modal="uploadSample">Upload a Sample</div>
                                 <div class="close">&times;</div>
                             </div>
 
                             <div class="modal-content">
                                 
                                 <div class="media">
-                                    {{#if imgPath}}
-                                        <img src="{{imgPath}}" style="margin: 20px 0; padding: 0; width: 200px; height: 200px; border-radius: 50%;">
-                                    {{else}}
-                                        <div class="photo"></div>
-                                    {{/if}}
-                                    <label for="avatar"></label>
-                                    <input type="file" name="avatar" id="avatar" value="{{imgName}}">
+                                    <img src="">
+                                    <label for="audio"></label>
+                                    <input type="file" name="audio" id="audio">
                                 </div>
 
                                 <div class="info">
-                                    <label for="artisticName">Display Name:</label>
-                                    <input type="text" name="artisticName" id="artisticName" value="{{artisticName}}" autocomplete="off">
-
-                                    <label for="soundUrl">Location:</label>
-                                    <input type="text" name="soundUrl" id="soundUrl" value="{{soundUrl}}" autocomplete="off">
+                                    <label for="title">Title:</label>
+                                    <input type="text" name="title" autocomplete="off">
 
                                     <label for="description">Description:</label>
-                                    <input type="text" name="description" id="description" value="{{description}}" autocomplete="off">
-
+                                    <input type="text" name="description" autocomplete="off">
                                 </div>
-                                
+
                             </div>
 
-                            <div class="modal-save"><button type="submit" style="padding: 5px 10px;">Save</button></div>
-                        </form> 
+                            <div class="modal-save"><button type="submit">Upload</button></div>
+                            {{/with}}
+
+                        </form>
+                        {{!-- END OF ADD SAMPLE FORM --}}
 
                     </div>
+
                 </div>
-                {{/with}}
-                {{!-- END OF EDIT PROFILE MODAL --}}
+                {{!-- END OF ADD SAMPLE MODAL --}}
 
-            </div>
-            {{!-- END OF PROFILE NAV --}}
 
-            {{!-- PROFILE BODY BEGINS --}}
-            <div class="profile-content">
+                {{!-- BEGIN SHOW PAST SAMPLES AREA --}}
+                <div class="my-samples">
+                    <span>My Samples</span>
+                    <button class="button upload-button" data-modal="uploadSample">&#43;</button>
+                </div>
 
-                {{!-- PROFILE MEDIA BEGINS --}}
-                <div class="profile-media">
+                {{!-- LIST OF CURRENT UPLOADS --}}
+                <div class="sample">
 
-                    {{!-- IF TRACKS HAVE BEEN UPLOADED, ADD MORE, THEN DISPLAY CURRENT UPLOADS --}}
-                    {{#if tracks}}
-
-                    {{!-- ADD MORE TRACKS --}}
-                    <div id="uploadSample" class="modal-bg">
-                        <div class="modal-block">
-                            <form action="/singerProfile/addTrack" method="POST" enctype="multipart/form-data">
-
-                                {{#with tracks}}
-                                <div class="modal-heading">
-                                    <div class="title" class="button" data-modal="uploadSample">Upload a Sample</div>
-                                    <div class="close">&times;</div>
-                                </div>
-        
-                                <div class="modal-content">
-                                    <div class="media">
-                                        <img src="">
-                                        <label for="audio"></label>
-                                        <input type="file" name="audio" id="audio">
+                    {{!-- TRACK BEGINS --}}
+                    {{#each tracks}}
+                    <div class="track">
+                        <img src="{{imgPath}}" alt="">
+                        <div class="info">
+                            <div>
+                                <div style="display: flex; justify-content: flex-end;">
+                                    <div class="delete-sample">
+                                        <a href="/delete/{{_id}}"><button>Delete</button></a>
+                                        <a href="/editSample/{{_id}}"><button>Edit</button></a>
                                     </div>
-
-                                    <div class="info">
-                                        <label for="title">Title:</label>
-                                        <input type="text" name="title" autocomplete="off">
-
-                                        <label for="description">Description:</label>
-                                        <input type="text" name="description" autocomplete="off">
-                                    </div>     
                                 </div>
 
-                                <div class="modal-save"><button type="submit">Upload</button></div>
-                                {{/with}}
-                            </form>
+                                <p style="margin: 0 0 5px 0">{{description}}</p>
+                            </div>
+                            <div class="audio-content">
+                                <div>
+                                    <p>{{title}}</p>
+                                </div>
+                                <div class="audio" style="float: right;">
+                                    <figure>
+                                        <audio controls src="{{filePath}}">
+                                            Your browser does not support the
+                                            <code>audio</code> element.
+                                    </figure>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    {{!-- END OF ADD MORE TRACKS --}}
+                    {{/each}}
+                    {{!-- END OF TRACK --}}
 
-                    <div class="my-samples">
-                        <span>My Samples</span>
-                        <button class="button upload-button" data-modal="uploadSample">&#43;</button>
-                    </div>
+                </div>
+                {{!-- END OF SHOW PAST SAMPLES AREA --}}
 
-                    {{!-- LIST OF CURRENT UPLOADS  --}}
-                    <div class="sample">
-                    {{#each tracks}}
+                {{!-- ///////////////////////////////////////////////////////////////////////////////////////// --}}
 
-                            {{!-- TRACK BEGINS --}}
-                            <div class="track">
-                                <img src="{{imgPath}}" alt="">
+                {{!-- IF NO TRACKS HAVE BEEN UPLOADED, SUGGEST UPLOAD --}}
+                {{else}}
+
+                <div class="empty-profile">
+                    <h1>Nothing to hear here...</h1>
+                    <button class="button clear-button" data-modal="uploadSample" style="margin: 10px 0; padding: 5px 10px; font-size: 16px;">Upload now</button>
+                </div>
+
+                {{!-- UPLOAD SAMPLE MODAL BEGINS --}}
+                <div id="uploadSample" class="modal-bg">
+
+                    <div class="modal-block">
+
+                        {{!-- UPLOAD SAMPLE FORM BEGINS --}}
+                        <form action="/singerProfile/addTrack" method="POST" enctype="multipart/form-data">
+                            <div class="modal-heading">
+                                <div class="title" class="button" data-modal="uploadSample">Upload a Sample</div>
+                                <div class="close">&times;</div>
+                            </div>
+
+                            <div class="modal-content">
+                                <div class="media">
+                                    <img src="">
+                                    <label for="audio"></label>
+                                    <input type="file" name="audio" id="audio">
+                                </div>
+
                                 <div class="info">
-                                    <div>
-                                        <div style="display: flex; justify-content: flex-end;">
-                                            <div class="delete-sample">
-                                                <a href="/delete/{{_id}}"><button>Delete</button></a>
-                                                <a href="/editSample/{{_id}}"><button>Edit</button></a>
-                                            </div>
-                                        </div>
-                                        
-                                        <p style="margin: 0 0 5px 0">{{description}}</p>
-                                    </div>
-                                    <div class="audio-content">
-                                        <div><p>{{title}}</p></div>
-                                        <div class="audio" style="float: right;">
-                                            <figure>
-                                                <audio controls src="{{filePath}}">
-                                                Your browser does not support the
-                                                <code>audio</code> element.
-                                            </figure>
-                                        </div>
-                                    </div>     
+                                    <label for="title">Title:</label>
+                                    <input type="text" name="title" autocomplete="off">
+
+                                    <label for="description">Description:</label>
+                                    <input type="text" name="description" autocomplete="off">
                                 </div>
                             </div>
-                            {{!-- END OF TRACK --}}
 
+                            <div class="modal-save"><button type="submit">Upload</button></div>
+                        </form>
+                        {{!-- END OF UPLOAD SAMPLE FORM --}}
 
-                    {{/each}}
+                    </div>
 
+                </div>
+                {{!-- END OF UPLOAD SAMPLE MODAL --}}
+
+                {{/if}}
+
+            </div>
+            {{!-- END OF PROFILE MEDIA --}}
+
+            {{!-- SIDE FOOTER BEGINS --}}
+            <div class="footer">
+
+                {{#with singerDetails}}
+
+                    {{!-- IF A BIO HAS BEEN ADDED, SHOW, ELSE LEAVE BLANK --}}
+                    {{#if description}}
+                    <div class="bio">
+                        <p>{{description}}</p>
                     </div>
                     {{else}}
-
-                    {{!-- IF NO TRACKS HAVE BEEN UPLOADED, SUGGEST UPLOAD --}}
-                    <div class="empty-profile">
-                        <h1>Nothing to hear here...</h1>
-                        <button class="button clear-button" data-modal="uploadSample" style="margin: 10px 0; padding: 5px 10px; font-size: 16px;">Upload now</button>
-                    </div>
-
-                    <div id="uploadSample" class="modal-bg">
-                        <div class="modal-block">
-                            <form action="/singerProfile/addTrack" method="POST" enctype="multipart/form-data">
-
-                                <div class="modal-heading">
-                                    <div class="title" class="button" data-modal="uploadSample">Upload a Sample</div>
-                                    <div class="close">&times;</div>
-                                </div>
-                                
-                                <div class="modal-content">  
-                                    <div class="media">
-                                        <img src="">
-                                        <label for="audio"></label>
-                                        <input type="file" name="audio" id="audio">
-                                    </div>
-
-                                    <div class="info">
-                                        <label for="title">Title:</label>
-                                        <input type="text" name="title" autocomplete="off">
-
-                                        <label for="description">Description:</label>
-                                        <input type="text" name="description" autocomplete="off">
-                                    </div>
-                                </div>
-                                
-                                <div class="modal-save"><button type="submit">Upload</button></div>
-                            </form>
-                        </div>
-                    </div>
                     {{/if}}
 
-                </div>
-                {{!-- END OF PROFILE MEDIA --}}
+                {{/with}}
 
-                {{!-- SIDE FOOTER BEGINS --}}
-                <div class="footer">
-                    {{#with singerDetails}}
-                        {{#if description}}
-                            <div class="bio">
-                            <p>{{description}}</p>
-                            </div>
-                        {{else}}
-                        <span></span>
-                        {{/if}}
-                    {{/with}}
-                    <div class="footer-links">
-                        <a href="#">Legal</a>&nbsp;-
-                        <a href="#">Privacy</a>&nbsp;-
-                        <a href="#">Cookie Policy</a>&nbsp;-
-                        <a href="#">Cookie Manager</a>&nbsp;-
-                        <a href="#">Imprint</a>&nbsp;-
-                        <a href="#">Creator Resources</a>&nbsp;-
-                        <a href="#">Blog</a>&nbsp;-
-                        <a href="#">Charts</a>&nbsp;-
-                        <a href="#">Popular searches</a>
-                    </div>
-                    <div class="footer-language">
-                        <span style="color:#4988D7">Language:</span> English (UK)
-                    </div>
-
+                <div class="footer-links">
+                    <a href="#">Legal</a>&nbsp;-
+                    <a href="#">Privacy</a>&nbsp;-
+                    <a href="#">Cookie Policy</a>&nbsp;-
+                    <a href="#">Cookie Manager</a>&nbsp;-
+                    <a href="#">Imprint</a>&nbsp;-
+                    <a href="#">Creator Resources</a>&nbsp;-
+                    <a href="#">Blog</a>&nbsp;-
+                    <a href="#">Charts</a>&nbsp;-
+                    <a href="#">Popular searches</a>
                 </div>
-                {{!-- END OF SIDE FOOTER --}}
+                
+                <div class="footer-language">
+                    <span style="color:#4988D7">Language:</span> English (UK)
+                </div>
 
             </div>
-            ​{{!-- END OF PROFILE BODY --}}
+            {{!-- END OF SIDE FOOTER --}}
 
         </div>
-        {{!-- END OF PROFILE CONTENT --}}
+        ​{{!-- END OF PROFILE CONTENT --}}
+
+    </div>
+    {{!-- END OF PROFILE BLOCK --}}
 
 </div>
+{{!-- END OF MAIN BLOCK --}}

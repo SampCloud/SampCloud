@@ -1,96 +1,131 @@
 {{!-- NAV BEGINS --}}
 <nav>
-  <div class="nav-content">
-    <div class="nav-logo"><a href="/search"><img src="/images/orange-logo.png" style="height: 100%"></a></div>
 
-    <div class="nav-search">
-      <form action="/search" method="POST">
-        <input type="text" id="search" name="q" autocomplete="off">
-        <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-      </form>
-    </div>
+	{{!-- NAV CONTAINER BEGINS --}}
+	<div class="nav-content">
 
-    <div class="nav-links">
-      {{#with currentUser}}
+		{{!-- NAV LOGO BEGINS --}}
+		<div class="nav-logo"><a href="/search"><img src="/images/orange-logo.png" style="height: 100%"></a></div>
+		{{!-- END OF NAV LOGO --}}
 
-      <a href="/{{role}}Profile"></a>
-      {{#if imgPath}}
-      <div class="nav-user">
-        <a href="/{{role}}Profile"><img src="{{imgPath}}"
-            style="margin: 0; height: 28px; width: 28px; border-radius: 50%;"></a>
-        {{#if artisticName}}
-        <a href="/{{role}}Profile">{{artisticName}}</a>
-        {{else}}
-        <a href="/{{role}}Profile">{{username}}</a>
-        {{/if}}
-      </div>
-      {{else}}
-      <div class="nav-user">
-        <a href="/{{role}}Profile"><img src="/images/default-user-photo.png"
-            style="margin: 0; height: 28px; width: 28px; border-radius: 50%;"></a>
-        {{#if artisticName}}
-        <a href="/{{role}}Profile">{{artisticName}}</a>
-        {{else}}
-        <a href="/{{role}}Profile">{{username}}</a>
-        {{/if}}
-      </div>
-      {{/if}}
+		{{!-- NAV SEARCH BAR BEGINS --}}
+		<div class="nav-search">
+			<form action="/search" method="POST">
+				<input type="text" id="search" name="q" autocomplete="off">
+				<button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+			</form>
+		</div>
+		{{!-- END OF NAV SEARCH BAR--}}
 
-      {{/with}}
-      <div class="nav-icons">
-        <button id="toggle-theme" class="nav-icon" alt="Toggle Theme"><i class="fas fa-adjust"></i></button>
-        <a href="/logout" class="nav-icon" alt="Log Out"><i class="fas fa-sign-out-alt"></i></a>
-      </div>
-    </div>
-  </div>
+		{{!-- NAV LINKS BEGIN --}}
+		<div class="nav-links">
+
+			{{!-- PROFILE PHOTO/DISPLAY NAME BEGINS --}}
+			{{#with currentUser}}
+
+				{{!-- IF A PROFILE PHOTO HAS BEEN CHOSEN, SHOW WITH NAME, ELSE... --}}
+				{{#if imgPath}}
+				<div class="nav-user">
+
+					<a href="/{{role}}Profile"><img src="{{imgPath}}" style="margin: 0; height: 28px; width: 28px; border-radius: 50%;"></a>
+					
+					{{!-- IF A DISPLAY NAME HAS BEEN CHOSEN, SHOW, ELSE SHOW USERNAME --}}
+					{{#if artisticName}}
+					<a href="/{{role}}Profile">{{artisticName}}</a>
+					{{else}}
+					<a href="/{{role}}Profile">{{username}}</a>
+					{{/if}}
+
+				</div>
+
+				{{!-- ...IF NO PROFILE PHOTO HAS BEEN CHOSEN, SHOW DEFAULT PHOTO, WITH NAME --}}
+				{{else}}
+				<div class="nav-user">
+
+					<a href="/{{role}}Profile"><img src="/images/default-user-photo.png" style="margin: 0; height: 28px; width: 28px; border-radius: 50%;"></a>
+					
+					{{!-- IF A DISPLAY NAME HAS BEEN CHOSEN, SHOW, ELSE SHOW USERNAME --}}
+					{{#if artisticName}}
+					<a href="/{{role}}Profile">{{artisticName}}</a>
+					{{else}}
+					<a href="/{{role}}Profile">{{username}}</a>
+					{{/if}}
+
+				</div>
+				{{/if}}
+
+			{{/with}}
+			{{!-- END OF PROFILE PHOTO/DISPLAY NAME --}}
+
+			{{!-- NAV ICONS BEGIN --}}
+			<div class="nav-icons">
+				<button id="toggle-theme" class="nav-icon" alt="Toggle Theme"><i class="fas fa-adjust"></i></button>
+				<a href="/logout" class="nav-icon" alt="Log Out"><i class="fas fa-sign-out-alt"></i></a>
+			</div>
+			{{!-- END OF NAV ICONS --}}
+
+		</div>
+		{{!-- END OF NAV LINKS --}}
+
+	</div>
+	{{!-- END OF NAV CONTAINER --}}
+	
 </nav>
 {{!-- END OF NAV --}}
 
-{{!-- MAIN SEARCH BLOCK BEGINS --}}
+{{!-- MAIN BLOCK BEGINS --}}
 <div class="main-block">
-  <div class="content">
 
-    <div>
-      <div class="h1-search">Most Popular</div>
-      <div class="h2-search">This week's most popular samples</div>
-    </div>
+	{{!-- PAGE CONTENT BEGINS --}}
+	<div class="content">
 
-    <div class="samples">
-      {{#each tracklist}}
-      <a href="/trackDetails/{{_id}}"><img src="{{imgPath}}" alt=""></a>
-      {{/each}}
-    </div>
+		<div>
+			<div class="h1-search">Most Popular</div>
+			<div class="h2-search">This week's most popular samples</div>
+		</div>
 
-  </div>
+		<div class="samples">
 
-  {{!-- SIDE FOOTER BEGINS --}}
-  <div class="search-footer">
-    <div class="heading">
-      <span>Go mobile</span>
-    </div>
-    <div class="apps">
-      <a href="#"><img src="/images/apple-app-store.png"></a>
-      <a href="#"><img src="/images/google-play-store.png"></a>
-    </div>
-    <div class="footer-links">
+			{{!-- FOR EACH SAMPLE IN THE DATABASE, SHOW COVER ART --}}
+			{{#each tracklist}}
+			<a href="/trackDetails/{{_id}}"><img src="{{imgPath}}" alt=""></a>
+			{{/each}}
 
-      <a href="#">Legal</a>&nbsp;-
-      <a href="#">Privacy</a>&nbsp;-
-      <a href="#">Cookie Policy</a>&nbsp;-
-      <a href="#">Cookie Manager</a>&nbsp;-
-      <a href="#">Imprint</a>&nbsp;-
-      <a href="#">Creator Resources</a>&nbsp;-
-      <a href="#">Blog</a>&nbsp;-
-      <a href="#">Charts</a>&nbsp;-
-      <a href="#">Popular searches</a>
+		</div>
 
-    </div>
-    <div class="footer-language">
-      <span style="color:#4988D7">Language:</span> English (UK)
-    </div>
+	</div>
+	{{!-- END OF PAGE CONTENT --}}
 
-  </div>
-  {{!-- END OF SIDE FOOTER --}}
+	{{!-- SIDE FOOTER BEGINS --}}
+	<div class="search-footer">
+
+		<div class="heading">
+			<span>Go mobile</span>
+		</div>
+
+		<div class="apps">
+			<a href="#"><img src="/images/apple-app-store.png"></a>
+			<a href="#"><img src="/images/google-play-store.png"></a>
+		</div>
+		
+		<div class="footer-links">
+			<a href="#">Legal</a>&nbsp;-
+			<a href="#">Privacy</a>&nbsp;-
+			<a href="#">Cookie Policy</a>&nbsp;-
+			<a href="#">Cookie Manager</a>&nbsp;-
+			<a href="#">Imprint</a>&nbsp;-
+			<a href="#">Creator Resources</a>&nbsp;-
+			<a href="#">Blog</a>&nbsp;-
+			<a href="#">Charts</a>&nbsp;-
+			<a href="#">Popular searches</a>
+		</div>
+
+		<div class="footer-language">
+			<span style="color:#4988D7">Language:</span> English (UK)
+		</div>
+
+	</div>
+	{{!-- END OF SIDE FOOTER --}}
 
 </div>
-{{!-- END OF MAIN SEARCH BLOCK --}}
+{{!-- END OF MAIN BLOCK --}}

@@ -14,12 +14,13 @@
                     <input type="text" id="username" name="username" placeholder="username" autocomplete="off">
                     <label for="password"></label>
                     <input type="password" id="password" name="password" placeholder="password">
-                    <button type="submit" class="secondary-button-wide" style="background-color: #9c9997; color: #FFFFFF; margin-top: 20px">Login</button>
+                    <button type="submit" class="secondary-button" style="background-color: #9c9997; color: #FFFFFF; margin-top: 20px">Login</button>
                 </form>
-                {{!-- END OF FORM BEGINS --}}
+                {{!-- END OF FORM --}}
 
                 {{!-- <div>Don't have an account?<a href="#"> Create one now.</a></div> --}}
 
+                {{!-- * For Invalid Credentials * --}}
                 {{#if message}}
                     <p style="color: red">{{message}}</p>
                 {{/if}}
@@ -28,7 +29,7 @@
         </div>
         {{!-- END OF LOGIN --}}
 
-        {{!-- * Remaining Page Content * --}}
+        {{!-- * Remaining Content * --}}
         <p>Get the app.</p>
         <div class="app-container">
             <a href="#"><img src="/images/apple-app-store.png"></a>
@@ -36,6 +37,8 @@
         </div>
         <div class="copyright">Copyright © 2021 SampCloud in Partnership with Ironhack Berlin</div>
         <button style="margin: 0; position: absolute; top: 10px; right: 10px;" id="toggle-theme" class="toggle-theme"><i class="fas fa-adjust"></i></button>
+        {{!-- * End of Remaining Content * --}}
+    
     </div>
     {{!-- END OF LOGIN PAGE CONTAINER --}}
 
