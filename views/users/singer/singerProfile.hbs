@@ -134,7 +134,7 @@
                             
                         </div>
 
-                        <div class="modal-save"><button type="submit" style="padding: 5px 10px;">Save</button></div>
+                        <div class="modal-save"><button type="submit" style="padding: 5px 10px; color: var(--clear-button);">Save</button></div>
 
                     </form>
                     {{!-- END OF EDIT PROFILE FORM --}}
@@ -174,7 +174,7 @@
                             <div class="modal-content">
                                 
                                 <div class="media">
-                                    <img src="">
+                                    <i class="far fa-file-audio" style="margin: 30px; padding: 5px; font-size: 8rem; color: var(--secondary-button);"></i>
                                     <label for="audio"></label>
                                     <input type="file" name="audio" id="audio">
                                 </div>
@@ -204,7 +204,7 @@
                 {{!-- BEGIN SHOW PAST SAMPLES AREA --}}
                 <div class="my-samples">
                     <span>My Samples</span>
-                    <button class="button upload-button" data-modal="uploadSample">&#43;</button>
+                    <button class="button upload-button" data-modal="uploadSample" style="color: var(--clear-button);">&#43;</button>
                 </div>
 
                 {{!-- LIST OF CURRENT UPLOADS --}}
@@ -218,8 +218,8 @@
                             <div>
                                 <div style="display: flex; justify-content: flex-end;">
                                     <div class="delete-sample">
-                                        <a href="/delete/{{_id}}"><button>Delete</button></a>
-                                        <a href="/editSample/{{_id}}"><button>Edit</button></a>
+                                        <a href="/delete/{{_id}}"><button style="color: var(--clear-button);">Delete</button></a>
+                                        <a href="/editSample/{{_id}}"><button style="color: var(--clear-button);">Edit</button></a>
                                     </div>
                                 </div>
 
@@ -232,8 +232,8 @@
                                 <div class="audio" style="float: right;">
                                     <figure>
                                         <audio controls src="{{filePath}}">
-                                            Your browser does not support the
-                                            <code>audio</code> element.
+                                        Your browser does not support the
+                                        <code>audio</code> element.
                                     </figure>
                                 </div>
                             </div>
@@ -269,7 +269,7 @@
 
                             <div class="modal-content">
                                 <div class="media">
-                                    <img src="">
+                                    <i class="far fa-file-audio" style="margin: 30px; padding: 5px; font-size: 8rem; color: var(--secondary-button);"></i>
                                     <label for="audio"></label>
                                     <input type="file" name="audio" id="audio">
                                 </div>
