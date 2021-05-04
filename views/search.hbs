@@ -31,9 +31,9 @@
 					
 					{{!-- IF A DISPLAY NAME HAS BEEN CHOSEN, SHOW, ELSE SHOW USERNAME --}}
 					{{#if artisticName}}
-					<a href="/{{role}}Profile">{{artisticName}}</a>
+						<a href="/{{role}}Profile">{{artisticName}}</a>
 					{{else}}
-					<a href="/{{role}}Profile">{{username}}</a>
+						<a href="/{{role}}Profile">{{username}}</a>
 					{{/if}}
 
 				</div>
@@ -46,9 +46,9 @@
 					
 					{{!-- IF A DISPLAY NAME HAS BEEN CHOSEN, SHOW, ELSE SHOW USERNAME --}}
 					{{#if artisticName}}
-					<a href="/{{role}}Profile">{{artisticName}}</a>
+						<a href="/{{role}}Profile">{{artisticName}}</a>
 					{{else}}
-					<a href="/{{role}}Profile">{{username}}</a>
+						<a href="/{{role}}Profile">{{username}}</a>
 					{{/if}}
 
 				</div>
@@ -88,7 +88,7 @@
 
 			{{!-- FOR EACH SAMPLE IN THE DATABASE, SHOW COVER ART --}}
 			{{#each tracklist}}
-			<a href="/trackDetails/{{_id}}"><img src="{{imgPath}}" alt=""></a>
+				<a href="/trackDetails/{{_id}}"><img src="{{imgPath}}" alt=""></a>
 			{{/each}}
 
 		</div>

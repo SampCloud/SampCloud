@@ -1,187 +1,230 @@
 {{!-- NAV BEGINS --}}
 <nav>
-  <div class="nav-content">
-    <div class="nav-logo"><a href="/search"><img src="/images/orange-logo.png" style="height: 100%"></a></div>
 
-    <div class="nav-search">
-      <form action="/search" method="POST">
-        <input type="text" id="search" name="q" autocomplete="off">
-        <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-      </form>
-    </div>
+	{{!-- NAV CONTAINER BEGINS --}}
+	<div class="nav-content">
 
-    <div class="nav-links">
-      {{#with currentUser}}
-      <a href="/{{role}}Profile"></a>
-      {{#if imgPath}}
-      <div class="nav-user">
-        <a href="/{{role}}Profile"><img src="{{imgPath}}"
-            style="margin: 0; height: 28px; width: 28px; border-radius: 50%;"></a>
-        {{#if artisticName}}
-        <a href="/{{role}}Profile">{{artisticName}}</a>
-        {{else}}
-        <a href="/{{role}}Profile">{{username}}</a>
-        {{/if}}
-      </div>
-      {{else}}
-      <div class="nav-user">
-        <a href="/{{role}}Profile"><img src="/images/default-user-photo.png"
-            style="margin: 0; height: 28px; width: 28px; border-radius: 50%;"></a>
-        {{#if artisticName}}
-        <a href="/{{role}}Profile">{{artisticName}}</a>
-        {{else}}
-        <a href="/{{role}}Profile">{{username}}</a>
-        {{/if}}
-      </div>
-      {{/if}}
-      {{/with}}
-      <div class="nav-icons">
-        <button id="toggle-theme" class="nav-icon" alt="Toggle Theme"><i class="fas fa-adjust"></i></button>
-        <a href="/logout" class="nav-icon" alt="Log Out"><i class="fas fa-sign-out-alt"></i></a>
-      </div>
-    </div>
-  </div>
+		{{!-- NAV LOGO BEGINS --}}
+		<div class="nav-logo"><a href="/search"><img src="/images/orange-logo.png" style="height: 100%"></a></div>
+		{{!-- END OF NAV LOGO --}}
+
+		{{!-- NAV SEARCH BAR BEGINS --}}
+		<div class="nav-search">
+			<form action="/search" method="POST">
+				<input type="text" id="search" name="q" autocomplete="off">
+				<button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+			</form>
+		</div>
+		{{!-- END OF NAV SEARCH BAR --}}
+
+		{{!-- NAV LINKS BEGIN --}}
+		<div class="nav-links">
+
+			{{!-- PROFILE PHOTO/DISPLAY NAME BEGINS --}}
+			{{#with currentUser}}
+
+			{{!-- IF A PROFILE PHOTO HAS BEEN CHOSEN, SHOW WITH NAME, ELSE... --}}
+			{{#if imgPath}}
+			<div class="nav-user">
+				<a href="/{{role}}Profile"><img src="{{imgPath}}" style="margin: 0; height: 28px; width: 28px; border-radius: 50%;"></a>
+				
+				{{!-- IF A DISPLAY NAME HAS BEEN CHOSEN, SHOW, ELSE SHOW USERNAME --}}
+				{{#if artisticName}}
+					<a href="/{{role}}Profile">{{artisticName}}</a>
+				{{else}}
+					<a href="/{{role}}Profile">{{username}}</a>
+				{{/if}}
+			</div>
+
+			{{!-- ...IF NO PROFILE PHOTO HAS BEEN CHOSEN, SHOW DEFAULT PHOTO, WITH NAME --}}
+			{{else}}
+			<div class="nav-user">
+
+				<a href="/{{role}}Profile"><img src="/images/default-user-photo.png" style="margin: 0; height: 28px; width: 28px; border-radius: 50%;"></a>
+				
+				{{!-- IF A DISPLAY NAME HAS BEEN CHOSEN, SHOW, ELSE SHOW USERNAME --}}
+				{{#if artisticName}}
+					<a href="/{{role}}Profile">{{artisticName}}</a>
+				{{else}}
+					<a href="/{{role}}Profile">{{username}}</a>
+				{{/if}}
+
+			</div>
+			{{/if}}
+
+			{{/with}}
+			{{!-- END OF PROFILE PHOTO/DISPLAY NAME --}}
+
+			{{!-- NAV ICONS BEGIN --}}
+			<div class="nav-icons">
+				<button id="toggle-theme" class="nav-icon" alt="Toggle Theme"><i class="fas fa-adjust"></i></button>
+				<a href="/logout" class="nav-icon" alt="Log Out"><i class="fas fa-sign-out-alt"></i></a>
+			</div>
+			{{!-- END OF NAV ICONS --}}
+
+		</div>
+		{{!-- END OF NAV LINKS --}}
+
+	</div>
+	{{!-- END OF NAV CONTAINER --}}
+
 </nav>
 {{!-- END OF NAV --}}
 
+{{!-- MAIN BLOCK BEGINS // Labeled secondary block for profile/sample details pages --}}
 <div class="secondary-block">
-  {{!-- HEADER BEGINS --}}
-  {{#with profileDetails}}
-  <div class="header">
-    ​
-    <div class="photo-area">
-      {{#if imgPath}}
-      <img src="{{imgPath}}"
-        style="margin-top: 44px; margin-bottom: 22px; padding: 0; width: 200px; height: 200px; border-radius: 50%;">
-      {{else}}
-      <div class="header-photo"></div>
-      {{/if}}
-    </div>
-    ​
-    <div class="header-info">
-      {{#if artisticName}}
-      <div class="h1-profile">{{artisticName}}</div>
-      {{else}}
-      <div class="h1-profile">{{username}}</div>
-      {{/if}}
 
-      {{#if soundUrl}}
-      <div class="h2-profile">{{soundUrl}}</div>
-      {{else}}
-      {{/if}}
-    </div>
-    ​
-  </div>
-  {{/with}}
-  {{!-- END OF HEADER --}}
+	{{!-- HEADER BEGINS --}}
+	{{#with profileDetails}}
+	<div class="header">
+		​
+		<div class="photo-area">
+			{{#if imgPath}}
+			<img src="{{imgPath}}"
+				style="margin-top: 44px; margin-bottom: 22px; padding: 0; width: 200px; height: 200px; border-radius: 50%;">
+			{{else}}
+			<div class="header-photo"></div>
+			{{/if}}
+		</div>
+		​
+		<div class="header-info">
+			{{#if artisticName}}
+			<div class="h1-profile">{{artisticName}}</div>
+			{{else}}
+			<div class="h1-profile">{{username}}</div>
+			{{/if}}
 
-  {{!-- PROFILE CONTENT BEGINS --}}
-  <div class="profile">
+			{{#if soundUrl}}
+			<div class="h2-profile">{{soundUrl}}</div>
+			{{else}}
+			{{/if}}
+		</div>
+		​
+	</div>
+	{{/with}}
+	{{!-- END OF HEADER --}}
 
-    {{!-- PROFILE NAV BEGINS --}}
-    <div class="secondary-nav">
-      <div class="links">
-        <ul>
-          <li><a href="#">All</a></li>
-          <li><a href="#">Popular tracks</a></li>
-          <li><a href="#">Tracks</a></li>
-          <li><a href="#">Album</a></li>
-          <li><a href="#">Playlists</a></li>
-          <li><a href="#">Reposts</a></li>
-          <li><a href="#" class="current">Samples</a></li>
-        </ul>
-      </div>
-    </div>
-    {{!-- END OF PROFILE NAV --}}
+	{{!-- PROFILE BLOCK BEGINS --}}
+	<div class="profile">
 
-    {{!-- PROFILE BODY BEGINS --}}
-    <div class="profile-content">
+		{{!-- PROFILE NAV BEGINS --}}
+		<div class="secondary-nav">
+			<div class="links">
+				<ul>
+					<li><a href="#">All</a></li>
+					<li><a href="#">Popular tracks</a></li>
+					<li><a href="#">Tracks</a></li>
+					<li><a href="#">Album</a></li>
+					<li><a href="#">Playlists</a></li>
+					<li><a href="#">Reposts</a></li>
+					<li><a href="#" class="current">Samples</a></li>
+				</ul>
+			</div>
+		</div>
+		{{!-- END OF PROFILE NAV --}}
 
-      {{!-- PROFILE MEDIA BEGINS --}}
-      <div class="profile-media">
-        {{!-- IF TRACKS HAVE BEEN UPLOADED, DISPLAY, OTHERWISE SHOW NO TRACKS MESSAGE --}}
+		{{!-- PROFILE CONTENT BEGINS --}}
+		<div class="profile-content">
 
-        {{#if trackDetails}}
-        <div class="my-samples">
-          <span>My Samples</span>
-        </div>
+			{{!-- PROFILE MEDIA BEGINS --}}
+			<div class="profile-media">
 
-        {{!-- LIST OF CURRENT UPLOADS --}}
-        <div class="sample">
-          {{#each trackDetails}}
+				{{!-- IF TRACKS HAVE BEEN UPLOADED, DISPLAY, OTHERWISE SHOW NO TRACKS MESSAGE --}}
+				{{#if trackDetails}}
+				<div class="my-samples">
+					<span>My Samples</span>
+				</div>
 
-          {{!-- TRACK BEGINS --}}
-          <div class="track">
-            <a href="/trackDetails/{{_id}}"><img src="{{imgPath}}" alt=""></a>
+				{{!-- LIST OF CURRENT UPLOADS --}}
+				<div class="sample">
 
-            <div class="info">
-              <p>{{description}}</p>
+					{{#each trackDetails}}
 
-              <div class="audio-content">
-                <div>
-                  <p>{{title}}</p>
-                </div>
-                <div class="audio" style="float: right;">
-                  <figure>
-                    <audio controls src="{{filePath}}">
-                      Your browser does not support the
-                      <code>audio</code> element.
-                  </figure>
-                </div>
-              </div>
+					{{!-- TRACK BEGINS --}}
+					<div class="track">
 
-            </div>
-          </div>
-          {{!-- END OF TRACK --}}
-          {{/each}}
+						<a href="/trackDetails/{{_id}}"><img src="{{imgPath}}" alt=""></a>
 
-        </div>
-        {{else}}
+						<div class="info">
+							<p>{{description}}</p>
 
-        <div class="empty-profile">
-          <h1 style="font-size: 24px;">Nothing to hear here...</h1>
-          <h2 style="font-size: 15px;">Check back later for uploaded samples</h2>
-        </div>
-        {{/if}}
-      </div>
-      {{!-- END OF PROFILE MEDIA --}}
+							<div class="audio-content">
+								<div>{{title}}</div>
+								<div class="audio" style="float: right;">
+									<figure>
+										<audio controls src="{{filePath}}">
+										Your browser does not support the
+										<code>audio</code> element.
+									</figure>
+								</div>
+							</div>
 
-      {{!-- SIDE FOOTER BEGINS --}}
-      <div class="footer">
-        {{#with profileDetails}}
-        <div class="bio">
+						</div>
 
-          {{#if description}}
-          <p>{{description}}</p>
-          {{else}}
-          {{/if}}
-          <div class="message">
-            <a href="mailto:{{email}}" style="color: var(--p1-color); font-size: 20px;"><i
-                class="far fa-envelope"></i></a>
-          </div>
-        </div>
-        {{/with}}
-        <div class="footer-links">
-          <a href="#">Legal</a>&nbsp;-
-          <a href="#">Privacy</a>&nbsp;-
-          <a href="#">Cookie Policy</a>&nbsp;-
-          <a href="#">Cookie Manager</a>&nbsp;-
-          <a href="#">Imprint</a>&nbsp;-
-          <a href="#">Creator Resources</a>&nbsp;-
-          <a href="#">Blog</a>&nbsp;-
-          <a href="#">Charts</a>&nbsp;-
-          <a href="#">Popular searches</a>
-        </div>
-        <div class="footer-language">
-          <span style="color:#4988D7">Language:</span> English (UK)
-        </div>
+					</div>
+					{{!-- END OF TRACK --}}
 
-      </div>
-      {{!-- END OF SIDE FOOTER --}}
+					{{/each}}
 
-    </div>
-    ​{{!-- END OF PROFILE BODY --}}
+				</div>
+				{{!-- END OF CURRENT UPLOADS --}}
 
-  </div>
-  {{!-- END OF PROFILE CONTENT --}}
+				{{else}}
+
+				{{!-- IF NO TRACKS HAVE BEEN ADDED, SHOW DEFAULT MESSAGE --}}
+				<div class="empty-profile">
+					<h1 style="font-size: 24px;">Nothing to hear here...</h1>
+					<h2 style="font-size: 15px;">Check back later for uploaded samples</h2>
+				</div>
+
+				{{/if}}
+			</div>
+			{{!-- END OF PROFILE MEDIA --}}
+
+			{{!-- SIDE FOOTER BEGINS --}}
+			<div class="footer">
+
+				{{#with profileDetails}}
+				<div class="bio">
+
+					{{!-- IF A BIO HAS BEEN ADDED, SHOW, ELSE LEAVE BLANK --}}
+					{{#if description}}
+						<p>{{description}}</p>
+					{{else}}
+					{{/if}}
+
+					{{!-- EMAIL LINK --}}
+					<div class="message">
+						<a href="mailto:{{email}}" style="color: var(--p1-color); font-size: 20px;"><i class="far fa-envelope"></i></a>
+					</div>
+
+				</div>
+				{{/with}}
+
+				<div class="footer-links">
+					<a href="#">Legal</a>&nbsp;-
+					<a href="#">Privacy</a>&nbsp;-
+					<a href="#">Cookie Policy</a>&nbsp;-
+					<a href="#">Cookie Manager</a>&nbsp;-
+					<a href="#">Imprint</a>&nbsp;-
+					<a href="#">Creator Resources</a>&nbsp;-
+					<a href="#">Blog</a>&nbsp;-
+					<a href="#">Charts</a>&nbsp;-
+					<a href="#">Popular searches</a>
+				</div>
+				
+				<div class="footer-language">
+					<span style="color:#4988D7">Language:</span> English (UK)
+				</div>
+
+			</div>
+			{{!-- END OF SIDE FOOTER --}}
+
+		</div>
+		​{{!-- END OF PROFILE CONTENT --}}
+
+	</div>
+	{{!-- END OF PROFILE BLOCK --}}
+
 </div>
+{{!-- END OF MAIN BLOCK --}}
