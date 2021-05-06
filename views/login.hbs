@@ -18,12 +18,13 @@
                 </form>
                 {{!-- END OF FORM --}}
 
-                {{!-- <div>Don't have an account?<a href="#"> Create one now.</a></div> --}}
-
                 {{!-- * For Invalid Credentials * --}}
                 {{#if message}}
-                    <p style="color: red">{{message}}</p>
+                    <p style="color: red; position: absolute; bottom: 40%; left: 50%; transform: translate(-50%, 0%);">{{message}}</p>
                 {{/if}}
+
+                {{!-- * Redirect to Sign Up --}}
+                <div><p style="position: absolute; bottom: 30%; left: 50%; transform: translate(-50%, 0%);">New here?<a href="/signup"> Create an account.</a></p></div>
 
             </div>
         </div>
