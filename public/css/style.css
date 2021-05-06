@@ -165,6 +165,15 @@ p a:hover {
     font-size: 10px;
 }
 
+.copyright a, a:active, a:visited {
+    color: var(--p2-color);
+    text-decoration: none;
+}
+
+.copyright a:hover {
+    color: var(--primary-button);
+}
+
 .login-redirect {
     margin: 0 auto;
     padding: 0;
