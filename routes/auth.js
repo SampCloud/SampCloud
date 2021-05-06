@@ -17,11 +17,11 @@ router.post('/login', (req, res, next) => {
   User.findOne({ username: username })
     .then(userFromDB => {
       if (userFromDB === null) {
-        res.render('login', { message: 'Invalid credentials' });
+        res.render('login', { message: 'Invalid credentials. Please try again.' });
         return;
       }
       if (!bcrypt.compareSync(password, userFromDB.password)) {
-        res.render('login', { message: 'Invalid credentials' });
+        res.render('login', { message: 'Invalid credentials. Please try again.' });
         return;
       }
       if (bcrypt.compareSync(password, userFromDB.password)) {
@@ -41,13 +41,16 @@ router.post('/signup', (req, res, next) => {
 
   const { username, password, role, email } = req.body;
 
-
+  if (password.length < 6 && username === '') {
+    res.render('signup', { message: 'Username and password are required.' });
+    return
+  }
   if (password.length < 6) {
-    res.render('signup', { message: 'Password must contain at least 6 characters' });
+    res.render('signup', { message: 'Password must contain at least 6 characters.' });
     return
   }
   if (username === '') {
-    res.render('signup', { message: 'Username field cannot be empty' });
+    res.render('signup', { message: 'Username cannot be empty.' });
     return
   }
 

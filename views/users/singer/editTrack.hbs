@@ -52,10 +52,11 @@
 
 			<div class="info">
 				<label for="artisticName">Title:</label>
-				<input type="text" name="title" id="title" value="{{title}}">
+				<input type="text" name="title" id="title" value="{{title}}" autocomplete="off">
 
 				<label for="description">Description:</label>
-				<input type="text" name="description" id="description" value="{{description}}">
+				<textarea name="description" id="description" autocomplete="off">{{description}}</textarea>
+				{{!-- <input type="text" name="description" id="description" value="{{description}}" autocomplete="off"> --}}
 
 				<div class="modal-save"><button type="submit">Save</button></div>
 			</div>
