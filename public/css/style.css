@@ -229,6 +229,7 @@ nav {
     margin: 0;
     padding: 0;
     width: 100%;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -236,8 +237,9 @@ nav {
 
 .nav-search input[type="text"] {
     margin: 0;
-    padding: 5px 0 5px 5px;
+    padding: 5px 10px;
     width: 50%;
+    height: 50%;
     background-color: var(--nav-input);
     border: none;
     border-radius: 4px 0 0 4px;
@@ -251,7 +253,8 @@ nav {
 
 .nav-search button {
     margin: 0;
-    padding: 5px 10px;
+    padding: 0 5px;
+    height: 50%;
     background-color: var(--nav-input);
     border: none;
     border-radius: 0 4px 4px 0;
