@@ -332,6 +332,7 @@ nav {
     color: var(--p1-color);
     cursor: pointer;
     font-size: 20px;
+    outline: none;
 }
 
 /* MAIN NAVIGATION LINKS AREA, WITHOUT USER INFO */
