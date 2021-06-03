@@ -79,7 +79,7 @@ body  {
 /* –---------------------------------------------------------------------------------------------------- */
 
 h1 {
-    padding: 0 0 0 20px;
+    padding: 0;
     color: var(--h1-color);
     font-family: "Interstate", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "Garuda", "Verdana", "Tahoma", "sans-serif";
     font-weight: 200;
@@ -93,15 +93,6 @@ h2 {
     font-family: "Interstate", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "Garuda", "Verdana", "Tahoma", "sans-serif";
     font-weight: 300;
     font-size: 12px;
-}
-
-h3 {
-    margin: 20px;
-    padding: 0;
-    color: var(--h2-color);
-    font-family: "Interstate", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "Garuda", "Verdana", "Tahoma", "sans-serif";
-    font-size: 14px;
-    font-weight: normal;
 }
 
 .h1-profile {
@@ -277,7 +268,10 @@ nav {
 .nav-links i {
     margin: 0 0 0 10px;
     padding: 0;
+    background-color: var(--nav-color);
+    color: #CCCCCC;
     cursor: pointer;
+    outline: none;
 }
 
 .nav-links i:hover {
@@ -320,6 +314,7 @@ nav {
     background-color: var(--nav-color);
     border: none;
     color: #CCCCCC;
+    cursor: pointer;
     font-size: 20px;
 }
 
@@ -331,6 +326,7 @@ nav {
     color: var(--p1-color);
     cursor: pointer;
     font-size: 20px;
+    outline: none;
 }
 
 /* MAIN NAVIGATION LINKS AREA, WITHOUT USER INFO */
@@ -348,7 +344,11 @@ nav {
 .reduced-nav-links i {
     margin: 0 0 0 10px;
     padding: 0;
+    background-color: var(--nav-color);
+    border: none;
+    color: #CCCCCC;
     cursor: pointer;
+    font-size: 20px;
 }
 
 .reduced-nav-links i:hover {
