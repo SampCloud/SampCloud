@@ -1,6 +1,6 @@
 {{!-- NAV BEGINS --}}
 <nav>
-	
+
 	{{!-- NAV CONTAINER BEGINS --}}
 	<div class="nav-content">
 
@@ -16,7 +16,7 @@
 			</form>
 		</div>
 		{{!-- END OF NAV SEARCH BAR --}}
-		
+
 		{{!-- NAV LINKS BEGIN --}}
 		<div class="nav-links">
 
@@ -27,13 +27,14 @@
 			{{#if imgPath}}
 			<div class="nav-user">
 
-				<a href="/{{role}}Profile"><img src="{{imgPath}}" style="margin: 0; height: 28px; width: 28px; border-radius: 50%;"></a>
+				<a href="/{{role}}Profile"><img src="{{imgPath}}"
+						style="margin: 0; height: 28px; width: 28px; border-radius: 50%;"></a>
 
 				{{!-- IF A DISPLAY NAME HAS BEEN CHOSEN, SHOW, ELSE SHOW USERNAME --}}
 				{{#if artisticName}}
-					<a href="/{{role}}Profile">{{artisticName}}</a>
+				<a href="/{{role}}Profile">{{artisticName}}</a>
 				{{else}}
-					<a href="/{{role}}Profile">{{username}}</a>
+				<a href="/{{role}}Profile">{{username}}</a>
 				{{/if}}
 
 			</div>
@@ -42,18 +43,19 @@
 			{{else}}
 			<div class="nav-user">
 
-				<a href="/{{role}}Profile"><img src="/images/default-user-photo.png" style="margin: 0; height: 28px; width: 28px; border-radius: 50%;"></a>
+				<a href="/{{role}}Profile"><img src="/images/default-user-photo.png"
+						style="margin: 0; height: 28px; width: 28px; border-radius: 50%;"></a>
 
 				{{!-- IF A DISPLAY NAME HAS BEEN CHOSEN, SHOW, ELSE SHOW USERNAME --}}
 				{{#if artisticName}}
-					<a href="/{{role}}Profile">{{artisticName}}</a>
+				<a href="/{{role}}Profile">{{artisticName}}</a>
 				{{else}}
-					<a href="/{{role}}Profile">{{username}}</a>
+				<a href="/{{role}}Profile">{{username}}</a>
 				{{/if}}
 
 			</div>
 			{{/if}}
-			
+
 			{{/with}}
 			{{!-- END OF PROFILE PHOTO/DISPLAY NAME --}}
 
@@ -77,13 +79,13 @@
 <div class="secondary-block">
 
 	{{!-- HEADER BEGINS --}}
+
 	{{#with trackDetails}}
-	<div class="sample-header">
-		​
+	<div class="sample-header" {{#if owner.bgImg }} style="background-image: url({{owner.bgImg}})" {{/if}}>
 		{{!-- COVER ART BEGINS --}}
 		<div class="cover">
 			{{#if imgPath}}
-				<img src="{{imgPath}}">
+			<img src="{{imgPath}}">
 			{{/if}}
 		</div>
 		{{!-- END OF COVER AER --}}
@@ -117,19 +119,20 @@
 
 						{{!-- IF PROFILE PHOTO HAS BEEN CHOSEN, SHOW WITH DISPLAY NAME, ELSE SHOW DEFAULT PHOTO WITH NAME --}}
 						{{#if owner.imgPath}}
-							<a href="/profileDetails/{{owner._id}}"><img src="{{owner.imgPath}}" style="margin: 20px 0; padding: 0; width: 150px; height: 150px; border-radius: 50%;"></a>
-							<div class="sample-username"><a href="/profileDetails/{{owner._id}}">{{owner.artisticName}}</a></div>
+						<a href="/profileDetails/{{owner._id}}"><img src="{{owner.imgPath}}"
+								style="margin: 20px 0; padding: 0; width: 150px; height: 150px; border-radius: 50%;"></a>
+						<div class="sample-username"><a href="/profileDetails/{{owner._id}}">{{owner.artisticName}}</a></div>
 						{{else}}
-							<div class="photo"></div>
-							<div><a href="/profileDetails/{{owner._id}}">{{owner.artisticName}}</a></div>
+						<div class="photo"></div>
+						<div><a href="/profileDetails/{{owner._id}}">{{owner.artisticName}}</a></div>
 						{{/if}}
 					</div>
 
 					{{!-- IF A BIO HAS BEEN ADDED, SHOW, ELSE LEAVE BLANK --}}
 					{{#if description}}
-						<div class="description">
-							{{description}}
-						</div>
+					<div class="description">
+						{{description}}
+					</div>
 					{{else}}
 					{{/if}}
 
@@ -174,10 +177,10 @@
 				<div class="footer-language">
 					<span style="color:#4988D7">Language:</span> English (UK)
 				</div>
-				
+
 			</div>
 			{{!-- END OF SIDE FOOTER --}}
-			
+
 		</div>
 		{{!-- END OF SAMPLE CONTENT CONTAINER --}}
 

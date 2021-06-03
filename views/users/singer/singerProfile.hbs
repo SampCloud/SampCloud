@@ -37,40 +37,44 @@
 
     {{!-- HEADER BEGINS --}}
     {{#with singerDetails}}
-    <div class="header">
+    <div class="header" {{#if bgImg }} style="background-image: url({{bgImg}})" {{/if}}>
         ​
         {{!-- HEADER PROFILE PHOTO BEGINS --}}
         <div class="photo-area">
 
             {{!-- IF PHOTO HAS BEEN CHOSEN, SHOW, ELSE SHOW DEFAULT GRADIENT --}}
             {{#if imgPath}}
-                <img src="{{imgPath}}" style="margin-top: 44px; margin-bottom: 22px; padding: 0; width: 200px; height: 200px; border-radius: 50%;">
+            <img src=" {{imgPath}}"
+                style="margin-top: 44px; margin-bottom: 22px; padding: 0; width: 200px; height: 200px; border-radius: 50%;">
             {{else}}
-                <div class="header-photo"></div>
+            <div class="header-photo"></div>
             {{/if}}
 
         </div>
         {{!-- END OF HEADER PROFILE PHOTO --}}
-        ​
+
         {{!-- HEADER USER INFO BEGINS --}}
         <div class="header-info">
 
             {{!-- IF DISPLAY NAME HAS BEEN CHOSE, SHOW, ELSE SHOW USERNAME --}}
             {{#if artisticName}}
-                <div class="h1-profile">{{artisticName}}</div>
+            <div class="h1-profile">{{artisticName}}</div>
             {{else}}
-                <div class="h1-profile">{{username}}</div>
+            <div class="h1-profile">{{username}}</div>
             {{/if}}
 
             {{!-- IF LOCATION HAS BEEN ADDED SHOW, ELSE LEAVE AREA BLANK --}}
             {{#if soundUrl}}
-                <div class="h2-profile">{{soundUrl}}</div>
+            <div class="h2-profile">{{soundUrl}}</div>
             {{else}}
             {{/if}}
-
         </div>
         {{!-- END OF HEADER USER INFO --}}
-        ​
+        <div style="width:160px"> ​​
+            <button data-modal="editBackground" class="button bgButton clear-button"
+                style='margin-top: 40px; height: 20px; margin-right: 10px'>Edit
+                background</button>
+        </div>
     </div>
     {{/with}}
     {{!-- END OF HEADER --}}
@@ -92,16 +96,17 @@
                 </ul>
             </div>
 
+
             {{!-- EDIT PROFILE MODAL BEGINS --}}
             {{#with singerDetails}}
             <button class="button clear-button" data-modal="editProfile">Edit</button>
-            
+
             <div id="editProfile" class="modal-bg">
                 <div class="modal-block">
 
                     {{!-- EDIT PROFILE FORM BEGINS --}}
                     <form action="/singerProfile/edit" method="POST" enctype="multipart/form-data">
-                        
+
                         <div class="modal-heading">
                             <div class="title">Edit your Profile</div>
                             <div class="close">&times;</div>
@@ -112,9 +117,10 @@
 
                                 {{!-- IF A PROFILE PHOTO HAS BEEN UPLOADED SHOW, ELSE SHOW DEFAULT PHOTO GRADIENT --}}
                                 {{#if imgPath}}
-                                    <img src="{{imgPath}}" style="margin: 20px 0; padding: 0; width: 200px; height: 200px; border-radius: 50%;">
+                                <img src="{{imgPath}}"
+                                    style="margin: 20px 0; padding: 0; width: 200px; height: 200px; border-radius: 50%;">
                                 {{else}}
-                                    <div class="photo"></div>
+                                <div class="photo"></div>
                                 {{/if}}
 
                                 <label for="avatar"></label>
@@ -123,18 +129,22 @@
 
                             <div class="info">
                                 <label for="artisticName">Display Name:</label>
-                                <input type="text" name="artisticName" id="artisticName" value="{{artisticName}}" autocomplete="off">
+                                <input type="text" name="artisticName" id="artisticName" value="{{artisticName}}"
+                                    autocomplete="off">
 
                                 <label for="soundUrl">Location:</label>
-                                <input type="text" name="soundUrl" id="soundUrl" value="{{soundUrl}}" autocomplete="off">
+                                <input type="text" name="soundUrl" id="soundUrl" value="{{soundUrl}}"
+                                    autocomplete="off">
 
                                 <label for="description">Description:</label>
-                                <textarea name="description" id="description" autocomplete="off">{{description}}</textarea>
+                                <textarea name="description" id="description"
+                                    autocomplete="off">{{description}}</textarea>
                             </div>
-                            
+
                         </div>
 
-                        <div class="modal-save"><button type="submit" style="padding: 5px 10px; color: var(--clear-button);">Save</button></div>
+                        <div class="modal-save"><button type="submit"
+                                style="padding: 5px 10px; color: var(--clear-button);">Save</button></div>
 
                     </form>
                     {{!-- END OF EDIT PROFILE FORM --}}
@@ -172,9 +182,10 @@
                             </div>
 
                             <div class="modal-content">
-                                
+
                                 <div class="media">
-                                    <i class="far fa-file-audio" style="margin: 30px; padding: 5px; font-size: 8rem; color: var(--secondary-button);"></i>
+                                    <i class="far fa-file-audio"
+                                        style="margin: 30px; padding: 5px; font-size: 8rem; color: var(--secondary-button);"></i>
                                     <label for="audio"></label>
                                     <input type="file" name="audio" id="audio">
                                 </div>
@@ -204,7 +215,8 @@
                 {{!-- BEGIN SHOW PAST SAMPLES AREA --}}
                 <div class="my-samples">
                     <span>My Samples</span>
-                    <button class="button upload-button" data-modal="uploadSample" style="color: var(--clear-button);">&#43;</button>
+                    <button class="button upload-button" data-modal="uploadSample"
+                        style="color: var(--clear-button);">&#43;</button>
                 </div>
 
                 {{!-- LIST OF CURRENT UPLOADS --}}
@@ -218,8 +230,10 @@
                             <div>
                                 <div style="display: flex; justify-content: flex-end;">
                                     <div class="delete-sample">
-                                        <a href="/delete/{{_id}}"><button style="color: var(--clear-button);">Delete</button></a>
-                                        <a href="/editSample/{{_id}}"><button style="color: var(--clear-button);">Edit</button></a>
+                                        <a href="/delete/{{_id}}"><button
+                                                style="color: var(--clear-button);">Delete</button></a>
+                                        <a href="/editSample/{{_id}}"><button
+                                                style="color: var(--clear-button);">Edit</button></a>
                                     </div>
                                 </div>
 
@@ -232,8 +246,8 @@
                                 <div class="audio" style="float: right;">
                                     <figure>
                                         <audio controls src="{{filePath}}">
-                                        Your browser does not support the
-                                        <code>audio</code> element.
+                                            Your browser does not support the
+                                            <code>audio</code> element.
                                     </figure>
                                 </div>
                             </div>
@@ -252,7 +266,8 @@
 
                 <div class="empty-profile">
                     <h1>Nothing to hear here...</h1>
-                    <button class="button clear-button" data-modal="uploadSample" style="margin: 10px 0; padding: 5px 10px; font-size: 16px;">Upload now</button>
+                    <button class="button clear-button" data-modal="uploadSample"
+                        style="margin: 10px 0; padding: 5px 10px; font-size: 16px;">Upload now</button>
                 </div>
 
                 {{!-- UPLOAD SAMPLE MODAL BEGINS --}}
@@ -269,7 +284,8 @@
 
                             <div class="modal-content">
                                 <div class="media">
-                                    <i class="far fa-file-audio" style="margin: 30px; padding: 5px; font-size: 8rem; color: var(--secondary-button);"></i>
+                                    <i class="far fa-file-audio"
+                                        style="margin: 30px; padding: 5px; font-size: 8rem; color: var(--secondary-button);"></i>
                                     <label for="audio"></label>
                                     <input type="file" name="audio" id="audio">
                                 </div>
@@ -302,13 +318,13 @@
 
                 {{#with singerDetails}}
 
-                    {{!-- IF A BIO HAS BEEN ADDED, SHOW, ELSE LEAVE BLANK --}}
-                    {{#if description}}
-                    <div class="bio">
-                        <p>{{description}}</p>
-                    </div>
-                    {{else}}
-                    {{/if}}
+                {{!-- IF A BIO HAS BEEN ADDED, SHOW, ELSE LEAVE BLANK --}}
+                {{#if description}}
+                <div class="bio">
+                    <p>{{description}}</p>
+                </div>
+                {{else}}
+                {{/if}}
 
                 {{/with}}
 
@@ -323,7 +339,7 @@
                     <a href="#">Charts</a>&nbsp;-
                     <a href="#">Popular searches</a>
                 </div>
-                
+
                 <div class="footer-language">
                     <span style="color:#4988D7">Language:</span> English (UK)
                 </div>
@@ -339,3 +355,28 @@
 
 </div>
 {{!-- END OF MAIN BLOCK --}}
+
+{{!-- EDIT BACKGROUND BEGINS --}}
+<div id="editBackground" class="modal-bg">
+    <div class="modal-block">
+        <form action="/singerProfile/editBG" method="POST" enctype="multipart/form-data">
+            <div class="modal-heading">
+                <div class="title">Edit your background</div>
+                <div class="close">&times;</div>
+            </div>
+            <div class="modal-content">
+                <div class="media">
+
+                    {{#with singerDetails}}
+                    {{#if bgImg}}
+                    <img src="{{bgImg}}" style="margin: 20px 0; padding: 0; height: 200px;">
+                    {{else}}
+                    <div class="photo" style="width: 600px; border-radius:0"></div>
+                    {{/if}}
+                    <input type="file" name="bgImg" id="bgImg" value="{{imgName}}">
+                    <div class="modal-save"><button type="submit">Upload</button></div>
+                    {{/with}}
+                </div>
+        </form>
+    </div>
+</div>

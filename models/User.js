@@ -14,6 +14,9 @@ const userSchema = new Schema({
   artisticName: String,
   soundUrl: String,
   description: String,
+  bgImg: String,
+  bgImgName: String,
+  bgPublicId: String,
   role: {
     type: String,
     enum: ['singer', 'producer']

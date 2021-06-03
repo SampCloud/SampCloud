@@ -26,13 +26,14 @@
 			{{!-- IF A PROFILE PHOTO HAS BEEN CHOSEN, SHOW WITH NAME, ELSE... --}}
 			{{#if imgPath}}
 			<div class="nav-user">
-				<a href="/{{role}}Profile"><img src="{{imgPath}}" style="margin: 0; height: 28px; width: 28px; border-radius: 50%;"></a>
-				
+				<a href="/{{role}}Profile"><img src="{{imgPath}}"
+						style="margin: 0; height: 28px; width: 28px; border-radius: 50%;"></a>
+
 				{{!-- IF A DISPLAY NAME HAS BEEN CHOSEN, SHOW, ELSE SHOW USERNAME --}}
 				{{#if artisticName}}
-					<a href="/{{role}}Profile">{{artisticName}}</a>
+				<a href="/{{role}}Profile">{{artisticName}}</a>
 				{{else}}
-					<a href="/{{role}}Profile">{{username}}</a>
+				<a href="/{{role}}Profile">{{username}}</a>
 				{{/if}}
 			</div>
 
@@ -40,13 +41,14 @@
 			{{else}}
 			<div class="nav-user">
 
-				<a href="/{{role}}Profile"><img src="/images/default-user-photo.png" style="margin: 0; height: 28px; width: 28px; border-radius: 50%;"></a>
-				
+				<a href="/{{role}}Profile"><img src="/images/default-user-photo.png"
+						style="margin: 0; height: 28px; width: 28px; border-radius: 50%;"></a>
+
 				{{!-- IF A DISPLAY NAME HAS BEEN CHOSEN, SHOW, ELSE SHOW USERNAME --}}
 				{{#if artisticName}}
-					<a href="/{{role}}Profile">{{artisticName}}</a>
+				<a href="/{{role}}Profile">{{artisticName}}</a>
 				{{else}}
-					<a href="/{{role}}Profile">{{username}}</a>
+				<a href="/{{role}}Profile">{{username}}</a>
 				{{/if}}
 
 			</div>
@@ -76,7 +78,7 @@
 
 	{{!-- HEADER BEGINS --}}
 	{{#with profileDetails}}
-	<div class="header">
+	<div class="header" {{#if bgImg }} style="background-image: url({{bgImg}})" {{/if}}>
 		​
 		<div class="photo-area">
 			{{#if imgPath}}
@@ -153,8 +155,8 @@
 								<div class="audio" style="float: right;">
 									<figure>
 										<audio controls src="{{filePath}}">
-										Your browser does not support the
-										<code>audio</code> element.
+											Your browser does not support the
+											<code>audio</code> element.
 									</figure>
 								</div>
 							</div>
@@ -189,13 +191,14 @@
 
 					{{!-- IF A BIO HAS BEEN ADDED, SHOW, ELSE LEAVE BLANK --}}
 					{{#if description}}
-						<p>{{description}}</p>
+					<p>{{description}}</p>
 					{{else}}
 					{{/if}}
 
 					{{!-- EMAIL LINK --}}
 					<div class="message">
-						<a href="mailto:{{email}}" style="color: var(--p1-color); font-size: 20px;"><i class="far fa-envelope"></i></a>
+						<a href="mailto:{{email}}" style="color: var(--p1-color); font-size: 20px;"><i
+								class="far fa-envelope"></i></a>
 					</div>
 
 				</div>
@@ -212,7 +215,7 @@
 					<a href="#">Charts</a>&nbsp;-
 					<a href="#">Popular searches</a>
 				</div>
-				
+
 				<div class="footer-language">
 					<span style="color:#4988D7">Language:</span> English (UK)
 				</div>
