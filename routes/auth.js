@@ -28,9 +28,9 @@ router.post('/login', (req, res, next) => {
         req.session.user = userFromDB;
         if (userFromDB.role === 'singer') {
           //console.log(userFromDB)
-          res.redirect('/singerProfile');
+          res.redirect('/search');
         } else {
-          res.redirect('/producerProfile')
+          res.redirect('/search')
         }
       }
     })

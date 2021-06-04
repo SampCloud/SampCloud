@@ -34,6 +34,31 @@ router.post('/singerProfile/editBG', loginCheck(), uploader.single('bgImg'), (re
   }
 })
 
+router.post('/producerProfile/editBG', loginCheck(), uploader.single('bgImg'), (req, res, next) => {
+  if (req.file === undefined) {
+    res.redirect('/producerProfile',)
+  } else {
+    const bgImg = req.file.path;
+    const bgImgName = req.file.originalname;
+    const bgPublicId = req.file.filename;
+    const userId = req.session.user._id;
+    User.findByIdAndUpdate(userId, {
+      bgImg: bgImg,
+      bgImgName: bgImgName,
+      bgPublicId: bgPublicId,
+    }, { new: true })
+      .then(userUp => {
+        req.session.user = userUp;
+        //console.log(userUp)
+        res.redirect('/producerProfile',)
+      })
+      .catch(err => {
+        next(err)
+      })
+  }
+})
+
+
 router.post('/singerProfile/edit', loginCheck(), uploader.single('avatar'), (req, res, next) => {
   if (req.file === undefined) {
     const { artisticName, description, soundUrl } = req.body;
