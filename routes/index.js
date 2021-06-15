@@ -170,4 +170,14 @@ router.get('/singerProfile/edit', loginCheck(), isSinger(), (req, res, next) => 
   res.render('users/singer/editProfile', { singerDetails: currentUser });
 });
 
+router.get('/savedSamples', loginCheck(), (req, res, next) => {
+  const currentUser = req.session.user;
+  res.render('users/producer/savedSamples', { producerDetails: currentUser });
+});
+
+router.get('/likedSamples', loginCheck(), (req, res, next) => {
+  const currentUser = req.session.user;
+  res.render('users/producer/likedSamples', { producerDetails: currentUser });
+});
+
 module.exports = router;

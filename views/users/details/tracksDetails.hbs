@@ -62,7 +62,7 @@
 			{{!-- NAV ICONS BEGIN --}}
 			<div class="nav-icons">
 				<button id="toggle-theme" class="nav-icon" alt="Toggle Theme"><i class="fas fa-adjust"></i></button>
-        <a href="/logout" class="nav-icon" alt="Log Out"><i class="fas fa-sign-out-alt"></i></a>
+				<a href="/logout" class="nav-icon" alt="Log Out"><i class="fas fa-sign-out-alt"></i></a>
 			</div>
 			{{!-- END OF NAV ICONS --}}
 
@@ -98,10 +98,26 @@
 	<div class="profile">
 
 		{{!-- SAMPLE DETAILS NAVIGATION BEGINS --}}
+		{{#with trackDetails}}
 		<div class="sample-nav">
-			<button class="clear-button">&nbsp;<i class="fas fa-heart"></i>&nbsp;&nbsp;Like</button>
-			<button class="clear-button">&nbsp;<i class="far fa-bookmark"></i>&nbsp;&nbsp;Save</button>
+			<form id='likeASample' action="/likeASample" method='POST'>
+				<input name='id' type="hidden" value='{{_id}}'>
+				<input name='title' type="hidden" value='{{title}}'>
+				<input name='imgPath' type="hidden" value='{{imgPath}}'>
+				<input name='filePath' type="hidden" value='{{filePath}}'>
+				<input name='username' type="hidden" value='{{owner.username}}'>
+			</form>
+			<button form='likeASample' class="clear-button">&nbsp;<i class="far fa-heart"></i>&nbsp;&nbsp;Like</button>
+			<form id='saveASample' action="/saveASample" method='POST'>
+				<input name='id' type="hidden" value='{{_id}}'>
+				<input name='title' type="hidden" value='{{title}}'>
+				<input name='imgPath' type="hidden" value='{{imgPath}}'>
+				<input name='filePath' type="hidden" value='{{filePath}}'>
+				<input name='username' type="hidden" value='{{owner.username}}'>
+			</form>
+			<button form='saveASample' class="clear-button">&nbsp;<i class="far fa-bookmark"></i>&nbsp;&nbsp;Save</button>
 			<button class="clear-button">&nbsp;<i class="fas fa-shopping-cart"></i>&nbsp;&nbsp;Purchase</button>
+			{{!-- <button id='likesCount' class="clear-button">&nbsp;<i class="fas fa-heart"></i>&nbsp;&nbsp;0</button> --}}
 		</div>
 		{{!-- END OF SAMPLE DETAILS NAVIGATION --}}
 
@@ -111,7 +127,6 @@
 			{{!-- SAMPLE CONTENT AREA BEGINS --}}
 			<div class="profile-media" style="padding-right: 20px;">
 
-				{{#with trackDetails}}
 
 				{{!-- BEGIN SAMPLE OVERVIEW --}}
 				<div class="sample-details">

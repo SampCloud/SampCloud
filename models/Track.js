@@ -16,7 +16,10 @@ const trackSchema = new Schema({
   owner: {
     type: Schema.Types.ObjectId,
     ref: 'User'
-  }
+  },
+  likes: Number,
+  likedId: String,
+  savedId: String
 });
 
 const Track = mongoose.model('Track', trackSchema);

@@ -166,5 +166,54 @@ router.get('/delete/:sampleId', loginCheck(), isSinger(), (req, res, next) => {
     })
 });
 
+router.post('/likeASample', (req, res) => {
+  const { id, title, imgPath, username, filePath } = req.body;
+  Track.create({
+    title: title,
+    imgPath: imgPath,
+    filePath: filePath,
+    onwer: username,
+    likedId: id,
+  })
+    .then(track => {
+      User.findByIdAndUpdate(req.session.user._id,
+        {
+          "$push": { "likedSamples": track._id }
+        },
+        { new: true }).populate('likedSamples').then(user => {
+          console.log(user)
+          res.redirect(`/trackDetails/${id}`)
+        }).catch(err => {
+          console.log(err);
+        })
+    })
+    .catch(err => console.log(err))
+})
+
+router.post('/saveASample', (req, res) => {
+  const { id, title, imgPath, username, filePath } = req.body;
+  Track.create({
+    title: title,
+    imgPath: imgPath,
+    filePath: filePath,
+    onwer: username,
+    savedId: id,
+  })
+    .then(track => {
+      User.findByIdAndUpdate(req.session.user._id,
+        {
+          "$push": { "savedSamples": track._id }
+        },
+        { new: true }).populate('savedSamples').then(user => {
+          console.log(user)
+          res.redirect(`/trackDetails/${id}`)
+        }).catch(err => {
+          console.log(err);
+        })
+    })
+    .catch(err => console.log(err))
+})
+
+
 
 module.exports = router
