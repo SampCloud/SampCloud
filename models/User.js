@@ -23,11 +23,11 @@ const userSchema = new Schema({
   },
   savedSamples: {
     type: Schema.Types.ObjectId,
-    ref: 'Track'
+    ref: 'SavedTrack'
   },
   likedSamples: {
     type: Schema.Types.ObjectId,
-    ref: 'Track'
+    ref: 'SavedTrack'
   },
 });
 

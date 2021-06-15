@@ -26,12 +26,8 @@ router.post('/login', (req, res, next) => {
       }
       if (bcrypt.compareSync(password, userFromDB.password)) {
         req.session.user = userFromDB;
-        if (userFromDB.role === 'singer') {
-          //console.log(userFromDB)
-          res.redirect('/search');
-        } else {
-          res.redirect('/search')
-        }
+        res.redirect('/search');
+
       }
     })
 })

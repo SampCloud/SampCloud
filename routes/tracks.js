@@ -2,6 +2,7 @@ const router = require("express").Router();
 const { loginCheck, isSinger, isProducer } = require("./middlewares");
 const User = require('../models/User');
 const { uploader, uploaderAudio, cloudinary } = require("../config/cloudinary");
+const SavedTrack = require('../models/SavedTrack');
 const Track = require('../models/Track');
 const streamifier = require('streamifier');
 const fs = require('fs');
@@ -167,15 +168,17 @@ router.get('/delete/:sampleId', loginCheck(), isSinger(), (req, res, next) => {
 });
 
 router.post('/likeASample', (req, res) => {
-  const { id, title, imgPath, username, filePath } = req.body;
-  Track.create({
+  const { id, title, imgPath, username, filePath, description } = req.body;
+  SavedTrack.create({
     title: title,
     imgPath: imgPath,
     filePath: filePath,
     onwer: username,
     likedId: id,
+    description: description,
   })
     .then(track => {
+      console.log('the track', track)
       User.findByIdAndUpdate(req.session.user._id,
         {
           "$push": { "likedSamples": track._id }
@@ -191,13 +194,14 @@ router.post('/likeASample', (req, res) => {
 })
 
 router.post('/saveASample', (req, res) => {
-  const { id, title, imgPath, username, filePath } = req.body;
-  Track.create({
+  const { id, title, imgPath, username, filePath, description } = req.body;
+  SavedTrack.create({
     title: title,
     imgPath: imgPath,
     filePath: filePath,
     onwer: username,
     savedId: id,
+    description: description
   })
     .then(track => {
       User.findByIdAndUpdate(req.session.user._id,

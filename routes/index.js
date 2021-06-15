@@ -172,12 +172,20 @@ router.get('/singerProfile/edit', loginCheck(), isSinger(), (req, res, next) => 
 
 router.get('/savedSamples', loginCheck(), (req, res, next) => {
   const currentUser = req.session.user;
-  res.render('users/producer/savedSamples', { producerDetails: currentUser });
+  User.findById(req.session.user._id).populate('savedSamples')
+    .then(user => {
+      console.log(user)
+      res.render('users/producer/savedSamples', { producerDetails: user });
+    })
 });
 
 router.get('/likedSamples', loginCheck(), (req, res, next) => {
   const currentUser = req.session.user;
-  res.render('users/producer/likedSamples', { producerDetails: currentUser });
+  User.findById(req.session.user._id).populate('likedSamples')
+    .then(user => {
+      console.log(user)
+      res.render('users/producer/likedSamples', { producerDetails: user });
+    })
 });
 
 module.exports = router;
