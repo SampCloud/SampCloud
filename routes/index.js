@@ -184,7 +184,7 @@ router.get('/producerProfile/likedSamples', loginCheck(), (req, res, next) => {
   User.findById(req.session.user._id).populate('likedSamples')
     .then(user => {
       console.log(user)
-      res.render('users/producer/likedSamples', { producerDetails: user });
+      res.render('users/producer/likedSample', { producerDetails: user });
     })
 });
 
