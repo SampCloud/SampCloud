@@ -179,7 +179,7 @@ router.get('/savedSamples', loginCheck(), (req, res, next) => {
     })
 });
 
-router.get('/likedSamples', loginCheck(), (req, res, next) => {
+router.get('/producerProfile/likedSamples', loginCheck(), (req, res, next) => {
   const currentUser = req.session.user;
   User.findById(req.session.user._id).populate('likedSamples')
     .then(user => {
