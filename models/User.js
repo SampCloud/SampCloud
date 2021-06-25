@@ -21,14 +21,14 @@ const userSchema = new Schema({
     type: String,
     enum: ['singer', 'producer']
   },
-  savedSamples: {
+  savedSamples: [{
     type: Schema.Types.ObjectId,
     ref: 'SavedTrack'
-  },
-  likedSamples: {
+  }],
+  likedSamples: [{
     type: Schema.Types.ObjectId,
     ref: 'SavedTrack'
-  },
+  }],
 });
 
 const User = model("User", userSchema);

@@ -194,6 +194,7 @@ router.post('/likeASample', (req, res) => {
 })
 
 router.post('/saveASample', (req, res) => {
+  const currentUser = req.session.user;
   const { id, title, imgPath, username, filePath, description } = req.body;
   SavedTrack.create({
     title: title,
@@ -204,12 +205,13 @@ router.post('/saveASample', (req, res) => {
     description: description
   })
     .then(track => {
-      User.findByIdAndUpdate(req.session.user._id,
+      console.log('the track created', track)
+      User.findByIdAndUpdate(currentUser._id,
         {
           "$push": { "savedSamples": track._id }
         },
         { new: true }).populate('savedSamples').then(user => {
-          console.log(user)
+          console.log('the user populated', user)
           res.redirect(`/trackDetails/${id}`)
         }).catch(err => {
           console.log(err);

@@ -157,6 +157,7 @@ router.get('/singerProfile', loginCheck(), isSinger(), (req, res) => {
 
 router.get('/producerProfile', loginCheck(), isProducer(), (req, res) => {
   const currentUser = req.session.user;
+  console.log(currentUser)
   res.render('users/producer/producerProfile', { producerDetails: currentUser });
 });
 
@@ -170,9 +171,9 @@ router.get('/singerProfile/edit', loginCheck(), isSinger(), (req, res, next) => 
   res.render('users/singer/editProfile', { singerDetails: currentUser });
 });
 
-router.get('/savedSamples', loginCheck(), (req, res, next) => {
+router.get('/producerProfile/savedSamples', loginCheck(), (req, res, next) => {
   const currentUser = req.session.user;
-  User.findById(req.session.user._id).populate('savedSamples')
+  User.findById(currentUser._id).populate('savedSamples')
     .then(user => {
       console.log(user)
       res.render('users/producer/savedSamples', { producerDetails: user });
