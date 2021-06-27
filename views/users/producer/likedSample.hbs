@@ -158,54 +158,105 @@
     <div class="profile-content">
 
       {{!-- PROFILE MEDIA BEGINS --}}
+
       <div class="profile-media">
+
+        {{!-- IF SAMPLES HAVE BEEN UPLOADED, OPTIONALLY ADD MORE AND DISPLAY PAST UPLOADS --}}
+        {{#if producerDetails.likedSamples}}
+
+
+
+
+        {{!-- LIST OF CURRENT UPLOADS --}}
+        <div class="sample">
+
+          {{!-- TRACK BEGINS --}}
+          {{#each producerDetails.likedSamples}}
+          <div class="track">
+            <img src="{{imgPath}}" alt="">
+            <div class="info">
+              <div>
+                <div style="display: flex; justify-content: flex-end;">
+                  <div class="delete-sample">
+                    <a href="#"><button style="color: var(--clear-button);">Delete</button></a>
+
+                  </div>
+                </div>
+
+                <p style="margin: 0 0 5px 0">{{description}}</p>
+              </div>
+              <div class="audio-content">
+                <div>
+                  <p style="font-size: 14px;">{{title}}</p>
+                </div>
+                <div class="audio" style="float: right;">
+                  <figure>
+                    <audio controls src="{{filePath}}">
+                      Your browser does not support the
+                      <code>audio</code> element.
+                  </figure>
+                </div>
+              </div>
+            </div>
+          </div>
+          {{/each}}
+          {{!-- END OF TRACK --}}
+
+        </div>
+        {{!-- END OF SHOW PAST SAMPLES AREA --}}
+
+        {{!-- ///////////////////////////////////////////////////////////////////////////////////////// --}}
+
+        {{!-- IF NO TRACKS HAVE BEEN UPLOADED, SUGGEST UPLOAD --}}
+        {{else}}
 
         <div class="empty-profile">
           <h1>No liked samples yet...</h1>
         </div>
-
       </div>
-      {{!-- END OF PROFILE MEDIA --}}
+    </div>
+    {{/if}}
+    {{!-- END OF PROFILE MEDIA --}}
 
-      {{!-- SIDE FOOTER BEGINS --}}
-      <div class="footer">
+    {{!-- SIDE FOOTER BEGINS --}}
+    <div class="footer">
 
-        {{#with producerDetails}}
+      {{#with producerDetails}}
 
-        {{!-- IF A BIO HAS BEEN ADDED, SHOW, ELSE LEAVE BLANK --}}
-        {{#if description}}
-        <div class="bio">
-          <p>{{description}}</p>
-        </div>
-        {{else}}
-        {{/if}}
-
-        {{/with}}
-
-        <div class="footer-links">
-          <a href="#">Legal</a>&nbsp;-
-          <a href="#">Privacy</a>&nbsp;-
-          <a href="#">Cookie Policy</a>&nbsp;-
-          <a href="#">Cookie Manager</a>&nbsp;-
-          <a href="#">Imprint</a>&nbsp;-
-          <a href="#">Creator Resources</a>&nbsp;-
-          <a href="#">Blog</a>&nbsp;-
-          <a href="#">Charts</a>&nbsp;-
-          <a href="#">Popular searches</a>
-        </div>
-
-        <div class="footer-language">
-          <span style="color:#4988D7">Language:</span> English (UK)
-        </div>
-
+      {{!-- IF A BIO HAS BEEN ADDED, SHOW, ELSE LEAVE BLANK --}}
+      {{#if description}}
+      <div class="bio">
+        <p>{{description}}</p>
       </div>
-      {{!-- END OF SIDE FOOTER --}}
+      {{else}}
+      {{/if}}
+
+      {{/with}}
+
+      <div class="footer-links">
+        <a href="#">Legal</a>&nbsp;-
+        <a href="#">Privacy</a>&nbsp;-
+        <a href="#">Cookie Policy</a>&nbsp;-
+        <a href="#">Cookie Manager</a>&nbsp;-
+        <a href="#">Imprint</a>&nbsp;-
+        <a href="#">Creator Resources</a>&nbsp;-
+        <a href="#">Blog</a>&nbsp;-
+        <a href="#">Charts</a>&nbsp;-
+        <a href="#">Popular searches</a>
+      </div>
+
+      <div class="footer-language">
+        <span style="color:#4988D7">Language:</span> English (UK)
+      </div>
 
     </div>
-    {{!-- END OF PROFILE CONTENT --}}
+    {{!-- END OF SIDE FOOTER --}}
 
   </div>
-  {{!-- END OF PROFILE BLOCK --}}
+  {{!-- END OF PROFILE CONTENT --}}
+
+</div>
+{{!-- END OF PROFILE BLOCK --}}
 
 </div>
 {{!-- END OF MAIN BLOCK --}}
