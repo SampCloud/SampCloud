@@ -164,23 +164,19 @@
         {{!-- IF SAMPLES HAVE BEEN UPLOADED, OPTIONALLY ADD MORE AND DISPLAY PAST UPLOADS --}}
         {{#if producerDetails.likedSamples}}
 
-
-
-
         {{!-- LIST OF CURRENT UPLOADS --}}
         <div class="sample">
 
           {{!-- TRACK BEGINS --}}
           {{#each producerDetails.likedSamples}}
           <div class="track">
-            <img src="{{imgPath}}" alt="">
+            <a href="/trackDetails/{{likedId}}"><img src="{{imgPath}}" alt=""></a>
             <div class="info">
               <div>
                 <div style="display: flex; justify-content: flex-end;">
                   <div class="delete-sample">
                     <a href="/deleteALikedSample/{{_id}}"><button
                         style="color: var(--clear-button);">Delete</button></a>
-
                   </div>
                 </div>
 
