@@ -153,7 +153,6 @@ router.get('/profileDetails/:ownerId', loginCheck(), (req, res, next) => {
 });
 
 router.get('/delete/:sampleId', loginCheck(), isSinger(), (req, res, next) => {
-  console.log(req.params.sampleId)
   Track.findByIdAndDelete(req.params.sampleId)
     .then(deletedTrack => {
 
@@ -205,7 +204,6 @@ router.post('/saveASample', (req, res) => {
     description: description
   })
     .then(track => {
-      console.log('the track created', track)
       User.findByIdAndUpdate(currentUser._id,
         {
           "$push": { "savedSamples": track._id }
@@ -220,6 +218,39 @@ router.post('/saveASample', (req, res) => {
     .catch(err => console.log(err))
 })
 
+router.get('/deleteASavedSample/:id', (req, res) => {
+  const currentUser = req.session.user;
+  SavedTrack.findByIdAndDelete(req.params.id)
+    .then(deletedSample => {
+      User.findByIdAndUpdate(currentUser._id,
+        {
+          "$pull": { "savedSamples": deletedSample._id }
+        },
+        { new: true }).populate('savedSamples').then(user => {
+          res.redirect(`/producerProfile/savedSamples`)
+        }).catch(err => {
+          console.log(err);
+        })
+    })
+    .catch(err => console.log(err))
+})
+
+router.get('/deleteALikedSample/:id', (req, res) => {
+  const currentUser = req.session.user;
+  SavedTrack.findByIdAndDelete(req.params.id)
+    .then(deletedSample => {
+      User.findByIdAndUpdate(currentUser._id,
+        {
+          "$pull": { "likedSamples": deletedSample._id }
+        },
+        { new: true }).populate('likedSamples').then(user => {
+          res.redirect(`/producerProfile/likedSamples`)
+        }).catch(err => {
+          console.log(err);
+        })
+    })
+    .catch(err => console.log(err))
+})
 
 
 module.exports = router
