@@ -212,50 +212,51 @@
         <div class="empty-profile">
           <h1>No saved samples yet...</h1>
         </div>
+
+
+        {{/if}}
       </div>
+      {{!-- END OF PROFILE MEDIA --}}
+
+      {{!-- SIDE FOOTER BEGINS --}}
+      <div class="footer">
+
+        {{#with producerDetails}}
+
+        {{!-- IF A BIO HAS BEEN ADDED, SHOW, ELSE LEAVE BLANK --}}
+        {{#if description}}
+        <div class="bio">
+          <p>{{description}}</p>
+        </div>
+        {{else}}
+        {{/if}}
+
+        {{/with}}
+
+        <div class="footer-links">
+          <a href="#">Legal</a>&nbsp;-
+          <a href="#">Privacy</a>&nbsp;-
+          <a href="#">Cookie Policy</a>&nbsp;-
+          <a href="#">Cookie Manager</a>&nbsp;-
+          <a href="#">Imprint</a>&nbsp;-
+          <a href="#">Creator Resources</a>&nbsp;-
+          <a href="#">Blog</a>&nbsp;-
+          <a href="#">Charts</a>&nbsp;-
+          <a href="#">Popular searches</a>
+        </div>
+
+        <div class="footer-language">
+          <span style="color:#4988D7">Language:</span> English (UK)
+        </div>
+
+      </div>
+      {{!-- END OF SIDE FOOTER --}}
+
     </div>
-    {{/if}}
-    {{!-- END OF PROFILE MEDIA --}}
-
-    {{!-- SIDE FOOTER BEGINS --}}
-    <div class="footer">
-
-      {{#with producerDetails}}
-
-      {{!-- IF A BIO HAS BEEN ADDED, SHOW, ELSE LEAVE BLANK --}}
-      {{#if description}}
-      <div class="bio">
-        <p>{{description}}</p>
-      </div>
-      {{else}}
-      {{/if}}
-
-      {{/with}}
-
-      <div class="footer-links">
-        <a href="#">Legal</a>&nbsp;-
-        <a href="#">Privacy</a>&nbsp;-
-        <a href="#">Cookie Policy</a>&nbsp;-
-        <a href="#">Cookie Manager</a>&nbsp;-
-        <a href="#">Imprint</a>&nbsp;-
-        <a href="#">Creator Resources</a>&nbsp;-
-        <a href="#">Blog</a>&nbsp;-
-        <a href="#">Charts</a>&nbsp;-
-        <a href="#">Popular searches</a>
-      </div>
-
-      <div class="footer-language">
-        <span style="color:#4988D7">Language:</span> English (UK)
-      </div>
-
-    </div>
-    {{!-- END OF SIDE FOOTER --}}
+    {{!-- END OF PROFILE CONTENT --}}
 
   </div>
-  {{!-- END OF PROFILE CONTENT --}}
-
-</div>
-{{!-- END OF PROFILE BLOCK --}}
+  {{!-- END OF PROFILE BLOCK --}}
 
 </div>
 {{!-- END OF MAIN BLOCK --}}
