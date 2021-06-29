@@ -4,20 +4,16 @@ const User = require('../models/User');
 const { uploader, uploaderAudio, cloudinary } = require("../config/cloudinary");
 const SavedTrack = require('../models/SavedTrack');
 const Track = require('../models/Track');
-const streamifier = require('streamifier');
-const fs = require('fs');
 
 router.get('/search', (req, res, next) => {
   const currentUser = req.session.user;
   Track.find()
     .then(tracks => {
-
       res.render('search', { tracklist: tracks, currentUser })
     });
 })
 
 router.post('/search', (req, res, next) => {
-  console.log('query', req.body)
   Track.find()
     .then(tracks => {
       const filteredTracks = tracks.filter(track => {
@@ -27,9 +23,6 @@ router.post('/search', (req, res, next) => {
       res.render('search', { tracklist: filteredTracks })
     })
 })
-
-
-
 
 
 router.get('/singerProfile/addTrack', isSinger(), (req, res, next) => {
@@ -73,7 +66,6 @@ router.post('/singerProfile/addTrack', isSinger(), loginCheck(), uploaderAudio.s
         owner: req.session.user._id
       })
         .then(track => {
-          console.log('The track', track)
           res.redirect('/singerProfile');
         })
         .catch(err => {
@@ -209,7 +201,6 @@ router.post('/saveASample', (req, res) => {
           "$push": { "savedSamples": track._id }
         },
         { new: true }).populate('savedSamples').then(user => {
-          console.log('the user populated', user)
           res.redirect(`/trackDetails/${id}`)
         }).catch(err => {
           console.log(err);

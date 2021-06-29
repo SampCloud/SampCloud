@@ -18,6 +18,7 @@ router.post('/singerProfile/editBG', loginCheck(), uploader.single('bgImg'), (re
     const bgImgName = req.file.originalname;
     const bgPublicId = req.file.filename;
     const userId = req.session.user._id;
+    cloudinary.uploader.destroy(req.session.user.bgPublicId);
     User.findByIdAndUpdate(userId, {
       bgImg: bgImg,
       bgImgName: bgImgName,
@@ -42,6 +43,7 @@ router.post('/producerProfile/editBG', loginCheck(), uploader.single('bgImg'), (
     const bgImgName = req.file.originalname;
     const bgPublicId = req.file.filename;
     const userId = req.session.user._id;
+    cloudinary.uploader.destroy(req.session.user.bgPublicId);
     User.findByIdAndUpdate(userId, {
       bgImg: bgImg,
       bgImgName: bgImgName,
@@ -63,7 +65,6 @@ router.post('/singerProfile/edit', loginCheck(), uploader.single('avatar'), (req
   if (req.file === undefined) {
     const { artisticName, description, soundUrl } = req.body;
     const userId = req.session.user._id;
-    //console.log(req.file);
     User.findByIdAndUpdate(userId, {
       artisticName: artisticName,
       description: description,
@@ -82,7 +83,7 @@ router.post('/singerProfile/edit', loginCheck(), uploader.single('avatar'), (req
     const imgPath = req.file.path;
     const imgName = req.file.originalname;
     const publicId = req.file.filename;
-    //console.log(req.file);
+    cloudinary.uploader.destroy(req.session.user.publicId);
     User.findByIdAndUpdate(userId, {
       artisticName: artisticName,
       imgPath: imgPath,
@@ -106,7 +107,6 @@ router.post('/producerProfile/edit', loginCheck(), uploader.single('avatar'), (r
   if (req.file === undefined) {
     const { artisticName, description, soundUrl } = req.body;
     const userId = req.session.user._id;
-    //console.log(req.file);
     User.findByIdAndUpdate(userId, {
       artisticName: artisticName,
       description: description,
@@ -126,7 +126,7 @@ router.post('/producerProfile/edit', loginCheck(), uploader.single('avatar'), (r
     const imgPath = req.file.path;
     const imgName = req.file.originalname;
     const publicId = req.file.filename;
-    //console.log(req.file);
+    cloudinary.uploader.destroy(req.session.user.publicId);
     User.findByIdAndUpdate(userId, {
       artisticName: artisticName,
       imgPath: imgPath,
@@ -150,7 +150,6 @@ router.get('/singerProfile', loginCheck(), isSinger(), (req, res) => {
   const currentUser = req.session.user;
   Track.find({ owner: currentUser._id })
     .then(tracks => {
-      console.log('Tracks', tracks)
       res.render('users/singer/singerProfile', { singerDetails: currentUser, tracks })
     })
 });
