@@ -81,7 +81,8 @@
 	{{!-- HEADER BEGINS --}}
 
 	{{#with trackDetails}}
-	<div class="sample-header" {{#if owner.bgImg }} style="background-image: url({{owner.bgImg}})" {{/if}}>
+	<div class="sample-header" {{#if owner.bgImg }} style="background-image: url({{owner.bgImg}});background-size: cover"
+		{{/if}}>
 		{{!-- COVER ART BEGINS --}}
 		<div class="cover">
 			{{#if imgPath}}

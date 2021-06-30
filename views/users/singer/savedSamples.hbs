@@ -37,7 +37,7 @@
 
   {{!-- HEADER BEGINS --}}
   {{#with singerDetails}}
-  <div class="header" {{#if bgImg }} style="background-image: url({{bgImg}})" {{/if}}>
+  <div class="header" {{#if bgImg }} style="background-image: url({{bgImg}});background-size: cover" {{/if}}>
     ​
     {{!-- HEADER PROFILE PHOTO BEGINS --}}
     <div class="photo-area">
@@ -92,8 +92,8 @@
           <li><a href="#">Playlists</a></li>
           <li><a href="#">Reposts</a></li>
           <li><a href="/singerProfile">Samples</a></li>
-          <li><a href="/singerProfile/likedSamples" class="current">Liked Samples</a></li>
-          <li><a href="/singerProfile/savedSamples">Saved Samples</a></li>
+          <li><a href="/singerProfile/likedSamples">Liked Samples</a></li>
+          <li><a href="/singerProfile/savedSamples" class="current">Saved Samples</a></li>
         </ul>
       </div>
 
