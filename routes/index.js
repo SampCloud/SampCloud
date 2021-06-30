@@ -178,12 +178,32 @@ router.get('/producerProfile/savedSamples', loginCheck(), (req, res, next) => {
     })
 });
 
+router.get('/singerProfile/savedSamples', loginCheck(), (req, res, next) => {
+  const currentUser = req.session.user;
+  User.findById(currentUser._id).populate('savedSamples')
+    .then(user => {
+      console.log(user)
+      res.render('users/singer/savedSamples', { singerDetails: user });
+    })
+});
+
+
+
 router.get('/producerProfile/likedSamples', loginCheck(), (req, res, next) => {
   const currentUser = req.session.user;
   User.findById(currentUser._id).populate('likedSamples')
     .then(user => {
       console.log(user)
       res.render('users/producer/likedSample', { producerDetails: user });
+    })
+});
+
+router.get('/singerProfile/likedSamples', loginCheck(), (req, res, next) => {
+  const currentUser = req.session.user;
+  User.findById(currentUser._id).populate('likedSamples')
+    .then(user => {
+      console.log(user)
+      res.render('users/singer/likedSample', { singerDetails: user });
     })
 });
 
