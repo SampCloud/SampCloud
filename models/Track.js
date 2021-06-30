@@ -19,7 +19,9 @@ const trackSchema = new Schema({
   },
   likes: Number,
   likedId: String,
-  savedId: String
+  savedId: String,
+  isLiked: Boolean,
+  isSaved: Boolean
 });
 
 const Track = mongoose.model('Track', trackSchema);

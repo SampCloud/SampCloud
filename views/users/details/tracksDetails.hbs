@@ -100,6 +100,11 @@
 		{{!-- SAMPLE DETAILS NAVIGATION BEGINS --}}
 		{{#with trackDetails}}
 		<div class="sample-nav">
+			{{#if isLiked}}
+			<form id='unlikeASample' action="/deleteALikedTrack/{{_id}}" method='GET'>
+			</form>
+			<button form='unlikeASample' class="clear-button">&nbsp;<i class="fas fa-heart"></i>&nbsp;&nbsp;Liked</button>
+			{{else}}
 			<form id='likeASample' action="/likeASample" method='POST'>
 				<input name='id' type="hidden" value='{{_id}}'>
 				<input name='title' type="hidden" value='{{title}}'>
@@ -109,6 +114,12 @@
 				<input name='username' type="hidden" value='{{owner.username}}'>
 			</form>
 			<button form='likeASample' class="clear-button">&nbsp;<i class="far fa-heart"></i>&nbsp;&nbsp;Like</button>
+			{{/if}}
+			{{#if isSaved}}
+			<form id='unsaveASample' action="/deleteASavedTrack/{{_id}}" method='GET'>
+			</form>
+			<button form='unsaveASample' class="clear-button">&nbsp;<i class="fas fa-bookmark"></i>&nbsp;&nbsp;Saved</button>
+			{{else}}
 			<form id='saveASample' action="/saveASample" method='POST'>
 				<input name='id' type="hidden" value='{{_id}}'>
 				<input name='title' type="hidden" value='{{title}}'>
@@ -118,6 +129,7 @@
 				<input name='username' type="hidden" value='{{owner.username}}'>
 			</form>
 			<button form='saveASample' class="clear-button">&nbsp;<i class="far fa-bookmark"></i>&nbsp;&nbsp;Save</button>
+			{{/if}}
 			<button class="clear-button">&nbsp;<i class="fas fa-shopping-cart"></i>&nbsp;&nbsp;Purchase</button>
 			{{!-- <button id='likesCount' class="clear-button">&nbsp;<i class="fas fa-heart"></i>&nbsp;&nbsp;0</button> --}}
 		</div>

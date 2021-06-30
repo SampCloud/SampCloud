@@ -127,7 +127,17 @@ router.get('/trackDetails/:sampleId', loginCheck(), (req, res, next) => {
   const currentUser = req.session.user;
   Track.findById(req.params.sampleId).populate('owner')
     .then(track => {
-      res.render('users/details/tracksDetails', { trackDetails: track, currentUser });
+      User.findById(currentUser._id).populate('likedSamples').populate('savedSamples')
+        .then(user => {
+          const likedIdArr = user.likedSamples.map(x => x.likedId);
+          const savedIdArr = user.savedSamples.map(x => x.savedId);
+          const isLiked = likedIdArr.includes(track._id);
+          const isSaved = savedIdArr.includes(track._id);
+          track.isLiked = isLiked;
+          track.isSaved = isSaved;
+          console.log(track)
+          res.render('users/details/tracksDetails', { trackDetails: track, currentUser: user });
+        })
     })
 });
 
@@ -219,6 +229,42 @@ router.get('/deleteASavedSample/:id', (req, res) => {
         },
         { new: true }).populate('savedSamples').then(user => {
           res.redirect(`/producerProfile/savedSamples`)
+        }).catch(err => {
+          console.log(err);
+        })
+    })
+    .catch(err => console.log(err))
+})
+
+router.get('/deleteASavedTrack/:id', (req, res) => {
+  const currentUser = req.session.user;
+  SavedTrack.findOneAndDelete({ savedId: req.params.id })
+    .then(deletedSample => {
+      console.log(deletedSample)
+      User.findByIdAndUpdate(currentUser._id,
+        {
+          "$pull": { "savedSamples": deletedSample._id }
+        },
+        { new: true }).populate('savedSamples').then(user => {
+          res.redirect(`/trackDetails/${req.params.id}`)
+        }).catch(err => {
+          console.log(err);
+        })
+    })
+    .catch(err => console.log(err))
+})
+
+router.get('/deleteALikedTrack/:id', (req, res) => {
+  const currentUser = req.session.user;
+  SavedTrack.findOneAndDelete({ likedId: req.params.id })
+    .then(deletedSample => {
+      console.log(deletedSample)
+      User.findByIdAndUpdate(currentUser._id,
+        {
+          "$pull": { "likedSamples": deletedSample._id }
+        },
+        { new: true }).populate('likedSamples').then(user => {
+          res.redirect(`/trackDetails/${req.params.id}`)
         }).catch(err => {
           console.log(err);
         })
