@@ -51,7 +51,6 @@ router.post('/producerProfile/editBG', loginCheck(), uploader.single('bgImg'), (
     }, { new: true })
       .then(userUp => {
         req.session.user = userUp;
-        //console.log(userUp)
         res.redirect('/producerProfile',)
       })
       .catch(err => {
