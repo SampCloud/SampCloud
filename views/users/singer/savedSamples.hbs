@@ -175,7 +175,7 @@
               <div>
                 <div style="display: flex; justify-content: flex-end;">
                   <div class="delete-sample">
-                    <a href="/deleteALikedSample/{{_id}}"><button
+                    <a href="/deleteASavedSample/{{_id}}"><button
                         style="color: var(--clear-button);">Delete</button></a>
                   </div>
                 </div>
@@ -210,13 +210,13 @@
         <div class="empty-profile">
           <h1>No saved samples yet...</h1>
         </div>
-      </div>
       {{/if}}
-    </div>
-    {{!-- END OF PROFILE MEDIA --}}
+      </div>
+    
+     {{!-- END OF PROFILE MEDIA --}}
 
-    {{!-- SIDE FOOTER BEGINS --}}
-    <div class="footer">
+     {{!-- SIDE FOOTER BEGINS --}}
+     <div class="footer">
 
       {{#with singerDetails}}
 
@@ -246,16 +246,18 @@
         <span style="color:#4988D7">Language:</span> English (UK)
       </div>
 
+     </div>
+       {{!-- END OF SIDE FOOTER --}}
+
     </div>
-    {{!-- END OF SIDE FOOTER --}}
+        ​{{!-- END OF PROFILE CONTENT --}}
 
   </div>
-  {{!-- END OF PROFILE CONTENT --}}
+    {{!-- END OF PROFILE BLOCK --}}
 
 </div>
-{{!-- END OF PROFILE BLOCK --}}
+{{!-- END OF MAIN BLOCK --}}
 
-</div>
 {{!-- END OF MAIN BLOCK --}}
 <div id="editBackground" class="modal-bg">
   <div class="modal-block">
