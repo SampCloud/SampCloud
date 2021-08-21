@@ -133,6 +133,11 @@
 			{{/if}}
 			<button class="clear-button">&nbsp;<i class="fas fa-shopping-cart"></i>&nbsp;&nbsp;Purchase</button>
 			{{!-- <button id='likesCount' class="clear-button">&nbsp;<i class="fas fa-heart"></i>&nbsp;&nbsp;0</button> --}}
+			{{#if likes}}
+			<p class='numberOfLikes'>{{likes}}<i class="fas fa-heart"></i>&nbsp;&nbsp;</p>
+			{{else}}
+			<p class='numberOfLikes'>0 <i class="fas fa-heart"></i>&nbsp;&nbsp;</p>
+			{{/if}}
 		</div>
 		{{!-- END OF SAMPLE DETAILS NAVIGATION --}}
 
